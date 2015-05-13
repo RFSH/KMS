@@ -1,0 +1,7 @@
+rootProject.name = 'KMS'
+
+include ':javang'
+project( ':javang' ).projectDir = new File(settingsDir, '../JavaNG/javang' )
+
+include ':ng-java'
+project( ':ng-java' ).projectDir = new File(settingsDir, '../JavaNG/ng-java' )

@@ -1,0 +1,30 @@
+apply plugin: 'application'
+
+sourceCompatibility = 1.5
+version = '1.0'
+
+mainClassName = "kms.Main"
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'ui'
+        }
+    }
+}
+
+dependencies {
+    compile project(':javang')
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task ngCopy(type: Copy) {
+    from(project(":ng-java").file("ng-java.js"))
+    into(file("ui/lib/ng-java"))
+}
+
+run.dependsOn ngCopy
