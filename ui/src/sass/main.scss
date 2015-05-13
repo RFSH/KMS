@@ -60,6 +60,51 @@ a:hover {
   max-width: 200px;
 }
 
+/************************************ navbar *******************************/
+/* navbar */
+.navbar-default {
+  background-color: crimson;
+  border-color: #ac1431;
+  border: 0;border-radius: 0;
+}
+/* title */
+.navbar-default .navbar-brand {
+  color: white;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: white;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  background-color: #f81642;
+  color: #f3edff;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: white;
+  background-color: crimson;
+}
+.navbar-default .navbar-nav > .active > a:hover{
+  background-color: #f81642;
+  color: black;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: white;
+  background-color: crimson;
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+  border-top-color: #ac1431;
+  border-bottom-color: #ac1431;
+}
+
 /************************************ login *******************************/
 .login-form {
   max-width: 300px;
@@ -100,19 +145,23 @@ a:hover {
   .form-group{margin-right: 2em;}
   .found-count{opacity: 0.8}
 }
-.list-emp{
-
-}
-
 /************************************* view emp ********************************/
 .view-employee{
   .emp-header{
     position: relative;
-    .emp-name{font-family: $other-font;margin: 0.67em 0;}
+    .emp-name{font-family: $other-font;  margin: 0.2em 0 0.6em;}
     .user-image{float:right;}
-    .header-details{display: inline-block;}
+    .header-details{display: inline-block;margin-right: 1em;}
     .dot-divider{font-size: 4px;margin: 0 0.5em 0 0.5em;}
-    .header-other{font-size: 1.5em;.avail{font-size: 0.75em;opacity:0.8;}}
+    .header-other{
+      font-size: 1.5em;
+      .avail{font-size: 0.75em;opacity:0.8;}
+      .date{
+        font-size: 13px;
+        font-family: $app-font;
+        color: #848484;
+      }
+    }
     button{margin-top: 2em;}
     .emp-points{
       margin-right: 2em;
@@ -133,9 +182,18 @@ a:hover {
 //      margin-right: 2em;
       display: inline-block;
     }
+    .add-point{
+      float: right;
+      margin: 1em auto;
+      text-align: center;
+      .point{font-size: 2em;}
+      .up-point{&:hover{color: darkgreen};cursor: pointer;}
+      .down-point{&:hover{color:darkred;}cursor: pointer;}
+    }
   }
   .emp-details{
-    text-align: center;
+    text-indent: 1em;
+    text-align: right;
   }
 
 
@@ -189,3 +247,18 @@ a:hover {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 /************************************* divider ********************************/
+
+
+.rf-tag{
+  padding: 4px; color:white;background-color: #980726;
+  margin: 0.2em;
+  opacity: 0.7;
+  border-radius: 0.2em;
+  &:hover{
+    background-color: crimson;
+  }
+
+}
+.rf-table{
+  td{text-align: center;}
+}

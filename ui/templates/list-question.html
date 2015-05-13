@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>فهرست  سوال و جواب</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap-rtl/dist/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toastmessage/jquery.toastmessage.css">
+    <link rel="stylesheet" type="text/css" href="../gkms/css/style.css">
+
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../lib/toastmessage/jquery.toastmessage.js"></script>
+    <script src="../lib/angular/angular.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            فهرست سوالات
+        </div>
+        <div class="panel-body">
+            <form method="post" class="form-inline search-form" role="search">
+                <div class="form-group">
+                    <input class="form-control" name="content" placeholder="متن...">
+                </div>
+                <div class="form-group dateinput">
+                    <input class="form-control" name="fromdate" placeholder="از تاریخ">
+                </div>
+                <div class="form-group dateinput">
+                    <input class="form-control" name="todate" placeholder="تا تاریخ">
+                </div>
+                <div class="form-group">
+                    <select class="form-control">
+                        <option value="0" >وضعیت</option>
+                        <option value="1">تایید شده</option>
+                        <option value="2">تایید نشده</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">جستجو</button>
+                </div>
+            </form>
+            <table class="table-responsive table table-hover rf-table">
+                <thead>
+                <tr>
+                    <td>
+                        عنوان
+                    </td>
+                    <td>
+                        نویسنده
+                    </td>
+                    <td>
+                        برچسب‌ها
+                    </td>
+                    <td>
+                        امتیاز
+                    </td>
+                    <td>
+                        تعداد جواب
+                    </td>
+                    <td>
+                        زمان ایجاد
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="#">
+                            سوال شماره یک
+                        </a>
+                    </td>
+                    <td>
+                        عارف شفاعی
+                    </td>
+                    <td>
+                        <span class="rf-tag">یک</span><span class="rf-tag">عارف شفاعی بجستان</span>
+                        <span class="rf-tag">یک</span><span class="rf-tag">یک</span>
+                    </td>
+                    <td>
+                        <span class="label label-success">12</span>
+                    </td>
+                    <td>
+                        5
+                    </td>
+                    <td>
+                        ۵ مهر ۱۳۹۵
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#">
+                            سوال شماره دو
+                        </a>
+                    </td>
+                    <td>
+                        هادی ذوالفقاری
+                    </td>
+                    <td>
+                        <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
+                        <span class="rf-tag">یک</span><span class="rf-tag">بد</span>
+                    </td>
+                    <td>
+                        <span class="label label-danger">12</span>
+                    </td>
+                    <td>
+                        5
+                    </td>
+                    <td>
+                        ۲ شهریور ۱۳۹۳
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

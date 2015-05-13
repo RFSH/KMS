@@ -1,11 +1,11 @@
 {
 	"name": "gkms",
 	"dependencies": {
-		"bootstrap": "~3.0",
+		"bootstrap": "~3.3",
 		"bootstrap-rtl": "~3.3.2",
 		"highcharts": "~4.0.4",
 		"jquery": ">=2.1",
 		"fontawesome": ">=4.3.0",
-		"angular": "~1.3.15"
+		"angular": "~1.3.15",
 	}
 }
