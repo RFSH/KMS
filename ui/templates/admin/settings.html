@@ -1,0 +1,65 @@
+<div class="settings-page" ng-controller="AdminSettingsCtrl">
+    <div class="settings-sidebar">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="{{activeTab=='permissions' ? 'active' :''}}">
+                <a ng-click="selectTab('permissions')">
+  سطح دسترسی
+                </a>
+            </li>
+            <li role="presentation" class="{{activeTab=='roles' ? 'active' :''}}">
+                <a ng-click="selectTab('roles')">
+پست‌های شغلی
+                </a>
+            </li>
+            <li role="presentation" class="{{activeTab=='tags' ? 'active' :''}}">
+                <a ng-click="selectTab('tags')">
+برچسب
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="settings-content container-fluid">
+        <div ng-if="activeTab == 'permissions'">
+            <h1>
+                سطح دسترسی
+            </h1>
+
+            <button class="btn btn-success btn-add" ng-click="addPermissionGroup()">
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
+            <div ng-sortable class="settings-item-container">
+                <div class="settings-item" ng-repeat="item in permissionGroups">
+                    <input type="text" ng-model="item">
+                </div>
+            </div>
+        </div>
+        <div ng-if="activeTab == 'roles'">
+            <h1>
+                پست شغلی
+            </h1>
+            <button class="btn btn-success btn-add" ng-click="addRole()">
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
+            <div ng-sortable class="settings-item-container">
+                <div class="settings-item" ng-repeat="item in roles">
+                    <input type="text" ng-model="item">
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="activeTab == 'tags'">
+            <h1>
+                برچسب های پبش فرض
+            </h1>
+            <button class="btn btn-success btn-add" ng-click="addTag()">
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
+            <div ng-sortable class="settings-item-container">
+                <div class="settings-item" ng-repeat="item in tags">
+                    <input type="text" ng-model="item">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
