@@ -29,12 +29,15 @@ angular-ui-calendar/*
 bootstrap/*
 !bootstrap/dist
 
+bootstrap-css-only/
+
 bootstrap-rtl/*
 !bootstrap-rtl/dist
 
 bootstrap-switch/*
 !bootstrap-switch/dist
 
+font-awesome/
 fontawesome/*
 !fontawesome/css
 !fontawesome/fonts
@@ -79,9 +82,14 @@ persian-datepicker/*
 !persian-datepicker/dist
 !persian-datepicker/.gitignore
 
+rangy/
+
 Sortable/*
 !Sortable/ng-sortable.js
 !Sortable/Sortable.js
 !Sortable/Sortable.min.js
+
+textAngular/*
+!textAngular/dist
 
 #!*/
