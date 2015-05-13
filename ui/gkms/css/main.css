@@ -1,0 +1,494 @@
+/* line 11, ../../src/sass/main.scss */
+body {
+  font-family: yekan, sans-serif;
+  color: #333;
+  font-size: 12px;
+  margin: 0;
+  background: url("../images/bg.jpg") repeat;
+}
+
+/* line 18, ../../src/sass/main.scss */
+h1, h2, h3, h4 {
+  font-family: Mj_liner, sans-serif;
+}
+
+/* line 21, ../../src/sass/main.scss */
+::selection {
+  color: white;
+  background-color: crimson;
+}
+
+/* line 25, ../../src/sass/main.scss */
+a {
+  color: #108edc;
+  text-decoration: none;
+}
+
+/* line 30, ../../src/sass/main.scss */
+a:hover {
+  color: #0a436f;
+  text-decoration: none;
+}
+
+/* line 35, ../../src/sass/main.scss */
+.gkms-header {
+  background-color: crimson;
+  color: white;
+  padding: 1em 15% 0 15%;
+}
+/* line 39, ../../src/sass/main.scss */
+.gkms-header h1 {
+  font-family: Mj_liner, sans-serif;
+  text-align: center;
+}
+/* line 43, ../../src/sass/main.scss */
+.gkms-header .version {
+  float: left;
+}
+
+/* line 48, ../../src/sass/main.scss */
+.container {
+  margin: 0 auto;
+  width: 95%;
+  padding: 2em;
+}
+
+/* line 55, ../../src/sass/main.scss */
+.clearfix {
+  clear: both;
+}
+
+/* line 59, ../../src/sass/main.scss */
+.form-group {
+  max-width: 200px;
+}
+
+/************************************ navbar *******************************/
+/* navbar */
+/* line 65, ../../src/sass/main.scss */
+.navbar-default {
+  background-color: crimson;
+  border-color: #ac1431;
+  border: 0;
+  border-radius: 0;
+}
+
+/* title */
+/* line 71, ../../src/sass/main.scss */
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+/* line 74, ../../src/sass/main.scss */
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: white;
+}
+
+/* link */
+/* line 79, ../../src/sass/main.scss */
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+/* line 82, ../../src/sass/main.scss */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  background-color: #f81642;
+  color: #f3edff;
+}
+
+/* line 87, ../../src/sass/main.scss */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: white;
+  background-color: crimson;
+}
+
+/* line 92, ../../src/sass/main.scss */
+.navbar-default .navbar-nav > .active > a:hover {
+  background-color: #f81642;
+  color: black;
+}
+
+/* line 96, ../../src/sass/main.scss */
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: white;
+  background-color: crimson;
+}
+
+/* caret */
+/* line 103, ../../src/sass/main.scss */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+  border-top-color: #ac1431;
+  border-bottom-color: #ac1431;
+}
+
+/************************************ login *******************************/
+/* line 109, ../../src/sass/main.scss */
+.login-form {
+  max-width: 300px;
+  margin: 0 auto;
+}
+/* line 112, ../../src/sass/main.scss */
+.login-form .form-group {
+  margin: 1em auto;
+}
+/* line 114, ../../src/sass/main.scss */
+.login-form .form-group .input-icon {
+  position: relative;
+}
+/* line 116, ../../src/sass/main.scss */
+.login-form .form-group .input-icon i {
+  position: absolute;
+  left: 8px;
+  top: 28%;
+  color: #8C8B8B;
+}
+/* line 124, ../../src/sass/main.scss */
+.login-form button {
+  float: left;
+}
+
+/************************************ create emp *******************************/
+/* line 129, ../../src/sass/main.scss */
+.create-emp-form {
+  position: relative;
+  max-width: 38.8em;
+  margin: 0 auto;
+}
+/* line 133, ../../src/sass/main.scss */
+.create-emp-form .form-group {
+  margin-bottom: 2em;
+  margin-left: 1.5em;
+}
+/* line 136, ../../src/sass/main.scss */
+.create-emp-form .form-group input {
+  width: 200px;
+}
+/* line 138, ../../src/sass/main.scss */
+.create-emp-form button {
+  position: absolute;
+  left: 3em;
+  width: 75px;
+}
+
+/************************************* list emp *******************************/
+/* line 143, ../../src/sass/main.scss */
+.search-form {
+  margin-bottom: 2em;
+}
+/* line 145, ../../src/sass/main.scss */
+.search-form .form-group {
+  margin-right: 2em;
+}
+/* line 146, ../../src/sass/main.scss */
+.search-form .found-count {
+  opacity: 0.8;
+}
+
+/************************************* view emp ********************************/
+/* line 150, ../../src/sass/main.scss */
+.view-employee .emp-header {
+  position: relative;
+}
+/* line 152, ../../src/sass/main.scss */
+.view-employee .emp-header .emp-name {
+  font-family: Mj_liner, sans-serif;
+  margin: 0.2em 0 0.6em;
+}
+/* line 155, ../../src/sass/main.scss */
+.view-employee .emp-header .user-image {
+  float: right;
+}
+/* line 156, ../../src/sass/main.scss */
+.view-employee .emp-header .header-details {
+  display: inline-block;
+  margin-right: 1em;
+}
+/* line 157, ../../src/sass/main.scss */
+.view-employee .emp-header .header-other {
+  font-size: 1.5em;
+}
+/* line 159, ../../src/sass/main.scss */
+.view-employee .emp-header .header-other .avail {
+  font-size: 0.75em;
+  opacity: 0.8;
+}
+/* line 160, ../../src/sass/main.scss */
+.view-employee .emp-header .header-other .date {
+  font-size: 13px;
+  font-family: yekan, sans-serif;
+  color: #848484;
+}
+/* line 167, ../../src/sass/main.scss */
+.view-employee .emp-header .emp-points {
+  margin-right: 2em;
+  font-size: 15px;
+  display: inline-block;
+  font-family: Mj_liner, sans-serif;
+}
+/* line 171, ../../src/sass/main.scss */
+.view-employee .emp-header .emp-points i {
+  color: crimson;
+  margin-left: 0.2em;
+}
+/* line 172, ../../src/sass/main.scss */
+.view-employee .emp-header .emp-points .num {
+  font-family: yekan, sans-serif;
+  color: white;
+}
+/* line 176, ../../src/sass/main.scss */
+.view-employee .emp-header .emp-points div {
+  margin-top: 1.2em;
+}
+/* line 178, ../../src/sass/main.scss */
+.view-employee .emp-header .vertical-divider {
+  height: 210px;
+}
+/* line 181, ../../src/sass/main.scss */
+.view-employee .emp-header .admin-buttons {
+  float: left;
+  display: inline-block;
+}
+/* line 187, ../../src/sass/main.scss */
+.view-employee .dot-divider {
+  font-size: 4px;
+  margin: 0 0.5em 0 0.5em;
+}
+/* line 188, ../../src/sass/main.scss */
+.view-employee .add-point {
+  float: right;
+  margin: 1em auto;
+  text-align: center;
+}
+/* line 192, ../../src/sass/main.scss */
+.view-employee .add-point .point {
+  font-size: 2em;
+}
+/* line 193, ../../src/sass/main.scss */
+.view-employee .add-point .up-point {
+  cursor: pointer;
+}
+/* line 193, ../../src/sass/main.scss */
+.view-employee .add-point .up-point:hover {
+  color: darkgreen;
+}
+/* line 194, ../../src/sass/main.scss */
+.view-employee .add-point .down-point {
+  cursor: pointer;
+}
+/* line 194, ../../src/sass/main.scss */
+.view-employee .add-point .down-point:hover {
+  color: darkred;
+}
+/* line 196, ../../src/sass/main.scss */
+.view-employee .emp-details {
+  text-indent: 1em;
+  line-height: 200%;
+  text-align: right;
+  margin-top: 4em;
+}
+/* line 201, ../../src/sass/main.scss */
+.view-employee .emp-details table td {
+  text-align: center;
+}
+/* line 203, ../../src/sass/main.scss */
+.view-employee .add-report {
+  float: left;
+}
+/* line 205, ../../src/sass/main.scss */
+.view-employee .answers textarea {
+  width: auto !important;
+}
+/* line 207, ../../src/sass/main.scss */
+.view-employee .answers .answer .add-report {
+  float: none;
+}
+/* line 209, ../../src/sass/main.scss */
+.view-employee .answers .answer .author {
+  color: #108edc;
+  margin-right: 1em;
+  display: inline-block;
+}
+/* line 213, ../../src/sass/main.scss */
+.view-employee .answers .answer .author h4 {
+  display: inline-block;
+}
+/* line 214, ../../src/sass/main.scss */
+.view-employee .answers .answer .author .date {
+  font-size: 13px;
+  font-family: yekan, sans-serif;
+  color: #848484;
+}
+/* line 220, ../../src/sass/main.scss */
+.view-employee .answers .answer .answer-text {
+  margin-right: 5em;
+}
+
+/************************************* divider ********************************/
+/* line 229, ../../src/sass/main.scss */
+.vertical-divider {
+  position: absolute;
+  z-index: 2;
+  top: 12%;
+  left: 50%;
+  margin: 0 0 0 -3%;
+  width: 6%;
+  height: 100%;
+  line-height: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: .875rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.8);
+  -webkit-tap-highlight-color: transparent;
+}
+/* line 247, ../../src/sass/main.scss */
+.vertical-divider:before {
+  position: absolute;
+  left: 50%;
+  content: " ";
+  z-index: 3;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.8);
+  width: 0;
+  height: 80%;
+}
+
+/* line 258, ../../src/sass/main.scss */
+.horizontal-divider {
+  width: 95%;
+  margin: 3rem auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  line-height: 1;
+  height: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/************************************* divider ********************************/
+/* line 278, ../../src/sass/main.scss */
+.rf-tag {
+  padding: 4px;
+  color: white;
+  background-color: #980726;
+  margin: 0.2em;
+  opacity: 0.7;
+  border-radius: 0.2em;
+}
+/* line 283, ../../src/sass/main.scss */
+.rf-tag:hover {
+  background-color: crimson;
+}
+
+/* line 289, ../../src/sass/main.scss */
+.rf-table td {
+  text-align: center;
+}
+
+/****************************************** view knowledge **************************/
+/* line 294, ../../src/sass/main.scss */
+.view-employee .use-cases, .view-employee .tags {
+  margin: 1em;
+}
+/* line 298, ../../src/sass/main.scss */
+.view-employee .attachments a {
+  margin-left: 1em;
+}
+
+/* line 302, ../../src/sass/main.scss */
+table td {
+  text-align: center;
+}
+
+/***************************************** admin index *****************************/
+/* line 305, ../../src/sass/main.scss */
+.admin-card {
+  height: 175px;
+  margin-bottom: 1em;
+}
+/* line 308, ../../src/sass/main.scss */
+.admin-card .thumbnail {
+  height: 175px;
+  padding: 10px;
+  padding-top: 0;
+  position: relative;
+  color: white;
+}
+/* line 314, ../../src/sass/main.scss */
+.admin-card .thumbnail i {
+  opacity: 0.5;
+}
+/* line 315, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-knowledge {
+  background-color: #00a65a;
+}
+/* line 317, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-knowledge:hover {
+  background-color: #00733e;
+}
+/* line 321, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-report {
+  background-color: #f56954;
+}
+/* line 323, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-report:hover {
+  background-color: #f23f24;
+}
+/* line 327, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-report .filters select {
+  color: white;
+  background-color: #f56954;
+  border-color: #f56954;
+}
+/* line 332, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-knowledge .filters select {
+  color: white;
+  background-color: #00a65a;
+  border-color: #00a65a;
+}
+/* line 337, ../../src/sass/main.scss */
+.admin-card .thumbnail h3 {
+  font-size: 45px;
+  font-weight: 800;
+}
+/* line 341, ../../src/sass/main.scss */
+.admin-card .thumbnail .header {
+  font-family: Mj_liner, sans-serif;
+  font-size: 25px;
+}
+/* line 345, ../../src/sass/main.scss */
+.admin-card .thumbnail i {
+  position: absolute;
+  left: 45px;
+  top: 23px;
+  font-size: 7em;
+}
+/* line 352, ../../src/sass/main.scss */
+.admin-card .thumbnail .filters .control-label {
+  display: none;
+}
+/* line 355, ../../src/sass/main.scss */
+.admin-card .thumbnail .filters #id_date_filter {
+  width: 46%;
+  float: left;
+}
+/* line 359, ../../src/sass/main.scss */
+.admin-card .thumbnail .filters #id_state, .admin-card .thumbnail .filters #id_online_status {
+  width: 46%;
+  float: right;
+}

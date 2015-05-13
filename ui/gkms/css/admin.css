@@ -1,0 +1,73 @@
+/* line 2, ../../src/sass/admin.scss */
+.settings-page .settings-sidebar {
+  float: right;
+  width: 240px;
+  padding: 50px 20px 10px 20px;
+  text-align: center;
+}
+/* line 8, ../../src/sass/admin.scss */
+.settings-page .settings-sidebar li {
+  font-size: 14px;
+  color: #0096C0;
+  cursor: pointer;
+}
+/* line 11, ../../src/sass/admin.scss */
+.settings-page .settings-sidebar li a {
+  cursor: pointer;
+}
+/* line 19, ../../src/sass/admin.scss */
+.settings-page .settings-content {
+  margin-right: 240px;
+  border-right: 1px solid #dddddd;
+  padding: 20px 20px;
+  height: 600px;
+}
+/* line 25, ../../src/sass/admin.scss */
+.settings-page .settings-content .row-fluid {
+  overflow: auto;
+}
+/* line 26, ../../src/sass/admin.scss */
+.settings-page .settings-content .large {
+  height: 400px;
+  padding: 10px;
+}
+/* line 28, ../../src/sass/admin.scss */
+.settings-page .settings-item-container {
+  padding-top: 30px;
+  padding-right: 30px;
+}
+/* line 32, ../../src/sass/admin.scss */
+.settings-page .settings-item-container .settings-item {
+  margin-bottom: 5px;
+  padding: 0px 30px 0px 0px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 200px;
+  color: white;
+  background-color: crimson;
+}
+/* line 42, ../../src/sass/admin.scss */
+.settings-page .settings-item-container .settings-item input {
+  padding: 5px 0px;
+  background-color: inherit;
+  border: none;
+}
+/* line 50, ../../src/sass/admin.scss */
+.settings-page .btn-add {
+  float: left;
+  border-radius: 50%;
+  margin-left: 50px;
+}
+/* line 54, ../../src/sass/admin.scss */
+.settings-page .btn-add i {
+  margin-top: 2px;
+}
+/* line 63, ../../src/sass/admin.scss */
+.settings-page .red {
+  background-color: red;
+}
+/* line 66, ../../src/sass/admin.scss */
+.settings-page .blue {
+  background-color: blue;
+}
