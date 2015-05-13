@@ -3,8 +3,8 @@
 
 $app-font: yekan, sans-serif;
 $font-color: #333;
-$link-color: crimson;
-$link-color-hover: #DC9467;
+$link-color: #108edc;
+$link-color-hover: #0a436f;
 $other-font: Mj_liner, sans-serif;
 $default-font-size: 12px;
 
@@ -32,7 +32,7 @@ a:hover {
   text-decoration: none;
 }
 
-.header {
+.gkms-header {
   background-color: crimson;
   color: white;
   padding: 1em 15% 0 15%;
@@ -128,7 +128,7 @@ a:hover {
 /************************************ create emp *******************************/
 .create-emp-form{
   position: relative;
-  max-width: 35.8em;
+  max-width: 38.8em;
   margin: 0 auto;
   .form-group{
     margin-bottom: 2em;
@@ -151,16 +151,9 @@ a:hover {
     position: relative;
     .emp-name{
       font-family: $other-font;  margin: 0.2em 0 0.6em;
-      &:hover .add-point, .add-point:hover{display: inline-block;}
-      .add-report{
-        cursor: pointer;
-        &:hover{color: red;}
-        display: none;
-      }
     }
     .user-image{float:right;}
     .header-details{display: inline-block;margin-right: 1em;}
-    .dot-divider{font-size: 4px;margin: 0 0.5em 0 0.5em;}
     .header-other{
       font-size: 1.5em;
       .avail{font-size: 0.75em;opacity:0.8;}
@@ -170,7 +163,7 @@ a:hover {
         color: #848484;
       }
     }
-    button{margin-top: 2em;}
+//    button{margin-top: 2em;}
     .emp-points{
       margin-right: 2em;
       font-size: 15px;
@@ -190,21 +183,45 @@ a:hover {
 //      margin-right: 2em;
       display: inline-block;
     }
-    .add-point{
-      float: right;
-      margin: 1em auto;
-      text-align: center;
-      .point{font-size: 2em;}
-      .up-point{&:hover{color: darkgreen};cursor: pointer;}
-      .down-point{&:hover{color:darkred;}cursor: pointer;}
-    }
+  }
+  .dot-divider{font-size: 4px;margin: 0 0.5em 0 0.5em;}
+  .add-point{
+    float: right;
+    margin: 1em auto;
+    text-align: center;
+    .point{font-size: 2em;}
+    .up-point{&:hover{color: darkgreen};cursor: pointer;}
+    .down-point{&:hover{color:darkred;}cursor: pointer;}
   }
   .emp-details{
     text-indent: 1em;
     line-height: 200%;
     text-align: right;
+    margin-top:4em;
+    table td{text-align:center;}
   }
-
+  .add-report{float:left;}
+  .answers{
+    textarea{width: auto!important;}
+    .answer{
+      .add-report{
+        float: none;}
+      .author{
+        color: #108edc;
+        margin-right: 1em;
+        display: inline-block;
+        h4{display: inline-block;}
+        .date{
+          font-size: 13px;
+          font-family: $app-font;
+          color: #848484;
+        }
+      }
+      .answer-text{
+        margin-right: 5em;
+      }
+    }
+  }
 
 }
 
@@ -280,4 +297,71 @@ a:hover {
   .attachments{
     a{margin-left: 1em;}
   }
+}
+
+table td{text-align: center;}
+
+/***************************************** admin index *****************************/
+.admin-card{
+    height: 175px;
+    margin-bottom: 1em;
+    .thumbnail {
+      height: 175px;
+      padding: 10px;
+      padding-top: 0;
+      position: relative;
+      color: white;
+      i{opacity: 0.5;}
+      &.thumbnail-knowledge {
+        background-color: #00a65a;
+        &:hover {
+          background-color: darken(#00a65a, 10%);
+        }
+      }
+      &.thumbnail-report {
+        background-color: #f56954;
+        &:hover {
+          background-color: darken(#f56954, 10%);
+        }
+      }
+      &.thumbnail-report .filters select{
+        color: white;
+        background-color: #f56954;
+        border-color: darken(#f56954, 0);;
+      }
+      &.thumbnail-knowledge .filters select{
+        color: white;
+        background-color: #00a65a;
+        border-color: darken(#00a65a, 0);
+      }
+      h3 {
+        font-size: 45px;
+        font-weight: 800;
+      }
+      .header {
+        font-family: $other-font;
+        font-size: 25px;
+      }
+      i {
+        position: absolute;
+        left: 45px;
+        top: 23px;
+        font-size: 7em;
+      }
+      .filters {
+        .control-label {
+          display: none;
+        }
+        #id_date_filter {
+          width: 46%;
+          float: left;
+        }
+        #id_state, #id_online_status {
+          width: 46%;
+          float: right;
+
+        }
+
+      }
+    }
 }

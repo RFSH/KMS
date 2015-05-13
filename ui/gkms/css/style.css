@@ -34,36 +34,36 @@ h1, h2, h3, h4 {
 
 /* line 25, ../../src/sass/main.scss */
 a {
-  color: crimson;
+  color: #108edc;
   text-decoration: none;
 }
 
 /* line 30, ../../src/sass/main.scss */
 a:hover {
-  color: #DC9467;
+  color: #0a436f;
   text-decoration: none;
 }
 
 /* line 35, ../../src/sass/main.scss */
-.header {
+.gkms-header {
   background-color: crimson;
   color: white;
   padding: 1em 15% 0 15%;
 }
 /* line 39, ../../src/sass/main.scss */
-.header h1 {
+.gkms-header h1 {
   font-family: Mj_liner, sans-serif;
   text-align: center;
 }
 /* line 43, ../../src/sass/main.scss */
-.header .version {
+.gkms-header .version {
   float: left;
 }
 
 /* line 48, ../../src/sass/main.scss */
 .container {
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
   padding: 2em;
 }
 
@@ -170,7 +170,7 @@ a:hover {
 /* line 129, ../../src/sass/main.scss */
 .create-emp-form {
   position: relative;
-  max-width: 35.8em;
+  max-width: 38.8em;
   margin: 0 auto;
 }
 /* line 133, ../../src/sass/main.scss */
@@ -213,117 +213,137 @@ a:hover {
   font-family: Mj_liner, sans-serif;
   margin: 0.2em 0 0.6em;
 }
-/* line 154, ../../src/sass/main.scss */
-.view-employee .emp-header .emp-name:hover .add-point, .view-employee .emp-header .emp-name .add-point:hover {
-  display: inline-block;
-}
 /* line 155, ../../src/sass/main.scss */
-.view-employee .emp-header .emp-name .add-report {
-  cursor: pointer;
-  display: none;
-}
-/* line 157, ../../src/sass/main.scss */
-.view-employee .emp-header .emp-name .add-report:hover {
-  color: red;
-}
-/* line 161, ../../src/sass/main.scss */
 .view-employee .emp-header .user-image {
   float: right;
 }
-/* line 162, ../../src/sass/main.scss */
+/* line 156, ../../src/sass/main.scss */
 .view-employee .emp-header .header-details {
   display: inline-block;
   margin-right: 1em;
 }
-/* line 163, ../../src/sass/main.scss */
-.view-employee .emp-header .dot-divider {
-  font-size: 4px;
-  margin: 0 0.5em 0 0.5em;
-}
-/* line 164, ../../src/sass/main.scss */
+/* line 157, ../../src/sass/main.scss */
 .view-employee .emp-header .header-other {
   font-size: 1.5em;
 }
-/* line 166, ../../src/sass/main.scss */
+/* line 159, ../../src/sass/main.scss */
 .view-employee .emp-header .header-other .avail {
   font-size: 0.75em;
   opacity: 0.8;
 }
-/* line 167, ../../src/sass/main.scss */
+/* line 160, ../../src/sass/main.scss */
 .view-employee .emp-header .header-other .date {
   font-size: 13px;
   font-family: yekan, sans-serif;
   color: #848484;
 }
-/* line 173, ../../src/sass/main.scss */
-.view-employee .emp-header button {
-  margin-top: 2em;
-}
-/* line 174, ../../src/sass/main.scss */
+/* line 167, ../../src/sass/main.scss */
 .view-employee .emp-header .emp-points {
   margin-right: 2em;
   font-size: 15px;
   display: inline-block;
   font-family: Mj_liner, sans-serif;
 }
-/* line 178, ../../src/sass/main.scss */
+/* line 171, ../../src/sass/main.scss */
 .view-employee .emp-header .emp-points i {
   color: crimson;
   margin-left: 0.2em;
 }
-/* line 179, ../../src/sass/main.scss */
+/* line 172, ../../src/sass/main.scss */
 .view-employee .emp-header .emp-points .num {
   font-family: yekan, sans-serif;
   color: white;
 }
-/* line 183, ../../src/sass/main.scss */
+/* line 176, ../../src/sass/main.scss */
 .view-employee .emp-header .emp-points div {
   margin-top: 1.2em;
 }
-/* line 185, ../../src/sass/main.scss */
+/* line 178, ../../src/sass/main.scss */
 .view-employee .emp-header .vertical-divider {
   height: 210px;
 }
-/* line 188, ../../src/sass/main.scss */
+/* line 181, ../../src/sass/main.scss */
 .view-employee .emp-header .admin-buttons {
   float: left;
   display: inline-block;
 }
-/* line 193, ../../src/sass/main.scss */
-.view-employee .emp-header .add-point {
+/* line 187, ../../src/sass/main.scss */
+.view-employee .dot-divider {
+  font-size: 4px;
+  margin: 0 0.5em 0 0.5em;
+}
+/* line 188, ../../src/sass/main.scss */
+.view-employee .add-point {
   float: right;
   margin: 1em auto;
   text-align: center;
 }
-/* line 197, ../../src/sass/main.scss */
-.view-employee .emp-header .add-point .point {
+/* line 192, ../../src/sass/main.scss */
+.view-employee .add-point .point {
   font-size: 2em;
 }
-/* line 198, ../../src/sass/main.scss */
-.view-employee .emp-header .add-point .up-point {
+/* line 193, ../../src/sass/main.scss */
+.view-employee .add-point .up-point {
   cursor: pointer;
 }
-/* line 198, ../../src/sass/main.scss */
-.view-employee .emp-header .add-point .up-point:hover {
+/* line 193, ../../src/sass/main.scss */
+.view-employee .add-point .up-point:hover {
   color: darkgreen;
 }
-/* line 199, ../../src/sass/main.scss */
-.view-employee .emp-header .add-point .down-point {
+/* line 194, ../../src/sass/main.scss */
+.view-employee .add-point .down-point {
   cursor: pointer;
 }
-/* line 199, ../../src/sass/main.scss */
-.view-employee .emp-header .add-point .down-point:hover {
+/* line 194, ../../src/sass/main.scss */
+.view-employee .add-point .down-point:hover {
   color: darkred;
 }
-/* line 202, ../../src/sass/main.scss */
+/* line 196, ../../src/sass/main.scss */
 .view-employee .emp-details {
   text-indent: 1em;
   line-height: 200%;
   text-align: right;
+  margin-top: 4em;
+}
+/* line 201, ../../src/sass/main.scss */
+.view-employee .emp-details table td {
+  text-align: center;
+}
+/* line 203, ../../src/sass/main.scss */
+.view-employee .add-report {
+  float: left;
+}
+/* line 205, ../../src/sass/main.scss */
+.view-employee .answers textarea {
+  width: auto !important;
+}
+/* line 207, ../../src/sass/main.scss */
+.view-employee .answers .answer .add-report {
+  float: none;
+}
+/* line 209, ../../src/sass/main.scss */
+.view-employee .answers .answer .author {
+  color: #108edc;
+  margin-right: 1em;
+  display: inline-block;
+}
+/* line 213, ../../src/sass/main.scss */
+.view-employee .answers .answer .author h4 {
+  display: inline-block;
+}
+/* line 214, ../../src/sass/main.scss */
+.view-employee .answers .answer .author .date {
+  font-size: 13px;
+  font-family: yekan, sans-serif;
+  color: #848484;
+}
+/* line 220, ../../src/sass/main.scss */
+.view-employee .answers .answer .answer-text {
+  margin-right: 5em;
 }
 
 /************************************* divider ********************************/
-/* line 212, ../../src/sass/main.scss */
+/* line 229, ../../src/sass/main.scss */
 .vertical-divider {
   position: absolute;
   z-index: 2;
@@ -343,7 +363,7 @@ a:hover {
   color: rgba(0, 0, 0, 0.8);
   -webkit-tap-highlight-color: transparent;
 }
-/* line 230, ../../src/sass/main.scss */
+/* line 247, ../../src/sass/main.scss */
 .vertical-divider:before {
   position: absolute;
   left: 50%;
@@ -355,7 +375,7 @@ a:hover {
   height: 80%;
 }
 
-/* line 241, ../../src/sass/main.scss */
+/* line 258, ../../src/sass/main.scss */
 .horizontal-divider {
   width: 95%;
   margin: 3rem auto;
@@ -375,7 +395,7 @@ a:hover {
 }
 
 /************************************* divider ********************************/
-/* line 261, ../../src/sass/main.scss */
+/* line 278, ../../src/sass/main.scss */
 .rf-tag {
   padding: 4px;
   color: white;
@@ -384,22 +404,105 @@ a:hover {
   opacity: 0.7;
   border-radius: 0.2em;
 }
-/* line 266, ../../src/sass/main.scss */
+/* line 283, ../../src/sass/main.scss */
 .rf-tag:hover {
   background-color: crimson;
 }
 
-/* line 272, ../../src/sass/main.scss */
+/* line 289, ../../src/sass/main.scss */
 .rf-table td {
   text-align: center;
 }
 
 /****************************************** view knowledge **************************/
-/* line 277, ../../src/sass/main.scss */
+/* line 294, ../../src/sass/main.scss */
 .view-employee .use-cases, .view-employee .tags {
   margin: 1em;
 }
-/* line 281, ../../src/sass/main.scss */
+/* line 298, ../../src/sass/main.scss */
 .view-employee .attachments a {
   margin-left: 1em;
+}
+
+/* line 302, ../../src/sass/main.scss */
+table td {
+  text-align: center;
+}
+
+/***************************************** admin index *****************************/
+/* line 305, ../../src/sass/main.scss */
+.admin-card {
+  height: 175px;
+  margin-bottom: 1em;
+}
+/* line 308, ../../src/sass/main.scss */
+.admin-card .thumbnail {
+  height: 175px;
+  padding: 10px;
+  padding-top: 0;
+  position: relative;
+  color: white;
+}
+/* line 314, ../../src/sass/main.scss */
+.admin-card .thumbnail i {
+  opacity: 0.5;
+}
+/* line 315, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-knowledge {
+  background-color: #00a65a;
+}
+/* line 317, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-knowledge:hover {
+  background-color: #00733e;
+}
+/* line 321, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-report {
+  background-color: #f56954;
+}
+/* line 323, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-report:hover {
+  background-color: #f23f24;
+}
+/* line 327, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-report .filters select {
+  color: white;
+  background-color: #f56954;
+  border-color: #f56954;
+}
+/* line 332, ../../src/sass/main.scss */
+.admin-card .thumbnail.thumbnail-knowledge .filters select {
+  color: white;
+  background-color: #00a65a;
+  border-color: #00a65a;
+}
+/* line 337, ../../src/sass/main.scss */
+.admin-card .thumbnail h3 {
+  font-size: 45px;
+  font-weight: 800;
+}
+/* line 341, ../../src/sass/main.scss */
+.admin-card .thumbnail .header {
+  font-family: Mj_liner, sans-serif;
+  font-size: 25px;
+}
+/* line 345, ../../src/sass/main.scss */
+.admin-card .thumbnail i {
+  position: absolute;
+  left: 45px;
+  top: 23px;
+  font-size: 7em;
+}
+/* line 352, ../../src/sass/main.scss */
+.admin-card .thumbnail .filters .control-label {
+  display: none;
+}
+/* line 355, ../../src/sass/main.scss */
+.admin-card .thumbnail .filters #id_date_filter {
+  width: 46%;
+  float: left;
+}
+/* line 359, ../../src/sass/main.scss */
+.admin-card .thumbnail .filters #id_state, .admin-card .thumbnail .filters #id_online_status {
+  width: 46%;
+  float: right;
 }
