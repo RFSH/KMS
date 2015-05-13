@@ -79,4 +79,9 @@ persian-datepicker/*
 !persian-datepicker/dist
 !persian-datepicker/.gitignore
 
+Sortable/*
+!Sortable/ng-sortable.js
+!Sortable/Sortable.js
+!Sortable/Sortable.min.js
+
 #!*/
