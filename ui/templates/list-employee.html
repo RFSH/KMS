@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ورود به سایت</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap-rtl/dist/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toastmessage/jquery.toastmessage.css">
+    <link rel="stylesheet" type="text/css" href="../gkms/css/style.css">
+
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../lib/toastmessage/jquery.toastmessage.js"></script>
+    <script src="../lib/angular/angular.min.js"></script>
+</head>
+<body>
+<div class="container list-emp">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            لیست کارمندان
+        </div>
+        <div class="panel-body">
+            <form method="post" class="form-inline search-form" role="search">
+                <div class="form-group">
+                    <input class="form-control" name="content" placeholder="متن...">
+                </div>
+                <div class="form-group">
+                    <select class="form-control">
+                        <option>سمت</option>
+                        <option>مدیر</option>
+                        <option>کارمند</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">جستجو</button>
+                </div>
+            </form>
+            <table class="table-responsive table table-hover">
+                <thead>
+                <tr>
+                    <td>
+                        نام کاربری
+                    </td>
+                    <td>
+                        نام و نام خانوادگی
+                    </td>
+                    <td>
+                        پست الکترونیکی
+                    </td>
+                    <td>
+                        سمت
+                    </td>
+                    <td>
+                        سطح دسترسی
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="#">user</a>
+                    </td>
+                    <td>
+                        عارف شفاعی
+                    </td>
+                    <td>
+                        <a href="mailto:aref.shafaei@gmail.com">aref.shafaei@gmail.com</a>
+                    </td>
+                    <td>
+                        مدیر کل
+                    </td>
+                    <td>
+                        سطح یک
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

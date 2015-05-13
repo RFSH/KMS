@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ساخت کارمند جدید</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap-rtl/dist/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toastmessage/jquery.toastmessage.css">
+    <link rel="stylesheet" type="text/css" href="../gkms/css/style.css">
+
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../lib/toastmessage/jquery.toastmessage.js"></script>
+    <script src="../lib/angular/angular.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <form class="create-emp-form form-inline" method="post">
+        <div class="form-group">
+            <input class="form-control" type="text" name="name" placeholder="نام"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" name="lastname" placeholder="نام خانوادگی"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="رمز عبور"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="repassword" placeholder="تکرار رمز عبور"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="نام کاربری"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="پست الکترونیکی"/>
+        </div>
+        <div class="form-group">
+            <select class="form-control">
+                <option value="0">پست شغلی</option>
+                <option value="1">مدیر اجرایی</option>
+                <option value="2">کارمند</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select class="form-control">
+                <option value="0">سطح دسترسی</option>
+                <option value="1">سطح یک</option>
+                <option value="2">سطح دو</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">ثبت</button>
+    </form>
+
+</div>
+</body>
+</html>
