@@ -1,6 +1,8 @@
 var kmsApp = angular.module("kms", [
     'ngRoute',
     'ng-sortable',
+    'textAngular',
+    'ngTagsInput',
     'ng-java'
 ]);
 
@@ -27,7 +29,7 @@ kmsApp.config(function($routeProvider) {
     //report
     $routeProvider.when('/report/activities', {templateUrl: 'templates/report/activities-report.html'}); //RF done
     $routeProvider.when('/report/activities/employee', {templateUrl: 'templates/report/activities-employee-report.html'}); //RF done
-    $routeProvider.when('/report/list', {templateUrl: 'templates/report/knowledge-report.html'}); //RF gaazjer! bikhial
+    $routeProvider.when('/report/knowledge', {templateUrl: 'templates/report/knowledge-report.html'}); //RF done
     $routeProvider.when('/report/tag', {templateUrl: 'templates/report/tag-report.html'}); //HaD
 
     //user
@@ -80,5 +82,21 @@ kmsApp.controller('AdminSettingsCtrl', function ($scope) {
 
     $scope.addTag = function () {
         $scope.tags.push('');
+    };
+});;var kmsApp = angular.module('kms');
+
+kmsApp.config(function ($provide) {
+    // this demonstrates how to register a new tool and add it to the default toolbar
+    $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function (taRegisterTool, taOptions) { // $delegate is the taOptions we are decorating
+        taOptions.toolbar = [
+            ['h1', 'h2', 'h3', 'h4', 'h5', 'pre', 'quote', 'bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'insertImage','insertLink']
+        ];
+        return taOptions;
+    }]);
+});
+
+kmsApp.controller('KnowledgeCreateCtrl', function ($scope) {
+    $scope.knowledge = {
+        content: ""
     };
 });

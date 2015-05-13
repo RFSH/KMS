@@ -1,0 +1,25 @@
+<div class="container knowledge-page knowledge-create" ng-controller="KnowledgeCreateCtrl">
+    <button class="btn btn-sm btn-primary" style="margin-top:20px;float: left">
+        افزودن ضمیمه
+    </button>
+
+    <div class="form-group">
+        <label>عنوان دانش</label>
+        <input type="text" class="title form-control" placeholder="عنوان دانش">
+    </div>
+
+
+
+    <div style="margin-top: 30px; margin-bottom:30px">
+        <label> محتوای دانش</label>
+        <text-angular ng-model="knowledge.content">
+
+        </text-angular>
+    </div>
+
+    <tags-input ng-model="tags" placeholder="'برچسب های دانش'">
+    </tags-input>
+    <button class="btn btn-success" style="margin-top: 20px; float: left">
+        ثبت دانش
+    </button>
+</div>

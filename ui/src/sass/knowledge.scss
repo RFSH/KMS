@@ -1,0 +1,20 @@
+.knowledge-page {
+
+}
+
+.knowledge-create {
+  .ta-editor {
+    min-height: 220px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+  }
+  .ta-editor, .ta-editor > .ta-bind {
+    min-height: 220px;
+  }
+
+  .title {
+    width: 400px;
+  }
+}
