@@ -16,7 +16,7 @@
 body {
   font-family: yekan, sans-serif;
   color: #333;
-  font-size: 13px;
+  font-size: 12px;
   margin: 0;
   background: url("../images/bg.jpg") repeat;
 }
@@ -63,7 +63,7 @@ a:hover {
 /* line 48, ../../src/sass/main.scss */
 .container {
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   padding: 2em;
 }
 
@@ -213,103 +213,117 @@ a:hover {
   font-family: Mj_liner, sans-serif;
   margin: 0.2em 0 0.6em;
 }
-/* line 153, ../../src/sass/main.scss */
+/* line 154, ../../src/sass/main.scss */
+.view-employee .emp-header .emp-name:hover .add-point, .view-employee .emp-header .emp-name .add-point:hover {
+  display: inline-block;
+}
+/* line 155, ../../src/sass/main.scss */
+.view-employee .emp-header .emp-name .add-report {
+  cursor: pointer;
+  display: none;
+}
+/* line 157, ../../src/sass/main.scss */
+.view-employee .emp-header .emp-name .add-report:hover {
+  color: red;
+}
+/* line 161, ../../src/sass/main.scss */
 .view-employee .emp-header .user-image {
   float: right;
 }
-/* line 154, ../../src/sass/main.scss */
+/* line 162, ../../src/sass/main.scss */
 .view-employee .emp-header .header-details {
   display: inline-block;
   margin-right: 1em;
 }
-/* line 155, ../../src/sass/main.scss */
+/* line 163, ../../src/sass/main.scss */
 .view-employee .emp-header .dot-divider {
   font-size: 4px;
   margin: 0 0.5em 0 0.5em;
 }
-/* line 156, ../../src/sass/main.scss */
+/* line 164, ../../src/sass/main.scss */
 .view-employee .emp-header .header-other {
   font-size: 1.5em;
 }
-/* line 158, ../../src/sass/main.scss */
+/* line 166, ../../src/sass/main.scss */
 .view-employee .emp-header .header-other .avail {
   font-size: 0.75em;
   opacity: 0.8;
 }
-/* line 159, ../../src/sass/main.scss */
+/* line 167, ../../src/sass/main.scss */
 .view-employee .emp-header .header-other .date {
   font-size: 13px;
   font-family: yekan, sans-serif;
   color: #848484;
 }
-/* line 165, ../../src/sass/main.scss */
+/* line 173, ../../src/sass/main.scss */
 .view-employee .emp-header button {
   margin-top: 2em;
 }
-/* line 166, ../../src/sass/main.scss */
+/* line 174, ../../src/sass/main.scss */
 .view-employee .emp-header .emp-points {
   margin-right: 2em;
   font-size: 15px;
   display: inline-block;
   font-family: Mj_liner, sans-serif;
 }
-/* line 170, ../../src/sass/main.scss */
+/* line 178, ../../src/sass/main.scss */
 .view-employee .emp-header .emp-points i {
   color: crimson;
   margin-left: 0.2em;
 }
-/* line 171, ../../src/sass/main.scss */
+/* line 179, ../../src/sass/main.scss */
 .view-employee .emp-header .emp-points .num {
   font-family: yekan, sans-serif;
   color: white;
 }
-/* line 175, ../../src/sass/main.scss */
+/* line 183, ../../src/sass/main.scss */
 .view-employee .emp-header .emp-points div {
   margin-top: 1.2em;
 }
-/* line 177, ../../src/sass/main.scss */
+/* line 185, ../../src/sass/main.scss */
 .view-employee .emp-header .vertical-divider {
   height: 210px;
 }
-/* line 180, ../../src/sass/main.scss */
+/* line 188, ../../src/sass/main.scss */
 .view-employee .emp-header .admin-buttons {
   float: left;
   display: inline-block;
 }
-/* line 185, ../../src/sass/main.scss */
+/* line 193, ../../src/sass/main.scss */
 .view-employee .emp-header .add-point {
   float: right;
   margin: 1em auto;
   text-align: center;
 }
-/* line 189, ../../src/sass/main.scss */
+/* line 197, ../../src/sass/main.scss */
 .view-employee .emp-header .add-point .point {
   font-size: 2em;
 }
-/* line 190, ../../src/sass/main.scss */
+/* line 198, ../../src/sass/main.scss */
 .view-employee .emp-header .add-point .up-point {
   cursor: pointer;
 }
-/* line 190, ../../src/sass/main.scss */
+/* line 198, ../../src/sass/main.scss */
 .view-employee .emp-header .add-point .up-point:hover {
   color: darkgreen;
 }
-/* line 191, ../../src/sass/main.scss */
+/* line 199, ../../src/sass/main.scss */
 .view-employee .emp-header .add-point .down-point {
   cursor: pointer;
 }
-/* line 191, ../../src/sass/main.scss */
+/* line 199, ../../src/sass/main.scss */
 .view-employee .emp-header .add-point .down-point:hover {
   color: darkred;
 }
-/* line 194, ../../src/sass/main.scss */
+/* line 202, ../../src/sass/main.scss */
 .view-employee .emp-details {
   text-indent: 1em;
+  line-height: 200%;
   text-align: right;
 }
 
 /************************************* divider ********************************/
-/* line 203, ../../src/sass/main.scss */
+/* line 212, ../../src/sass/main.scss */
 .vertical-divider {
   position: absolute;
   z-index: 2;
@@ -329,7 +343,7 @@ a:hover {
   color: rgba(0, 0, 0, 0.8);
   -webkit-tap-highlight-color: transparent;
 }
-/* line 221, ../../src/sass/main.scss */
+/* line 230, ../../src/sass/main.scss */
 .vertical-divider:before {
   position: absolute;
   left: 50%;
@@ -341,7 +355,7 @@ a:hover {
   height: 80%;
 }
 
-/* line 232, ../../src/sass/main.scss */
+/* line 241, ../../src/sass/main.scss */
 .horizontal-divider {
   width: 95%;
   margin: 3rem auto;
@@ -361,7 +375,7 @@ a:hover {
 }
 
 /************************************* divider ********************************/
-/* line 252, ../../src/sass/main.scss */
+/* line 261, ../../src/sass/main.scss */
 .rf-tag {
   padding: 4px;
   color: white;
@@ -370,12 +384,22 @@ a:hover {
   opacity: 0.7;
   border-radius: 0.2em;
 }
-/* line 257, ../../src/sass/main.scss */
+/* line 266, ../../src/sass/main.scss */
 .rf-tag:hover {
   background-color: crimson;
 }
 
-/* line 263, ../../src/sass/main.scss */
+/* line 272, ../../src/sass/main.scss */
 .rf-table td {
   text-align: center;
+}
+
+/****************************************** view knowledge **************************/
+/* line 277, ../../src/sass/main.scss */
+.view-employee .use-cases, .view-employee .tags {
+  margin: 1em;
+}
+/* line 281, ../../src/sass/main.scss */
+.view-employee .attachments a {
+  margin-left: 1em;
 }

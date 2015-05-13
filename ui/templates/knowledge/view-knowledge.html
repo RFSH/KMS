@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>مشاهده کارمند</title>
-    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/bootstrap-rtl/dist/css/bootstrap-rtl.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/toastmessage/jquery.toastmessage.css">
-    <link rel="stylesheet" type="text/css" href="../gkms/css/style.css">
-
-    <script src="../lib/jquery/dist/jquery.min.js"></script>
-    <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../lib/toastmessage/jquery.toastmessage.js"></script>
-    <script src="../lib/angular/angular.min.js"></script>
-</head>
-<body>
 <div class="container">
 
     <div class="view-employee">
@@ -27,12 +10,15 @@
             <div class="header-details">
                 <h1 class="emp-name">
 دانش شماره یک
+                    <i title="گزارش تخلف" class="fa fa-exclamation add-report"></i>
                 </h1>
                 <div class="header-other">
                     عارف شفاعی بجس
                     <span class="date">
                         <i class="fa fa-circle dot-divider"></i>
+                        <span>
                         ۱۲ شهریور ۱۳۹۴
+                        </span>
                     </span>
                 </div>
             </div>
@@ -58,19 +44,17 @@
             متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
             متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
             متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
-            متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
-            متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
-            متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
-            متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
-            متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
-            متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
-            متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
-            متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
-            متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.متن دانش اینجا می‌آید.
         </div>
-        <div class="tags">
+        <div>
+            <h4>ضمایم</h4>
+            <div class="attachments">
+                <a href="#">ضمیمه شماره  یک</a>
+                <a href="#">ضمیمه شماره  دو</a>
+            </div>
+        </div>
+        <div>
             <h4>برچسب‌ها</h4>
-            <div>
+            <div class="tags">
                 <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
                 <span class="rf-tag">یک</span><span class="rf-tag">بد</span>
                 <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
@@ -79,22 +63,21 @@
         </div>
         <div class="add-use">
             <h4>موارد استفاده</h4>
-            <
-            <!--TODO add usecase!! with angular-->
-            <div>
+            <div class="use-cases">
                 <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
-                <span class="rf-tag">یک</span><span class="rf-tag">بد</span>
                 <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
-                <span class="rf-tag">یک</span><span class="rf-tag">بد</span>
                 <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
-                <span class="rf-tag">یک</span><span class="rf-tag">بد</span>
-                <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
-                <span class="rf-tag">یک</span><span class="rf-tag">بد</span>
-            </div>
 
+            </div>
+            <form method="post" class="form-inline form" role="form">
+                <div class="form-group">
+                    <input type="text" class="form-control" value="مورد استفاده">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="form-control btn btn-primary">اضافه کردن</button>
+                </div>
+            </form>
         </div>
     </div>
 
 </div>
-</body>
-</html>

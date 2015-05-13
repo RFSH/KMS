@@ -6,7 +6,7 @@ $font-color: #333;
 $link-color: crimson;
 $link-color-hover: #DC9467;
 $other-font: Mj_liner, sans-serif;
-$default-font-size: 13px;
+$default-font-size: 12px;
 
 body {
   font-family: $app-font;
@@ -47,7 +47,7 @@ a:hover {
 
 .container {
   margin: 0 auto;
-  width: 80%;
+  width: 95%;
   padding: 2em;
 
 }
@@ -149,7 +149,15 @@ a:hover {
 .view-employee{
   .emp-header{
     position: relative;
-    .emp-name{font-family: $other-font;  margin: 0.2em 0 0.6em;}
+    .emp-name{
+      font-family: $other-font;  margin: 0.2em 0 0.6em;
+      &:hover .add-point, .add-point:hover{display: inline-block;}
+      .add-report{
+        cursor: pointer;
+        &:hover{color: red;}
+        display: none;
+      }
+    }
     .user-image{float:right;}
     .header-details{display: inline-block;margin-right: 1em;}
     .dot-divider{font-size: 4px;margin: 0 0.5em 0 0.5em;}
@@ -193,6 +201,7 @@ a:hover {
   }
   .emp-details{
     text-indent: 1em;
+    line-height: 200%;
     text-align: right;
   }
 
@@ -261,4 +270,14 @@ a:hover {
 }
 .rf-table{
   td{text-align: center;}
+}
+
+/****************************************** view knowledge **************************/
+.view-employee{
+  .use-cases,.tags{
+    margin: 1em;
+  }
+  .attachments{
+    a{margin-left: 1em;}
+  }
 }
