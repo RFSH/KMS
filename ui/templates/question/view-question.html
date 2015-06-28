@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container question-view">
     <div class="view-employee">
         <div class="emp-header">
             <div class="add-point">
@@ -8,7 +8,7 @@
             </div>
             <div class="header-details">
                 <h1 class="emp-name">
-                    سوال شماره یک
+                    چگونه از سامانه استفاده کنم؟
                 </h1>
 
                 <div class="header-other">
@@ -21,35 +21,42 @@
                     </span>
                 </div>
             </div>
-            <div class="admin-buttons">
-                <button class="btn btn-sm btn-warning add-report">
-                    گزارش تخلف
-                </button>
-            </div>
         </div>
-        <div class="horizontal-divider"></div>
-        <div class="emp-details">
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
-            متن سوال اینجا می آید.
+        <!--<div class="horizontal-divider"></div>-->
+        <div class="content" style="margin-top:20px;padding:20px;">
+            <p>
+                سلام
+            </p>
+            <p>
+                متاسفانه نحوه استفاده از سامانه را نمیدانیم. لطفا موارد زیر را برای من توضیح دهید
+            </p>
+            <ul>
+                <li>
+                    وارد شدن به سامانه
+                </li>
+                <li>
+                    افزودن سوال به سامانه
+                </li>
+                <li>
+                    خارج شدن از سامانه
+                </li>
+                <p>
+                    پیشاپیش از کمکتون ممنونم
+                </p>
+            </ul>
         </div>
-        <div>
+        <a style="margin-top: 10px; margin-left: 5px; float: left;">
+            گزارش تخلف
+        </a>
+        <div style="margin-top:30px">
             <h4>برچسب‌ها</h4>
             <div class="tags">
-                <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
-                <span class="rf-tag">یک</span><span class="rf-tag">بد</span>
-                <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
-                <span class="rf-tag">یک</span><span class="rf-tag">بد</span>
+                <span style="background-color: crimson;border-radius: 3px; color: white; padding: 5px 10px;margin-left: 10px">
+                    مدیریت دانش
+                </span>
+                <span style="background-color: crimson;border-radius: 3px; color: white; padding: 5px 10px;margin-left: 10px">
+                    آموزش
+                </span>
             </div>
         </div>
         <div>
@@ -59,7 +66,7 @@
                 <div class="answer">
                     <div class="add-point">
                         <div><i class="fa fa-2x fa-arrow-circle-up up-point"></i></div>
-                        <div><span class="point">12</span></div>
+                        <div><span class="point">3</span></div>
                         <div><i class="fa fa-2x fa-arrow-circle-down down-point"></i></div>
                     </div>
                     <div class="author">
@@ -68,31 +75,11 @@
                         <span class="date">
                         ۱۲ شهریور ۱۳۹۴ ۱۲:۳۰
                         </span>
-                        <button class="btn btn-xs btn-warning add-report">
-                            گزارش تخلف
-                        </button>
+
                     </div>
-                    <div class="answer-text">
-                        متن پاسخ اینجا نمایش داده می‌شود.
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="answer">
-                    <div class="add-point">
-                        <div><i class="fa fa-2x fa-arrow-circle-up up-point"></i></div>
-                        <div><span class="point">12</span></div>
-                        <div><i class="fa fa-2x fa-arrow-circle-down down-point"></i></div>
-                    </div>
-                    <div class="author">
-                        <h4>عارف شفاعی بجستان</h4>
-                        <i class="fa fa-circle dot-divider"></i>
-                        <span class="date">
-۱۲ شهریور ۱۳۹۴ ۱۲:۲۰
-                        </span>
-                        <button class="btn btn-xs btn-warning add-report">
-                            گزارش تخلف
-                        </button>
-                    </div>
+                    <a style="font-size: 8px‍;margin-right: 8px">
+                        گزارش تخلف
+                    </a>
                     <div class="answer-text">
                         متن پاسخ اینجا نمایش داده می‌شود.
                     </div>
@@ -101,12 +88,14 @@
                 <div class="add-answer">
                     <form class="form">
                         <div class="form-group">
-                            <textarea cols="50" rows="5" class="form-control" placeholder="متن پاسخ">
+                            <text-angular >
 
-                            </textarea>
+                            </text-angular>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary" type="submit">ثبت</button>
+                            <button class="btn btn-success" style="width: 100px" type="submit">
+                                ثبت پاسخ
+                            </button>
                         </div>
                     </form>
                 </div>

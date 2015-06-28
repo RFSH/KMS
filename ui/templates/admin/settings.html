@@ -21,13 +21,12 @@
 
     <div class="settings-content container-fluid">
         <div ng-if="activeTab == 'permissions'">
-            <h1>
-                سطح دسترسی
-            </h1>
-
             <button class="btn btn-success btn-add" ng-click="addPermissionGroup()">
                 <i class="glyphicon glyphicon-plus"></i>
             </button>
+            <h1>
+                سطح دسترسی
+            </h1>
             <div ng-sortable class="settings-item-container">
                 <div class="settings-item" ng-repeat="item in permissionGroups">
                     <input type="text" ng-model="item">
@@ -35,12 +34,12 @@
             </div>
         </div>
         <div ng-if="activeTab == 'roles'">
-            <h1>
-                پست شغلی
-            </h1>
             <button class="btn btn-success btn-add" ng-click="addRole()">
                 <i class="glyphicon glyphicon-plus"></i>
             </button>
+            <h1>
+                پست شغلی
+            </h1>
             <div ng-sortable class="settings-item-container">
                 <div class="settings-item" ng-repeat="item in roles">
                     <input type="text" ng-model="item">
@@ -49,12 +48,12 @@
         </div>
 
         <div ng-if="activeTab == 'tags'">
-            <h1>
-                برچسب های پبش فرض
-            </h1>
             <button class="btn btn-success btn-add" ng-click="addTag()">
                 <i class="glyphicon glyphicon-plus"></i>
             </button>
+            <h1>
+                برچسب های پبش فرض
+            </h1>
             <div ng-sortable class="settings-item-container">
                 <div class="settings-item" ng-repeat="item in tags">
                     <input type="text" ng-model="item">

@@ -22,7 +22,6 @@ public class Main {
 			@Override
 			public void onReady(JavaNGWindow window) {
 				System.out.println("READY");
-
 			}
 		});
 	}

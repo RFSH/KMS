@@ -3,6 +3,7 @@ var kmsApp = angular.module("kms", [
     'ng-sortable',
     'textAngular',
     'ngTagsInput',
+    'ui.bootstrap',
     'ng-java'
 ]);
 
@@ -51,8 +52,11 @@ kmsApp.controller('MainController', function($scope) {
 kmsApp.controller('AdminSettingsCtrl', function ($scope) {
     $scope.activeTab = 'permissions';
     $scope.permissionGroups = [
-        'سطح دسترسی ۱',
-        'سطج دسرتسی ۲'
+        'سطح دسترسی قوی',
+        'سطح دسترسی متوسط',
+        'سطح دسترسی ضعیف'
+
+
     ];
 
     $scope.roles = [
@@ -63,7 +67,11 @@ kmsApp.controller('AdminSettingsCtrl', function ($scope) {
     ];
 
     $scope.tags = [
-
+        'گزارش',
+        'سند',
+        'آموزشی',
+        'خارج از سازمان',
+        'مدیریتی'
     ];
 
     $scope.sortableConfig = {};
@@ -85,6 +93,20 @@ kmsApp.controller('AdminSettingsCtrl', function ($scope) {
     };
 });;var kmsApp = angular.module('kms');
 
+kmsApp.controller('EmployeeCtrl', function ($scope, $modal) {
+    $scope.openDeleteConfirm = function () {
+        $modal.open({
+            templateUrl: 'confirmDialog.html',
+            controller: function ($scope) {
+                $scope.title = "حذف کارمند";
+                $scope.message = "آیا می خواهید کارمند را حذف کنید؟";
+                //$scope.accept
+                //$scope.reject
+            }
+        });
+    };
+});;var kmsApp = angular.module('kms');
+
 kmsApp.config(function ($provide) {
     // this demonstrates how to register a new tool and add it to the default toolbar
     $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function (taRegisterTool, taOptions) { // $delegate is the taOptions we are decorating
@@ -98,5 +120,13 @@ kmsApp.config(function ($provide) {
 kmsApp.controller('KnowledgeCreateCtrl', function ($scope) {
     $scope.knowledge = {
         content: ""
+    };
+});
+
+kmsApp.controller('KnowledgeCtrl', function ($scope, $modal) {
+    $scope.openReportDialog = function () {
+        $modal.open({
+            templateUrl: 'reportDialog.html'
+        });
     };
 });

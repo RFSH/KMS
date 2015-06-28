@@ -18,3 +18,23 @@
     width: 400px;
   }
 }
+
+.question-view {
+  .content {
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+  }
+  .ta-editor {
+    min-height: 80px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+  }
+  .ta-editor, .ta-editor > .ta-bind {
+    min-height: 80px;
+  }
+}

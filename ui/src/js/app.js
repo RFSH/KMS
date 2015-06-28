@@ -3,6 +3,7 @@ var kmsApp = angular.module("kms", [
     'ng-sortable',
     'textAngular',
     'ngTagsInput',
+    'ui.bootstrap',
     'ng-java'
 ]);
 

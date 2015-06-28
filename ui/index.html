@@ -23,6 +23,7 @@
     <script src="lib/textAngular/dist/textAngular-rangy.min.js"></script>
     <script src="lib/textAngular/dist/textAngular-sanitize.min.js"></script>
     <script src="lib/textAngular/dist/textAngular.min.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="lib/ng-tags-input/ng-tags-input.js"></script>
 
     <script src="lib/ng-java/ng-java.js"></script>
@@ -30,13 +31,30 @@
     <script src="gkms/js/script.js"></script>
 
 </head>
-<body ng-app="kms" ng-controller="MainController" ng-init="redirect('/knowledge/view')">
+<body ng-app="kms" ng-controller="MainController" ng-init="redirect('/')">
 
 <div class="content-container" ng-view>
 </div>
-<button class="back-btn btn-lg btn btn-primary" style="position: fixed;left: 0;bottom:0;border-radius: 0">
+<button class="btn-back btn-lg btn btn-primary" style="position: fixed;left: 0;bottom:0;border-radius: 0">
 بازگشت
     <span class="fa fa-step-backward"></span>
 </button>
 </body>
+<!-- Confirm Dialog -->
+<script type="text/ng-template" id="confirmDialog.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="$dismiss()"><span
+                aria-hidden="true">&times;</span><span class="sr-only">بستن</span></button>
+        <h4 class="modal-title">
+            {{ title }}
+        </h4>
+    </div>
+    <div class="modal-body">
+        {{ message }}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-yes" ng-click="accept()">بله</button>
+        <button type="button" class="btn btn-danger" ng-click="reject()">خیر</button>
+    </div>
+</script>
 </html>

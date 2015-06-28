@@ -3,8 +3,11 @@ var kmsApp = angular.module('kms');
 kmsApp.controller('AdminSettingsCtrl', function ($scope) {
     $scope.activeTab = 'permissions';
     $scope.permissionGroups = [
-        'سطح دسترسی ۱',
-        'سطج دسرتسی ۲'
+        'سطح دسترسی قوی',
+        'سطح دسترسی متوسط',
+        'سطح دسترسی ضعیف'
+
+
     ];
 
     $scope.roles = [
@@ -15,7 +18,11 @@ kmsApp.controller('AdminSettingsCtrl', function ($scope) {
     ];
 
     $scope.tags = [
-
+        'گزارش',
+        'سند',
+        'آموزشی',
+        'خارج از سازمان',
+        'مدیریتی'
     ];
 
     $scope.sortableConfig = {};

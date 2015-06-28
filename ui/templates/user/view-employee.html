@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="EmployeeCtrl">
 
     <div class="view-employee">
         <div class="emp-header">
@@ -49,7 +49,7 @@
             <div class="admin-buttons">
                 <!--<h4>امکانات مدیریتی</h4>-->
                 <button type="button" class="btn btn-primary">تغییر مشخصات</button>
-                <button type="button" class="btn btn-danger">حذف کارمند</button>
+                <button type="button" class="btn btn-danger" ng-click="openDeleteConfirm()">حذف کارمند</button>
             </div>
         </div>
         <div class="horizontal-divider"></div>
@@ -89,16 +89,16 @@
                                 <a href="#">مشاهده</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>۱۲ اردیبهشت ۱۳۹۴</td>
-                            <td>۱۴:۳۰</td>
-                            <td>
-                                منسوخ کردن دانش
-                            </td>
-                            <td>
-                                <a href="#">مشاهده</a>
-                            </td>
-                        </tr>
+                        <!--<tr>-->
+                            <!--<td>۱۲ اردیبهشت ۱۳۹۴</td>-->
+                            <!--<td>۱۴:۳۰</td>-->
+                            <!--<td>-->
+                                <!--منسوخ کردن دانش-->
+                            <!--</td>-->
+                            <!--<td>-->
+                                <!--<a href="#">مشاهده</a>-->
+                            <!--</td>-->
+                        <!--</tr>-->
                         <tr>
                             <td>۱۲ اردیبهشت ۱۳۹۴</td>
                             <td>۱۳:۳۰</td>

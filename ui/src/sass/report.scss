@@ -1,0 +1,27 @@
+.report-page {
+  .report-tags-sidebar {
+    float: right;
+    width: 240px;
+    padding: 50px 20px 10px 20px;
+    text-align: center;
+
+    li {
+      font-size: 14px;
+      color: #0096C0;
+      a {
+        cursor: pointer;
+      }
+      cursor: pointer;
+    }
+  }
+
+
+  .report-tags-content {
+    margin-right: 240px;
+    border-right: 1px solid #dddddd;
+    padding: 20px 20px;
+    height: 550px;
+  }
+  .report-tags-content .row-fluid {overflow: auto;}
+  .report-tags-content .large {height: 400px; padding: 10px;}
+}

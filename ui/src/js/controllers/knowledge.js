@@ -15,3 +15,11 @@ kmsApp.controller('KnowledgeCreateCtrl', function ($scope) {
         content: ""
     };
 });
+
+kmsApp.controller('KnowledgeCtrl', function ($scope, $modal) {
+    $scope.openReportDialog = function () {
+        $modal.open({
+            templateUrl: 'reportDialog.html'
+        });
+    };
+});
