@@ -1,2 +1,2 @@
 # KMS
-Gaz Knowledge Management System
+Knowledge Management System
