@@ -18,6 +18,7 @@ sourceSets {
 }
 
 dependencies {
+    compile 'org.postgresql:postgresql:9.3-1100-jdbc4'
     compile project(':javang')
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
