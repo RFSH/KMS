@@ -81,6 +81,9 @@ public abstract class BaseDAO<T> {
         try {
             Statement statement = DatabaseConnecter.getInstance().getConnection().createStatement();
             result = statement.executeQuery(sql);
+            if (!result.next()) {
+                return null;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

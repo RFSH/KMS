@@ -10,7 +10,7 @@ public class User {
     private String password;
 
     public boolean authenticate(String password) {
-        return false;
+        return this.password.equals(password);
     }
 
     public void sendEmail() {
