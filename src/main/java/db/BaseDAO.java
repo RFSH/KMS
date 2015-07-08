@@ -9,7 +9,7 @@ public abstract class BaseDAO<T> {
     public abstract String getTableName();
 
     public abstract String[] getColumnValues(T t);
-    public abstract String getWhereClause();
+    public abstract String getWhereClause(T t);
     public abstract T getObjectFromResult(ResultSet result);
 
     public void insert(T object) {
@@ -44,7 +44,7 @@ public abstract class BaseDAO<T> {
 
     public void update(T object) {
         String[] values = getColumnValues(object);
-        String whereClause = getWhereClause();
+        String whereClause = getWhereClause(object);
 
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder.append("UPDATE ").append(getTableName()).append(" SET ");
@@ -54,6 +54,7 @@ public abstract class BaseDAO<T> {
             }
             sqlBuilder.append(values[i]).append("='").append(values[i+1]).append("'");
         }
+        sqlBuilder.append("WHERE ").append(whereClause);
 
         String sql = sqlBuilder.toString();
         try {

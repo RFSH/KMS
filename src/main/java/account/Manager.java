@@ -1,7 +1,7 @@
 package account;
 
-/**
- * Created by hadi on 7/3/15.
- */
-public class Manager {
+public class Manager extends User {
+    public void factorReset() {
+
+    }
 }
