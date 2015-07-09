@@ -6,23 +6,27 @@
 
     <div class="clearfix"></div>
 </div>
-<div class="container">
-    <form class="login-form" method="post">
-        <div class="form-group">
-            <div class="input-icon">
-                <i class="fa fa-user"></i>
-                <input class="form-control" type="text" name="username" placeholder="نام کاربری"/>
+<div class="container" ng-controller="LoginController">
+    <div ng-java-controller="controllers.LoginController">
+        <form class="login-form" method="post">
+            <div class="form-group">
+                <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                    <input class="form-control" ng-model="data.username" type="text" name="username"
+                           placeholder="نام کاربری"/>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="input-icon">
-                <i class="fa fa-key"></i>
-                <input class="form-control" type="password" name="password" placeholder="رمزعبور"/>
+            <div class="form-group">
+                <div class="input-icon">
+                    <i class="fa fa-key"></i>
+                    <input class="form-control" ng-model="data.password" type="password" name="password"
+                           placeholder="رمزعبور"/>
+                </div>
             </div>
-        </div>
-        <button type="submit" class="btn btn-primary" >ورود</button>
-    </form>
-
+            <span class="error">{{ error }}</span>
+            <button type="submit" class="btn btn-primary" ng-click="submit()">ورود</button>
+        </form>
+    </div>
 </div>
 <style>
     .btn-back {
