@@ -1,5 +1,11 @@
 package account;
 
+import util.Strings;
+import util.ValidationError;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String id;
     private String firstName;
@@ -16,6 +22,32 @@ public class User {
     public void sendEmail() {
 
     }
+
+    public void validate() throws ValidationError {
+        List<String> errors = new ArrayList<String>();
+        if (id == null) {
+            errors.add(Strings.USER_NO_ID);
+        }
+        if (firstName == null || firstName.isEmpty()) {
+            errors.add(Strings.USER_NO_FIRSTNAME);
+        }
+        if (lastName == null || lastName.isEmpty()) {
+            errors.add(Strings.USER_NO_LASTNAME);
+        }
+        if (email == null || email.isEmpty()) {
+            errors.add(Strings.USER_NO_EMAIL);
+        }
+        if (nationalId == null || nationalId.isEmpty()) {
+            errors.add(Strings.USER_NO_NATIONAL_ID);
+        }
+        if (password == null || password.isEmpty()) {
+            errors.add(Strings.USER_NO_PASSWORD);
+        }
+        if (!errors.isEmpty()) {
+            throw new ValidationError(errors);
+        }
+    }
+
 
     /* Getters and Setters */
 

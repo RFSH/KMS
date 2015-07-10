@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         String indexUrl = Main.class.getClassLoader().getResource("index.html").toExternalForm();
-//		indexUrl = "http://localhost:9000/";
+		indexUrl = "http://localhost:9000/";
         new JavaNGWindow(indexUrl, 800, 600, createMenu(), new JavaNGWindow.StateListener() {
             @Override
             public void onStageInit(JavaNGWindow window) {

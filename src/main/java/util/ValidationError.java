@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class FormError extends Exception {
+public class ValidationError extends Exception {
     private List<String> errors;
 
-    private FormError() {
+    private ValidationError() {
         errors = new ArrayList<>();
     }
 
-    public FormError(String... errors) {
+    public ValidationError(String... errors) {
         this();
         for (String message : errors) {
             this.errors.add(message);
         }
     }
 
-    public FormError(Collection<String> errors) {
+    public ValidationError(Collection<String> errors) {
         this();
         this.errors.addAll(errors);
     }

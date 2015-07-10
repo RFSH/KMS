@@ -29,11 +29,23 @@
     }
 })();
 
-console.log("ALERT3");
 
 var app = angular.module("ng-java", []);
 
-app.directive("ngJavaController", function () {
+app.service("$ngJava", function() {
+    var callbacks = [];
+    this.ready = function (callback) {
+        callbacks.push(callback);
+    };
+
+    this.signalReady = function() {
+        for (var i = 0; i < callbacks.length; i++) {
+            callbacks[i]();
+        }
+    };
+});
+
+app.directive("ngJavaController", function ($ngJava) {
     function link (localScope, el, attrs) {
         var functionWrappers = {
         };
@@ -45,6 +57,7 @@ app.directive("ngJavaController", function () {
                     return functionWrappers[key].invoke.apply(functionWrappers[key], arguments);
                 };
             }
+            $ngJava.signalReady();
         });
     }
 

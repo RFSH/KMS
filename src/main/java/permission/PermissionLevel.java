@@ -1,8 +1,9 @@
-package account;
+package permission;
 
-public class Role {
+public class PermissionLevel {
     private String id;
     private String name;
+    private Integer order;
 
     public String getId() {
         return id;
@@ -18,5 +19,13 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer getOrder) {
+        this.order = order;
     }
 }

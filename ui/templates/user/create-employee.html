@@ -1,66 +1,78 @@
-<div class="container">
-    <div class="panel panel-primary" style="margin-top: 10px">
-        <div class="panel-heading">
-            اطلاعات شخصی
+<div class="container" ng-java-controller="controllers.AddOrEditEmployeeController">
+    <div ng-controller="AddEmployeeCtrl">
+        <div class="panel panel-primary" style="margin-top: 10px">
+            <div class="panel-heading">
+                اطلاعات شخصی
+            </div>
+            <div class="panel-body">
+                <form class="create-emp-form form-inline" method="post">
+                    <div class="form-group">
+                        <input ng-model="data.firstName" class="form-control" type="text" name="name"
+                               placeholder="نام"/>
+                    </div>
+                    <div class="form-group">
+                        <input ng-model="data.lastName" class="form-control" type="text" name="lastname"
+                               placeholder="نام خانوادگی"/>
+                    </div>
+                    <div class="form-group">
+                        <input ng-model="data.nationalId" class="form-control" type="text" name="lastname"
+                               placeholder="شماره‌ی ملی"/>
+                    </div>
+                    <div class="form-group">
+                        <input ng-model="data.email" class="form-control" type="email" name="email"
+                               placeholder="پست الکترونیکی"/>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="panel-body">
-            <form class="create-emp-form form-inline" method="post">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="name" placeholder="نام"/>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="lastname" placeholder="نام خانوادگی"/>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="lastname" placeholder="شماره‌ی ملی"/>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="پست الکترونیکی"/>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            اطلاعات کاربری
-        </div>
-        <div class="panel-body">
-            <form class="create-emp-form form-inline" method="post">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="username" placeholder="نام کاربری"/>
-                </div>
-                <div class="form-group">
-                    <select class="form-control" style="width: 100%">
-                        <option value="0">پست شغلی</option>
-                        <option value="1">مدیر اجرایی</option>
-                        <option value="2">کارمند</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control">
-                        <option value="0">سطح دسترسی</option>
-                        <option value="1">سطح یک</option>
-                        <option value="2">سطح دو</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="رمز عبور"/>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" name="repassword" placeholder="تکرار رمز عبور"/>
-                </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                اطلاعات کاربری
+            </div>
+            <div class="panel-body">
+                <form class="create-emp-form form-inline" method="post">
+                    <div class="form-group">
+                        <input ng-model="data.username" class="form-control" type="text" name="username"
+                               placeholder="نام کاربری"/>
+                    </div>
+                    <div class="form-group">
+                        <select ng-model="data.role" class="form-control" style="width: 100%">
+                            <option value="0">پست شغلی</option>
+                            <option value="1">مدیر اجرایی</option>
+                            <option value="2">کارمند</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select ng-model="data.permissionLevel" class="form-control">
+                            <option value="0">سطح دسترسی</option>
+                            <option value="1">سطح یک</option>
+                            <option value="2">سطح دو</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input ng-model="data.password" class="form-control" type="password" name="password"
+                               placeholder="رمز عبور"/>
+                    </div>
+                    <div class="form-group">
+                        <input ng-model="data.passwordConfirm" class="form-control" type="password"
+                               name="repassword" placeholder="تکرار رمز عبور"/>
+                    </div>
 
 
-            </form>
-        </div>
+                </form>
+            </div>
 
-    </div>
-    <div class="btn-group" style="float:left; margin-top: 30px">
-        <button type="submit" class="btn btn-success" style="width: 150px;">
-            ثبت
-        </button>
-        <button type="submit" class="btn btn-danger" style="width: 150px;">
-            انصراف
-        </button>
+        </div>
+        <div class="error" style="margin: 10px; float: right">
+            {{ error }}
+        </div>
+        <div class="btn-group" style="float:left; margin-top: 30px">
+            <button type="submit" class="btn btn-success" style="width: 150px;" ng-click="submit()">
+                ثبت
+            </button>
+            <button type="submit" class="btn btn-danger" style="width: 150px;">
+                انصراف
+            </button>
+        </div>
     </div>
 </div>

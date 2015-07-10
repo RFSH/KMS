@@ -1,6 +1,6 @@
 package account;
 
-import util.FormError;
+import util.ValidationError;
 import util.Strings;
 
 public class UserFacade {
@@ -10,13 +10,13 @@ public class UserFacade {
 
     }
 
-    public void login(String username, String password) throws FormError {
+    public void login(String username, String password) throws ValidationError {
         User user = UserCatalog.getInstance().findUser(username);
         if (user == null) {
-            throw new FormError(Strings.INVALID_USERNAME);
+            throw new ValidationError(Strings.INVALID_USERNAME);
         }
         if (! user.authenticate(password)) {
-            throw new FormError(Strings.INVALID_PASSWORD);
+            throw new ValidationError(Strings.INVALID_PASSWORD);
         }
 
         Context.getInstance().login(user);
