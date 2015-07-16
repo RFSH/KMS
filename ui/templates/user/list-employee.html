@@ -1,65 +1,67 @@
-<div class="container">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            فهرست کارمندان
-        </div>
-        <div class="panel-body">
-            <form method="post" class="form-inline search-form" role="search">
-                <div class="form-group">
-                    <input class="form-control" name="content" placeholder="جستجو...">
-                </div>
-                <div class="form-group">
-                    <select class="form-control">
-                        <option>سمت</option>
-                        <option>مدیر</option>
-                        <option>کارمند</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">جستجو</button>
-                </div>
-            </form>
-            <table class="table-responsive table table-hover">
-                <thead>
-                <tr>
-                    <td>
-                        نام کاربری
-                    </td>
-                    <td>
-                        نام و نام خانوادگی
-                    </td>
-                    <td>
-                        پست الکترونیکی
-                    </td>
-                    <td>
-                        سمت
-                    </td>
-                    <td>
-                        سطح دسترسی
-                    </td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <a href="#">user</a>
-                    </td>
-                    <td>
-                        عارف شفاعی
-                    </td>
-                    <td>
-                        <a href="mailto:aref.shafaei@gmail.com">aref.shafaei@gmail.com</a>
-                    </td>
-                    <td>
-                        مدیر کل
-                    </td>
-                    <td>
-                        سطح یک
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="container" ng-controller="EmployeeListCtrl">
+    <div ng-java-controller="controllers.EmployeeListController">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                فهرست کارمندان
+            </div>
+            <div class="panel-body">
+                <form method="post" class="form-inline search-form" role="search">
+                    <div class="form-group">
+                        <input ng-model="data.query" class="form-control" name="content" placeholder="جستجو...">
+                    </div>
+                    <div class="form-group">
+                        <select ng-model="data.role" class="form-control" style="width: 100%">
+                            <option ng-repeat="role in roles track by role.id" value="{{role.id}}">
+                                {{ role.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button ng-click="search()" type="submit" class="btn btn-primary">جستجو</button>
+                    </div>
+                </form>
+                <table class="table-responsive table table-hover">
+                    <thead>
+                    <tr>
+                        <td>
+                            نام کاربری
+                        </td>
+                        <td>
+                            نام و نام خانوادگی
+                        </td>
+                        <td>
+                            پست الکترونیکی
+                        </td>
+                        <td>
+                            سمت
+                        </td>
+                        <td>
+                            سطح دسترسی
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="employee in employees track by employee.id">
+                        <td>
+                            <a href="#">{{employee.username}}</a>
+                        </td>
+                        <td>
+                            {{employee.name}}
+                        </td>
+                        <td>
+                            <a href="mailto:{{employee.email}}">{{employee.email}}</a>
+                        </td>
+                        <td>
+                            {{employee.role}}
+                        </td>
+                        <td>
+                            {{employee.permission}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
+        </div>
     </div>
 </div>

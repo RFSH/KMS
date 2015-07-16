@@ -112,6 +112,27 @@ public abstract class BaseDAO<T> {
         }
     }
 
+    public ResultSet query(String table, String queryStr) {
+        StringBuilder sqlBuilder = new StringBuilder();
+        sqlBuilder.append("SELECT * FROM ")
+                .append(table);
+        if (queryStr != null) {
+            sqlBuilder.append(" WHERE ")
+                    .append(queryStr);
+        }
+
+        String sql = sqlBuilder.toString();
+        System.out.println(sql);
+        ResultSet result = null;
+        try {
+            Statement statement = DatabaseConnecter.getInstance().getConnection().createStatement();
+            return statement.executeQuery(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public T getObject(String column, String value) {
         ResultSet result = query(getTableName(), column, value);
         try {

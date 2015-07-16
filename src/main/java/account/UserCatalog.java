@@ -52,8 +52,27 @@ public class UserCatalog {
         return null;
     }
 
-    public List<Employee> findEmployees() {
-        return null;
+    public List<Employee> findEmployees(String employeeName, String roleId) {
+        if (employeeName == null || employeeName.isEmpty()) {
+            employeeName = null;
+        }
+
+        if (roleId == null || roleId.isEmpty() || roleId.equals("0")) {
+            roleId = null;
+        }
+
+        if (employeeName == null && roleId == null) {
+            return new UserDAO().getEmployees();
+        } else if (employeeName == null) {
+            return new UserDAO().getEmployees("employees.role_id", roleId);
+        } else if (roleId == null) {
+            return new UserDAO().getEmployees(
+                    String.format("(users.first_name='%s' OR users.last_name='%s') AND employees.role_id='%s'",
+                            employeeName, employeeName, roleId));
+        } else {
+            return new UserDAO().getEmployees(
+                    String.format("users.first_name='%s' OR users.last_name='%s'", employeeName, employeeName));
+        }
     }
 
     public void updateUser(User user) throws ValidationError {

@@ -6,6 +6,8 @@ import permission.PermissionLevelCatalog;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO extends BaseDAO<User> {
     @Override
@@ -88,6 +90,45 @@ public class UserDAO extends BaseDAO<User> {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public List<Employee> getEmployees(String column, String value) {
+        ResultSet result = query("users JOIN employees ON users.id=employees.id", column, value);
+        List<Employee> employees = new ArrayList<>();
+        try {
+            while (result.next()) {
+                employees.add(getEmployeeFromResult(result));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return employees;
+    }
+
+    public List<Employee> getEmployees(String queryStr) {
+        ResultSet result = query("users JOIN employees ON users.id=employees.id", queryStr);
+        List<Employee> employees = new ArrayList<>();
+        try {
+            while (result.next()) {
+                employees.add(getEmployeeFromResult(result));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return employees;
+    }
+
+    public List<Employee> getEmployees() {
+        ResultSet result = query("users JOIN employees ON users.id=employees.id", null);
+        List<Employee> employees = new ArrayList<>();
+        try {
+            while (result.next()) {
+                employees.add(getEmployeeFromResult(result));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return employees;
     }
 
     public Manager getManager(String column, String value) {

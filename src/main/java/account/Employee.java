@@ -43,4 +43,5 @@ public class Employee extends User {
     public void setPermissionLevel(PermissionLevel permissionLevel) {
         this.permissionLevel = permissionLevel;
     }
+
 }
