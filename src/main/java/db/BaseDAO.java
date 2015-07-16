@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class BaseDAO<T> {
+//    TODO needs delete function!
 
     public abstract String getTableName();
 
@@ -55,6 +56,10 @@ public abstract class BaseDAO<T> {
 
     public void insert(T object) {
         insert(object, getTableName(), getColumnValues(object));
+    }
+
+    public void delete(T object){
+//        TODO complete me!
     }
 
     public void update(T object, String table, String whereClause, Object[] values) {
