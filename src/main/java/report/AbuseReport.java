@@ -1,8 +1,11 @@
 package report;
 
+import account.Employee;
+
 public class AbuseReport {
     private String id;
     private String content;
+    private Employee reporter;
 
 
     public void respondToReport(boolean isAccepted){
@@ -26,5 +29,13 @@ public class AbuseReport {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Employee getReporter() {
+        return reporter;
+    }
+
+    public void setReporter(Employee reporter) {
+        this.reporter = reporter;
     }
 }
