@@ -45,6 +45,13 @@ app.service("$ngJava", function() {
     };
 });
 
+function bridgeFunctionFactory(key, functionWrappers) {
+    return function() {
+        console.log("calling " + key);
+        return functionWrappers[key].invoke.apply(functionWrappers[key], arguments);
+    };
+}
+
 app.directive("ngJavaController", function ($ngJava) {
     function link (localScope, el, attrs) {
         var functionWrappers = {
@@ -53,9 +60,8 @@ app.directive("ngJavaController", function ($ngJava) {
             //javangBridge.registerController(localScope.ngJavaController, localScope, functionWrappers);
             javangBridge.registerController(attrs.ngJavaController, localScope, functionWrappers);
             for (key in functionWrappers) {
-                localScope[key] = function() {
-                    return functionWrappers[key].invoke.apply(functionWrappers[key], arguments);
-                };
+                localScope[key] = bridgeFunctionFactory(key, functionWrappers);
+                //console.log(localScope[key](2));
             }
             $ngJava.signalReady();
         });

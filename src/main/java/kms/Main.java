@@ -36,6 +36,8 @@ public class Main {
         JavaNGMenu root = new JavaNGMenu("");
 
         JavaNGMenu menuProfile = new JavaNGMenu("حساب کاربری");
+        menuProfile.addItem(new JavaNGMenuItem("ورود", new MenuActionHandler("/")));
+
         JavaNGMenu menuAdmin = new JavaNGMenu("مدیریت");
         JavaNGMenu adminEmployees = new JavaNGMenu("کارمندان");
         adminEmployees.addItem(new JavaNGMenuItem("فهرست کارمندان", new MenuActionHandler("/employee/list")));

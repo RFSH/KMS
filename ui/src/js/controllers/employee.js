@@ -5,15 +5,29 @@ kmsApp.controller('AddEmployeeCtrl', function ($scope, $modal, $ngJava) {
     $scope.error = "";
 
     $ngJava.ready(function() {
-        //var x = $scope.getRoles();
-        setTimeout(function() {}, 2000);
-        //console.log(x.get(0));
+        var roles = $scope.getRoles();
+        $scope.roles = [];
+        for (var i = 0; i < roles.size(); i++) {
+            $scope.roles.push({
+                id: roles.get(i).getId(),
+                name: roles.get(i).getName()
+            });
+        }
+        $scope.data.role = $scope.roles[0].id;
+
+        var permissions = $scope.getPermissionLevels();
+        $scope.permissions = [];
+        for (var j = 0; j < permissions.size(); j++) {
+            $scope.permissions.push({
+                id: permissions.get(j).getId(),
+                name: permissions.get(j).getName()
+            });
+        }
+        $scope.data.permissionLevel = $scope.permissions[0].id;
     });
 
     $scope.submit = function() {
         $scope.error = $scope.addOrUpdateEmployee(false, $scope.data);
-        console.log($scope.getRoles(2));
-
     };
 
 });

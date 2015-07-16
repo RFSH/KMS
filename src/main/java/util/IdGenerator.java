@@ -1,7 +1,9 @@
 package util;
 
-/**
- * Created by hadi on 7/10/15.
- */
+import java.util.UUID;
+
 public class IdGenerator {
+    public static String generateID() {
+        return UUID.randomUUID().toString().substring(0, 5);
+    }
 }

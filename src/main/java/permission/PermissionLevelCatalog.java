@@ -18,7 +18,7 @@ public class PermissionLevelCatalog {
     }
 
     public List<PermissionLevel> getOrderedPermissionLevels() {
-        return null;
+        return new PermissionLevelDAO().getObjects();
     }
 
     public PermissionLevel findById(String id) {
