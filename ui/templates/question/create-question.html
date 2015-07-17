@@ -4,7 +4,7 @@
             <label>
                 عنوان سوال
             </label>
-            <input type="text" class="title form-control" placeholder="عنوان دانش">
+            <input  ng-model="data.title" type="text" class="title form-control" placeholder="عنوان دانش">
         </div>
 
 
@@ -12,7 +12,7 @@
             <label>
                 متن سوال
             </label>
-            <text-angular ng-model="knowledge.content">
+            <text-angular ng-model="data.content">
 
             </text-angular>
         </div>
@@ -20,7 +20,7 @@
         <tags-input ng-model="tags" placeholder="'برچسب‌های سوال'">
         </tags-input>
         <div class="btn-group" style="float:left; margin-top: 30px">
-            <button type="submit" class="btn btn-success" style="width: 150px;">
+            <button ng-click="submit()" type="submit" class="btn btn-success" style="width: 150px;">
                 ثبت
             </button>
             <button type="submit" class="btn btn-danger" style="width: 150px;">

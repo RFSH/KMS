@@ -37,7 +37,7 @@ public class AddOrEditQuestionKnowledgeController extends JavaNGController {
             return validationError.getError();
         }
 
-        changePage("/knowledge/list");
+        changePage("/question/list");
         return "";
     }
 

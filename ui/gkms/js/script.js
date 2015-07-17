@@ -312,7 +312,11 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
     };
 });;var kmsApp = angular.module('kms');
 
-kmsApp.controller('LoginController', function ($scope) {
+kmsApp.controller('LoginController', function ($scope, $ngJava) {
+    $ngJava.ready(function() {
+        $scope.init();
+    });
+
     $scope.data = {
         username: "hadi",
         password: ""
