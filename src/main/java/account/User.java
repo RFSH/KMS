@@ -48,6 +48,17 @@ public class User {
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof User) {
+            try {
+                return ((User)obj).id.equals(id);
+            } catch (NullPointerException e) {
+                return false;
+            }
+        }
+        return super.equals(obj);
+    }
 
     /* Getters and Setters */
 

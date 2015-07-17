@@ -31,7 +31,6 @@ function permissionToObject(permission) {
 
 function knowledgeToObject(knowledge) {
     var tags = [];
-    var usecases = [];
 
     for (var i = 0; i < knowledge.getTags().size(); i++) {
         tags.push(knowledge.getTags().get(i).getName());
@@ -39,10 +38,11 @@ function knowledgeToObject(knowledge) {
 
     return {
         id: knowledge.getId(),
-        employee: knowledge.getEmployee(),
-        employeeId: knowledge.getEmployee().getId(),
-        employeeName: knowledge.getEmployee().getFullName(),
-        tags: tags
+        employee: knowledge.getOwner(),
+        employeeId: knowledge.getOwner().getId(),
+        employeeName: knowledge.getOwner().getFullName(),
+        tags: tags,
+        voteSum: knowledge.getVoteSum(),
     };
 }
 

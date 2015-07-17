@@ -19,6 +19,7 @@ kmsApp.config(function($routeProvider) {
 
     //knowledge
     $routeProvider.when('/knowledge/create', {templateUrl: 'templates/knowledge/create-knowledge.html'}); //HaD
+    $routeProvider.when('/knowledge/edit/:knowledgeId', {templateUrl: 'templates/knowledge/create-knowledge.html'}); //HaD
     $routeProvider.when('/knowledge/list',  {templateUrl: 'templates/knowledge/list-knowledge.html'}); //RF done
     $routeProvider.when('/knowledge/:knowledgeId', {templateUrl: 'templates/knowledge/view-knowledge.html'}); //RF done
 

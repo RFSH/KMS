@@ -19,6 +19,7 @@ kmsApp.config(function($routeProvider) {
 
     //knowledge
     $routeProvider.when('/knowledge/create', {templateUrl: 'templates/knowledge/create-knowledge.html'}); //HaD
+    $routeProvider.when('/knowledge/edit/:knowledgeId', {templateUrl: 'templates/knowledge/create-knowledge.html'}); //HaD
     $routeProvider.when('/knowledge/list',  {templateUrl: 'templates/knowledge/list-knowledge.html'}); //RF done
     $routeProvider.when('/knowledge/:knowledgeId', {templateUrl: 'templates/knowledge/view-knowledge.html'}); //RF done
 
@@ -214,8 +215,8 @@ kmsApp.controller('AddOrEditWikiKnowledgeCtrl', function ($scope, $routeParams, 
         $scope.update = ($scope.knowledgeId !== undefined);
 
         if ($scope.update) {
-            var knowledge = $scope.getEmployee($scope.employeeId);
-            var obj = wikiKnowledgeToObject(employee);
+            var knowledge = $scope.getWikiKnowledge($scope.knowledgeId);
+            var obj = wikiKnowledgeToObject(knowledge);
             $scope.data = obj;
 
             for (var i = 0; i < knowledge.getTags().size(); i++) {
@@ -257,17 +258,52 @@ kmsApp.controller('WikiListCtrl', function ($scope, $ngJava) {
 
 kmsApp.controller('KnowledgeCtrl', function ($scope, $routeParams, $modal, $ngJava) {
     $scope.knowledge = {};
+    $scope.usecase = "";
+
+    var javaKnowledge = null;
 
     $ngJava.ready(function() {
         $scope.knowledgeId = $routeParams.knowledgeId;
         var knowledge = $scope.getWikiKnowledge($scope.knowledgeId);
+        javaKnowledge = knowledge;
         var knowledgeData = wikiKnowledgeToObject(knowledge);
-        if (knowledgeData.attachment === null || knowledgeData.attachment === undefined) {
-            knowledgeData.attachment = "وجود ندارد";
+        if (knowledgeData.attachment === null || knowledgeData.attachment === undefined || knowledgeData.attachment === "null") {
+            knowledgeData.attachment = "";
         }
 
         $scope.knowledge = knowledgeData;
+
+        $scope.showApprove = $scope.isUserManager() && !knowledgeData.isApproved;
+        $scope.hasChangePermission = $scope.hasChangePermission($scope.knowledgeId);
     });
+
+    $scope.voteUp = function() {
+        $scope.addVote($scope.knowledgeId, 1);
+        $scope.knowledge.voteSum = javaKnowledge.getVoteSum();
+    };
+
+    $scope.voteDown = function() {
+        $scope.addVote($scope.knowledgeId, -1);
+        $scope.knowledge.voteSum = javaKnowledge.getVoteSum();
+    };
+
+    $scope.approve = function() {
+        $scope.approveOrDisapprove($scope.knowledgeId, 1);
+        $scope.knowledge.isApproved = true;
+    };
+
+    $scope.disapprove = function() {
+        $scope.approveOrDisapprove($scope.knowledgeId, -1);
+        window.location.hash = "/knowledge/list";
+    };
+
+    $scope.submitUseCase = function() {
+        if ($scope.usecase !== "") {
+            $scope.addUseCase($scope.knowledgeId, $scope.usecase);
+            $scope.knowledge.usecases.push($scope.usecase);
+            $scope.usecase = "";
+        }
+    };
 
     $scope.openReportDialog = function () {
         $modal.open({
@@ -363,7 +399,6 @@ function permissionToObject(permission) {
 
 function knowledgeToObject(knowledge) {
     var tags = [];
-    var usecases = [];
 
     for (var i = 0; i < knowledge.getTags().size(); i++) {
         tags.push(knowledge.getTags().get(i).getName());
@@ -371,10 +406,11 @@ function knowledgeToObject(knowledge) {
 
     return {
         id: knowledge.getId(),
-        employee: knowledge.getEmployee(),
-        employeeId: knowledge.getEmployee().getId(),
-        employeeName: knowledge.getEmployee().getFullName(),
-        tags: tags
+        employee: knowledge.getOwner(),
+        employeeId: knowledge.getOwner().getId(),
+        employeeName: knowledge.getOwner().getFullName(),
+        tags: tags,
+        voteSum: knowledge.getVoteSum(),
     };
 }
 

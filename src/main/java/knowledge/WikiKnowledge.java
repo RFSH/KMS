@@ -19,7 +19,7 @@ public class WikiKnowledge extends Knowledge {
     }
 
     public void deprecate() {
-
+        setDeprecated(true);
     }
 
     public void approveOrDisapprove(boolean approve) {
@@ -29,6 +29,14 @@ public class WikiKnowledge extends Knowledge {
 
     public WikiKnowledge cloneWikiKnowledge() {
         return null;
+    }
+
+    public void save() {
+        try {
+            KnowledgeCatalog.getInstance().updateKnowledge(this);
+        } catch (ValidationError validationError) {
+            validationError.printStackTrace();
+        }
     }
 
     @Override

@@ -4,7 +4,7 @@ import account.Employee;
 
 public class Vote {
     public static final int UP = 1;
-    public static final int DOWN = 0;
+    public static final int DOWN = -1;
 
     private int upOrDown;
     private Employee employee;

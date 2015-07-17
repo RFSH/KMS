@@ -57,7 +57,7 @@ public class AddOrEditWikiKnowledgeController extends JavaNGController {
             knowledge.getTags().add(tag);
         }
         knowledge.validate();
-        KnowledgeCatalog.getInstance().updateKnowledge(knowledge);
+        knowledge.save();
     }
 
     private void addKnowledge() throws ValidationError {

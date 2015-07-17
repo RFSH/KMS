@@ -33,14 +33,14 @@
 var app = angular.module("ng-java", []);
 
 app.service("$ngJava", function() {
-    var callbacks = [];
-    this.ready = function (callback) {
-        callbacks.push(callback);
+    var callback = undefined;
+    this.ready = function (cb) {
+        callback = cb;
     };
 
     this.signalReady = function() {
-        for (var i = 0; i < callbacks.length; i++) {
-            callbacks[i]();
+        if (callback) {
+            callback();
         }
     };
 });

@@ -12,6 +12,10 @@ import java.util.List;
 public class KnowledgeCatalog {
     private static KnowledgeCatalog instance;
 
+    public Knowledge getKnowledge(String id) {
+        return new KnowledgeDAO().getObject("id", id);
+    }
+
     public WikiKnowledge getWikiKnowledge(String id) {
         return new KnowledgeDAO().getWikiKnowledge("knowledges.id", id);
     }
@@ -36,9 +40,14 @@ public class KnowledgeCatalog {
         knowledge.setAttachment(null);
         knowledge.setDeprecated(false);
 
-        knowledge.setEmployee((Employee)Context.getInstance().getLoggedInUser());
+        knowledge.setOwner((Employee) Context.getInstance().getLoggedInUser());
         knowledge.validate();
         new KnowledgeDAO().insert(knowledge);
+    }
+
+    public void updateKnowledge(Knowledge knowledge) throws ValidationError {
+        knowledge.validate();
+        new KnowledgeDAO().update(knowledge);
     }
 
     public void updateKnowledge(WikiKnowledge knowledge) throws ValidationError {
@@ -60,4 +69,5 @@ public class KnowledgeCatalog {
         }
         return instance;
     }
+
 }

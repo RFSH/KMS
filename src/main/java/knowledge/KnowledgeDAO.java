@@ -1,7 +1,5 @@
 package knowledge;
 
-import account.Employee;
-import account.Manager;
 import account.UserCatalog;
 import db.BaseDAO;
 import tag.TagCatalog;
@@ -21,7 +19,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
     public Object[] getColumnValues(Knowledge knowledge) {
         return new String[]{
                 "id", knowledge.getId(),
-                "employee_id", knowledge.getEmployee().getId()
+                "employee_id", knowledge.getOwner().getId()
         };
     }
 
@@ -45,7 +43,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
             knowledge.setId(resultSet.getString("id"));
 
             String employeeId = resultSet.getString("employee_id");
-            knowledge.setEmployee(UserCatalog.getInstance().findEmployeeById(employeeId));
+            knowledge.setOwner(UserCatalog.getInstance().findEmployeeById(employeeId));
 
             knowledge.setTags(TagCatalog.getInstance().findTagsByKnowledge(knowledge));
         } catch (SQLException e) {
@@ -268,8 +266,8 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
                 "title", knowledge.getTitle(),
                 "content", knowledge.getContent(),
                 "attachment", knowledge.getAttachment(),
-                "deprecated", knowledge.isDeprecated(),
-                "approved", knowledge.isApproved(),
+                "is_deprecated", knowledge.isDeprecated(),
+                "is_approved", knowledge.isApproved(),
                 "usecases", usecases.toString()
         });
     }
