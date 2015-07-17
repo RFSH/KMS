@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         String indexUrl = Main.class.getClassLoader().getResource("index.html").toExternalForm();
-		indexUrl = "http://localhost:9000/";
+//		indexUrl = "http://localhost:9000/";
         new JavaNGWindow(indexUrl, 800, 600, createMenu(), new JavaNGWindow.StateListener() {
             @Override
             public void onStageInit(JavaNGWindow window) {
@@ -46,7 +46,7 @@ public class Main {
         JavaNGMenu adminReport = new JavaNGMenu("گزارشات");
         adminReport.addItem(new JavaNGMenuItem("گزارش تخلفات", new MenuActionHandler("/admin/abuse-list")));
         adminReport.addItem(new JavaNGMenuItem("گزارش رخداد‌های اخیر", new MenuActionHandler("/report/activities")));
-        adminReport.addItem(new JavaNGMenuItem("گزارش فرآورده‌های دانشی", new MenuActionHandler("/report/knowledge")));
+        adminReport.addItem(new JavaNGMenuItem("گزارش فرآورده‌های دانشی", new MenuActionHandler("/report/tag")));
         menuAdmin.addItem(adminReport);
         menuAdmin.getItems().add(new JavaNGMenuItem("تنظیمات", new MenuActionHandler("/admin/settings")));
 

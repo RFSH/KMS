@@ -31,7 +31,7 @@ kmsApp.config(function($routeProvider) {
     //report
     $routeProvider.when('/report/activities', {templateUrl: 'templates/report/activities-report.html'}); //RF done
     $routeProvider.when('/report/activities/employee', {templateUrl: 'templates/report/activities-employee-report.html'}); //RF done
-    $routeProvider.when('/report/knowledge', {templateUrl: 'templates/report/knowledge-report.html'}); //RF done
+    $routeProvider.when('/report/knowledge/:knowledgeId', {templateUrl: 'templates/report/knowledge-report.html'}); //RF done
     $routeProvider.when('/report/tag', {templateUrl: 'templates/report/tag-report.html'}); //HaD
 
     //user

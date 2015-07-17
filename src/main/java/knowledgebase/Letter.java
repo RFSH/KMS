@@ -8,12 +8,9 @@ public class Letter {
     private String title;
     private String content;
     private String id;
-    private List<Tag> tags;
-
 
     public List<LetterPathNode> getLetterPathNodes(){
-        //TODO
-        return null;
+        return new LetterPathNodeDAO().getLetterPathNodes("id", getId());
     }
 
     /* Getter and Setters */
@@ -40,14 +37,6 @@ public class Letter {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
     }
 
 }

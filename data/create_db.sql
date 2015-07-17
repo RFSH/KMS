@@ -1,18 +1,3 @@
-/*
- Navicat PostgreSQL Data Transfer
-
- Source Server         : KMS
- Source Server Version : 90305
- Source Host           : localhost
- Source Database       : kms
- Source Schema         : public
-
- Target Server Version : 90305
- File Encoding         : utf-8
-
- Date: 07/10/2015 12:05:46 PM
-*/
-
 -- ----------------------------
 --  Table structure for abuse_reports
 -- ----------------------------
@@ -24,7 +9,7 @@ CREATE TABLE "public"."abuse_reports" (
 	"employee_id" varchar(100) NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."abuse_reports" OWNER TO "hadi";
+-- ALTER TABLE "public"."abuse_reports" OWNER TO "hadi";
 
 -- ----------------------------
 --  Table structure for users
@@ -40,7 +25,7 @@ CREATE TABLE "public"."users" (
 	"password" varchar(100) COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."users" OWNER TO "hadi";
+-- ALTER TABLE "public"."users" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of users
@@ -63,7 +48,7 @@ CREATE TABLE "public"."knowledges" (
 	"employee_id" varchar(10) NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."knowledges" OWNER TO "hadi";
+-- ALTER TABLE "public"."knowledges" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of knowledges
@@ -84,7 +69,7 @@ CREATE TABLE "public"."permission_levels" (
 	"order" int4 NOT NULL DEFAULT 1
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."permission_levels" OWNER TO "hadi";
+-- ALTER TABLE "public"."permission_levels" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of permission_levels
@@ -106,7 +91,7 @@ CREATE TABLE "public"."roles" (
 	"name" varchar(100) NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."roles" OWNER TO "hadi";
+-- ALTER TABLE "public"."roles" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of roles
@@ -128,7 +113,7 @@ CREATE TABLE "public"."employees" (
 	"permission_id" varchar(10) COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."employees" OWNER TO "hadi";
+-- ALTER TABLE "public"."employees" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of employees
@@ -151,7 +136,7 @@ CREATE TABLE "public"."projects" (
 	"description" text NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."projects" OWNER TO "hadi";
+-- ALTER TABLE "public"."projects" OWNER TO "hadi";
 
 -- ----------------------------
 --  Table structure for project_activities
@@ -162,7 +147,7 @@ CREATE TABLE "public"."project_activities" (
 	"project_id" varchar(10) NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."project_activities" OWNER TO "hadi";
+-- ALTER TABLE "public"."project_activities" OWNER TO "hadi";
 
 -- ----------------------------
 --  Table structure for votes
@@ -173,7 +158,7 @@ CREATE TABLE "public"."votes" (
 	"knowledge_id" varchar(10) NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."votes" OWNER TO "hadi";
+-- ALTER TABLE "public"."votes" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of votes
@@ -195,7 +180,7 @@ CREATE TABLE "public"."letters" (
 	"content" text NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."letters" OWNER TO "hadi";
+-- ALTER TABLE "public"."letters" OWNER TO "hadi";
 
 -- ----------------------------
 --  Table structure for letter_path_nodes
@@ -206,7 +191,7 @@ CREATE TABLE "public"."letter_path_nodes" (
 	"letter_id" varchar(10) NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."letter_path_nodes" OWNER TO "hadi";
+-- ALTER TABLE "public"."letter_path_nodes" OWNER TO "hadi";
 
 -- ----------------------------
 --  Table structure for tags
@@ -217,7 +202,7 @@ CREATE TABLE "public"."tags" (
 	"name" varchar(100) NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."tags" OWNER TO "hadi";
+-- ALTER TABLE "public"."tags" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of tags
@@ -237,7 +222,7 @@ CREATE TABLE "public"."knowledge_tag" (
 	"tag_id" varchar(10) NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."knowledge_tag" OWNER TO "hadi";
+-- ALTER TABLE "public"."knowledge_tag" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of knowledge_tag
@@ -255,7 +240,7 @@ CREATE TABLE "public"."managers" (
 	"id" varchar(10) NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."managers" OWNER TO "hadi";
+-- ALTER TABLE "public"."managers" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of managers
@@ -274,7 +259,7 @@ CREATE TABLE "public"."questions" (
 	"content" text NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."questions" OWNER TO "hadi";
+-- ALTER TABLE "public"."questions" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of questions
@@ -293,7 +278,7 @@ CREATE TABLE "public"."answers" (
 	"content" text NOT NULL COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."answers" OWNER TO "hadi";
+-- ALTER TABLE "public"."answers" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of answers
@@ -316,7 +301,7 @@ CREATE TABLE "public"."wikiknowledges" (
 	"usecases" text COLLATE "default"
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."wikiknowledges" OWNER TO "hadi";
+-- ALTER TABLE "public"."wikiknowledges" OWNER TO "hadi";
 
 -- ----------------------------
 --  Records of wikiknowledges

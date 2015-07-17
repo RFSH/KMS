@@ -1,15 +1,16 @@
-<div class="container">
-    <div class="panel panel-primary">
+<div class="container" ng-controller="ProjectListCtrl">
+    <div ng-java-controller="controllers.ProjectListController">
+        <div class="panel panel-primary">
         <div class="panel-heading">
             دانش نهفته بدست آمده از زیرسامانه مدیریت پروژه
         </div>
         <div class="panel-body">
             <form method="post" class="form-inline search-form" role="search">
                 <div class="form-group">
-                    <input class="form-control" name="content" placeholder="جستجو...">
+                    <input ng-model="data.title" class="form-control" name="content" placeholder="جستجو...">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">جستجو</button>
+                    <button ng-click="search()" type="submit" class="btn btn-primary">جستجو</button>
                 </div>
             </form>
             <table class="table-responsive table table-hover">
@@ -22,51 +23,34 @@
                         نام پروژه
                     </td>
                     <td>
-                        برچسب‌ها
+توضیحات
+                    </td>
+                    <td>
+                        مشاهده فعالیت‌ها
                     </td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr ng-repeat="project in projects track by project.id">
                     <td>
-                        ۱۲ اردیبهشت ۱۳۹۴ ۱۲:۳۰
+                        ۲ شهریور ۱۳۹۴
                     </td>
                     <td>
-                        پروژه شماره یک
+                        {{ project.title }}
                     </td>
                     <td>
-                        <span class="rf-tag">پروژه</span>
-                        <span class="rf-tag">یک</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        ۲ اردیبهشت ۱۳۹۴ ۱۲:۳۰
+                        {{ project.description }}
                     </td>
                     <td>
-                        پروژه شماره دو
-                    </td>
-                    <td>
-                        <span class="rf-tag">پروژه</span>
-                        <span class="rf-tag">دو</span>
-                        <span class="rf-tag">کار خفن</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        ۱۵ فروردین ۱۳۹۴ ۰۱:۳۰
-                    </td>
-                    <td>
-                        پروژه شماره سه
-                    </td>
-                    <td>
-                        <span class="rf-tag">پروژه</span>
-                        <span class="rf-tag">سه</span>
+                        <a href="#">
+                            مشاهده
+                        </a>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
 
+    </div>
     </div>
 </div>

@@ -4,6 +4,7 @@ public class ProjectActivity {
     private String title;
     private String description;
     private String id;
+    private Project project;
 
     /* Getter and Setters */
 
@@ -29,5 +30,13 @@ public class ProjectActivity {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 }

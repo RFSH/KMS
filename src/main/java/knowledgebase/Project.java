@@ -8,12 +8,10 @@ public class Project {
     private String title;
     private String description;
     private String id;
-    private List<Tag> tags;
 
 
     public List<ProjectActivity> getProjectActivites(){
-        //TODO
-        return null;
+        return new ProjectActivityDAO().getProjectActivities("id", getId());
     }
 
     /* Getter and Setters */
@@ -41,13 +39,4 @@ public class Project {
     public void setId(String id) {
         this.id = id;
     }
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
-
 }

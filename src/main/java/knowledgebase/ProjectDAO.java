@@ -3,30 +3,40 @@ package knowledgebase;
 import db.BaseDAO;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ProjectDAO extends BaseDAO<Project>{
 
     @Override
     public String getTableName() {
-        //TODO
-        return null;
+        return "projects";
     }
 
     @Override
     public Object[] getColumnValues(Project project) {
-        //TODO
-        return new Object[0];
+        return new String[]{
+                "id", project.getId(),
+                "title", project.getTitle(),
+                "description", project.getDescription(),
+        };
     }
 
-    @Override
     public String getWhereClause(Project project) {
-        //TODO
-        return null;
+        return "id= '"+ project.getId()+ "'";
     }
 
     @Override
     public Project getObjectFromResult(ResultSet result) {
-        //TODO
-        return null;
+        Project project = new Project();
+        try{
+            project.setId(result.getString("id"));
+            project.setTitle(result.getString("title"));
+            project.setDescription(result.getString("description"));
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+        return project;
     }
+
 }

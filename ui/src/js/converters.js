@@ -77,3 +77,30 @@ function answerKnowledgeToObject(knowledge) {
     ret.content = knowledge.getContent();
     return ret;
 }
+
+function letterToObject(letter){
+    var nodes = [];
+    for (var i = 0; i < letter.getLetterPathNodes().size(); i++) {
+        nodes.push(letter.getLetterPathNodes().get(i).getName());
+    }
+    return {
+        id: letter.getId(),
+        content: letter.getContent(),
+        title: letter.getTitle(),
+        nodes: nodes
+    };
+}
+
+function projectToObject(project){
+    var activites = [];
+    for (var i = 0; i < project.getProjectActivites().size(); i++) {
+        var activity = project.getProjectActivites().get(i);
+        activites.push({'title':activity.getTitle(), 'description':activity.getDescription});
+    }
+    return {
+        id: project.getId(),
+        description: project.getContent(),
+        title: project.getTitle(),
+        nodes: activites
+    };
+}

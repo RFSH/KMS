@@ -31,7 +31,7 @@ kmsApp.config(function($routeProvider) {
     //report
     $routeProvider.when('/report/activities', {templateUrl: 'templates/report/activities-report.html'}); //RF done
     $routeProvider.when('/report/activities/employee', {templateUrl: 'templates/report/activities-employee-report.html'}); //RF done
-    $routeProvider.when('/report/knowledge', {templateUrl: 'templates/report/knowledge-report.html'}); //RF done
+    $routeProvider.when('/report/knowledge/:knowledgeId', {templateUrl: 'templates/report/knowledge-report.html'}); //RF done
     $routeProvider.when('/report/tag', {templateUrl: 'templates/report/tag-report.html'}); //HaD
 
     //user
@@ -312,6 +312,39 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
     };
 });;var kmsApp = angular.module('kms');
 
+kmsApp.controller('LetterListCtrl', function ($scope, $routeParams, $ngJava) {
+    $scope.data = {title: ""};
+    $ngJava.ready(function () {
+        $scope.search();
+    });
+
+    $scope.search = function () {
+        var projects = $scope.searchLetters($scope.data.title);
+        $scope.projects = [];
+        for (var i = 0; i < projects.size(); i++) {
+            $scope.projects.push(letterToObject(projects.get(i)));
+        }
+    };
+});
+
+kmsApp.controller('ProjectListCtrl', function ($scope, $routeParams, $ngJava) {
+    $scope.data = {title: ""};
+    $ngJava.ready(function () {
+        console.log('haaaaaa!!');
+
+        $scope.search();
+    });
+
+    $scope.search = function () {
+        console.log('searching!!!!! :))');
+        var projects = $scope.searchProjects($scope.data.title);
+        $scope.projects = [];
+        for (var i = 0; i < projects.size(); i++) {
+            $scope.projects.push(projectToObject(projects.get(i)));
+        }
+    };
+});;var kmsApp = angular.module('kms');
+
 kmsApp.controller('LoginController', function ($scope, $ngJava) {
     $ngJava.ready(function() {
         $scope.init();
@@ -520,4 +553,31 @@ function answerKnowledgeToObject(knowledge) {
     var ret = knowledgeToObject(knowledge);
     ret.content = knowledge.getContent();
     return ret;
+}
+
+function letterToObject(letter){
+    var nodes = [];
+    for (var i = 0; i < letter.getLetterPathNodes().size(); i++) {
+        nodes.push(letter.getLetterPathNodes().get(i).getName());
+    }
+    return {
+        id: letter.getId(),
+        content: letter.getContent(),
+        title: letter.getTitle(),
+        nodes: nodes
+    };
+}
+
+function projectToObject(project){
+    var activites = [];
+    for (var i = 0; i < project.getProjectActivites().size(); i++) {
+        var activity = project.getProjectActivites().get(i);
+        activites.push({'title':activity.getTitle(), 'description':activity.getDescription});
+    }
+    return {
+        id: project.getId(),
+        description: project.getContent(),
+        title: project.getTitle(),
+        nodes: activites
+    };
 }
