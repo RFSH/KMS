@@ -12,4 +12,7 @@ public class Strings {
     public final static String USER_NO_PASSWORD = "لطفا رمز عبور را وارد کنید";
     public final static String USER_NO_ROLE = "لطفا نقش کارمند را مشخص کنید";
     public final static String USER_NO_PERMISSION = "لطفا سطح دسترسی کارمند را مشخص کنید";
+
+    public final static String KNOWLEDGE_NO_TITLE = "لطفا عنوان را وارد کنید";
+    public final static String KNOWLEDGE_NO_CONTENT = "لطغا محتوا را وارد کنید";
 }

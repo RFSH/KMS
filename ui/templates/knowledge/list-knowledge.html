@@ -1,96 +1,74 @@
-<div class="container">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            لیست دانش
-        </div>
-        <div class="panel-body">
-            <form method="post" class="form-inline search-form" role="search">
-                <div class="form-group">
-                    <input class="form-control" name="content" placeholder="متن...">
-                </div>
-                <div class="form-group dateinput">
-                    <input class="form-control" name="fromdate" placeholder="از تاریخ">
-                </div>
-                <div class="form-group dateinput">
-                    <input class="form-control" name="todate" placeholder="تا تاریخ">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">جستجو</button>
-                </div>
-            </form>
-            <table class="table-responsive table table-hover rf-table">
-                <thead>
-                <tr>
-                    <td>
-                        عنوان
-                    </td>
-                    <td>
-                        نویسنده
-                    </td>
-                    <td>
-                        برچسب‌ها
-                    </td>
-                    <td>
-                        امتیاز
-                    </td>
-                    <td>
-                        تعداد مورد استفاده
-                    </td>
-                    <td>
-                        زمان ایجاد
-                    </td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <a href="#">
-                            دانش شماره یک
-                        </a>
-                    </td>
-                    <td>
-                        عارف شفاعی
-                    </td>
-                    <td>
-                        <span class="rf-tag">یک</span><span class="rf-tag">عارف شفاعی بجستان</span>
-                        <span class="rf-tag">یک</span><span class="rf-tag">یک</span>
-                    </td>
-                    <td>
-                        <span class="label label-success">12</span>
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        ۲ شهریور ۱۳۹۳
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#">
-                            دانش شماره یک
-                        </a>
-                    </td>
-                    <td>
-                        هادی ذوالفقاری
-                    </td>
-                    <td>
-                        <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
-                        <span class="rf-tag">یک</span><span class="rf-tag">بد</span>
-                    </td>
-                    <td>
-                        <span class="label label-danger">12</span>
-                    </td>
-                    <td>
-                        5
-                    </td>
-                    <td>
-                        ۲ شهریور ۱۳۹۳
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="container" ng-controller="WikiListCtrl">
+    <div ng-java-controller="controllers.WikiKnowledgeListController">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                لیست دانش
+            </div>
+            <div class="panel-body">
+                <form method="post" class="form-inline search-form" role="search">
+                    <div class="form-group">
+                        <input ng-model="data.query" class="form-control" name="content" placeholder="متن...">
+                    </div>
+                    <div class="form-group dateinput">
+                        <input ng-model="data.fromDate" class="form-control" name="fromdate" placeholder="از تاریخ">
+                    </div>
+                    <div class="form-group dateinput">
+                        <input ng-model="data.toDate" class="form-control" name="todate" placeholder="تا تاریخ">
+                    </div>
+                    <div class="form-group">
+                        <button ng-click="search()" type="submit" class="btn btn-primary">جستجو</button>
+                    </div>
+                </form>
+                <table class="table-responsive table table-hover rf-table">
+                    <thead>
+                    <tr>
+                        <td>
+                            عنوان
+                        </td>
+                        <td>
+                            نویسنده
+                        </td>
+                        <td>
+                            برچسب‌ها
+                        </td>
+                        <td>
+                            امتیاز
+                        </td>
+                        <td>
+                            تعداد مورد استفاده
+                        </td>
+                        <td>
+                            زمان ایجاد
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="knowledge in knowledges track by knowledge.id">
+                        <td>
+                            <a href="#/knowledge/{{knowledge.id}}">
+                                {{ knowledge.title }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ knowledge.employeeName }}
+                        </td>
+                        <td>
+                            <span class="rf-tag" ng-repeat="tag in knowledge.tags track by $index">{{tag}}</span>
+                        </td>
+                        <td>
+                            <span class="label label-success">12</span>
+                        </td>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            ۲ شهریور ۱۳۹۳
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
+        </div>
     </div>
 </div>

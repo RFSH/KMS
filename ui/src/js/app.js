@@ -19,12 +19,12 @@ kmsApp.config(function($routeProvider) {
 
     //knowledge
     $routeProvider.when('/knowledge/create', {templateUrl: 'templates/knowledge/create-knowledge.html'}); //HaD
-    $routeProvider.when('/knowledge/view', {templateUrl: 'templates/knowledge/view-knowledge.html'}); //RF done
     $routeProvider.when('/knowledge/list',  {templateUrl: 'templates/knowledge/list-knowledge.html'}); //RF done
+    $routeProvider.when('/knowledge/:knowledgeId', {templateUrl: 'templates/knowledge/view-knowledge.html'}); //RF done
 
     //question
     $routeProvider.when('/question/create', {templateUrl: 'templates/question/create-question.html'}); //HaD
-    $routeProvider.when('/question/view', {templateUrl: 'templates/question/view-question.html'}); //RF done
+    $routeProvider.when('/question/:questionId', {templateUrl: 'templates/question/view-question.html'}); //RF done
     $routeProvider.when('/question/list', {templateUrl: 'templates/question/list-question.html'}); //RF done
 
     //report

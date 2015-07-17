@@ -1,105 +1,85 @@
 <div class="container knowledge-page knowledge-view" ng-controller="KnowledgeCtrl">
+    <div ng-java-controller="controllers.WikiKnowledgeController">
+        <div class="view-employee">
+            <div class="emp-header">
+                <div class="add-point">
+                    <div><i class="fa fa-2x fa-arrow-circle-up up-point"></i></div>
+                    <div><span class="point">12</span></div>
+                    <div><i class="fa fa-2x fa-arrow-circle-down down-point"></i></div>
+                </div>
+                <div class="header-details">
+                    <h1 class="emp-name">
+                        {{ knowledge.title }}
+                    </h1>
 
-    <div class="view-employee">
-        <div class="emp-header">
-            <div class="add-point">
-                <div><i class="fa fa-2x fa-arrow-circle-up up-point"></i></div>
-                <div><span class="point">12</span></div>
-                <div><i class="fa fa-2x fa-arrow-circle-down down-point"></i></div>
-            </div>
-            <div class="header-details">
-                <h1 class="emp-name">
-                    آموزش سامانه
-                </h1>
-
-                <div class="header-other">
-                    عارف شفاعی بجس
+                    <div class="header-other">
+                        {{ knowledge.employeeName }}
                     <span class="date">
                         <i class="fa fa-circle dot-divider"></i>
                         <span>
                         ۱۲ شهریور ۱۳۹۴
                         </span>
                     </span>
+                    </div>
+                    <a href="#">مشاهده گزارش فعالیت</a>
                 </div>
-                <a href="#">مشاهده گزارش فعالیت</a>
-            </div>
-            <div class="admin-buttons" style="margin-top: 18px">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">تغییر دانش</button>
-                    <!--<button type="button" class="btn btn-success" >تایید دانش</button>-->
-                    <button type="button" class="btn btn-success">ایجاد نسخه جدید</button>
-                    <button type="button" class="btn btn-danger">منسوخ کردن دانش</button>
+                <div class="admin-buttons" style="margin-top: -20px">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-primary">تغییر دانش</button>
+                        <!--<button type="button" class="btn btn-success" >تایید دانش</button>-->
+                        <button type="button" class="btn btn-sm btn-success">ایجاد نسخه جدید</button>
+                        <button type="button" class="btn btn-sm btn-danger">منسوخ کردن دانش</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--<div class="horizontal-divider"></div>-->
-        <div class="content">
-            <h4>
-                قدم اول
-            </h4>
-
-            <p>
-                نام کاربری و رمز عبور خود را در سامانه وارد کنید.
-            </p>
-            <h4>
-                قدم دوم
-            </h4>
-
-            <p>
-                در سامانه مدیریت دانش برتر دو نوع کاربر وجود دارد
-            <ol>
-                <li>مدیر</li>
-                <li>کارمند</li>
-            </ol>
-            در صورتی که کاربر مدیر وارد سامانه مدیریت دانش شده باشد، به صفحه‌ی مدیریتی هدایت می‌شود. در این صفحه کلیتی از اتفقات جدید سامانه به
-            </br>
-            اطلاع او می‌رسد. همچنین می‌تواند با انتخاب مواردی که در این صفحه نمایش داده می‌شود، گزارش دقیق‌تری از رخدادهای سامانه بدست آورد.
-            </p>
-        </div>
-        <a class="add-report" style="margin-top: 10px;margin-left:5px;" ng-click="openReportDialog()">
-            گزارش تخلف
-        </a>
-        <div>
-            <h4>ضمایم</h4>
-
-            <div class="attachments">
-                <a href="#">ضمیمه شماره یک</a>
-                <a href="#">ضمیمه شماره دو</a>
+            <!--<div class="horizontal-divider"></div>-->
+            <div class="content" style="margin-top: 30px; ">
+                    {{ knowledge.content }}
             </div>
-        </div>
-        <div>
-            <h4>برچسب‌ها</h4>
+            <a class="add-report" style="margin-top: 10px;margin-left:5px;cursor: pointer;" ng-click="openReportDialog()">
+                گزارش تخلف
+            </a>
 
-            <div class="">
-                <span style="background-color: crimson;border-radius: 3px; color: white; padding: 5px 10px;margin-left: 10px">
-                    آموزشی
+            <div style="margin-top: 30px">
+                <h4>ضمایم</h4>
+
+                <div class="attachments">
+                    <a href="#">
+                        {{ knowledge.attachment }}
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4>برچسب‌ها</h4>
+
+                <div class="">
+                <span ng-repeat="tag in knowledge.tags track by $index"
+                        style="background-color: crimson;border-radius: 3px; color: white; padding: 5px 10px;margin-left: 10px">
+                    {{ tag }}
                 </span>
-                <span style="background-color: crimson;border-radius: 3px; color: white; padding: 5px 10px;margin-left: 10px">
-                    مدیریت دانش
-                </span>
-            </div>
-        </div>
-        <div class="add-use" style="margin-top:16px">
-            <h4>موارد استفاده</h4>
-
-            <form method="post" class="form-inline form" role="form" style="float: right">
-                <div class="form-group">
-                    <input type="text" class="form-control" value="مورد استفاده">
                 </div>
-                <div class="form-group" >
-                    <button type="submit" class="form-control btn btn-primary btn-sm">اضافه کردن</button>
+            </div>
+            <div class="add-use" style="margin-top:16px">
+                <h4>موارد استفاده</h4>
+
+                <form method="post" class="form-inline form" role="form" style="float: right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="مورد استفاده">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="form-control btn btn-primary btn-sm">اضافه کردن</button>
+                    </div>
+                </form>
+                <div class="use-cases">
+                    <span class="rf-tag" ng-repeat="usecase in knowledge.usecases track by $index">
+                        {{ usecase }}
+                    </span>
+
                 </div>
-            </form>
-            <div class="use-cases">
-                <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
-                <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
-                <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
 
             </div>
-
         </div>
     </div>
-
 </div>
 <script type="text/ng-template" id="reportDialog.html">
     <div class="modal-header">
@@ -111,7 +91,7 @@
     </div>
     <div class="modal-body">
         <h6>
-        علت تخلف را ذکر کنید
+            علت تخلف را ذکر کنید
         </h6>
         <textarea rows="5" style="width: 100%">
 

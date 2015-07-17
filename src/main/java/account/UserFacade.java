@@ -19,6 +19,12 @@ public class UserFacade {
             throw new ValidationError(Strings.INVALID_PASSWORD);
         }
 
+        if (user.getUsername().equals("admin")) {
+            user = UserCatalog.getInstance().getManager();
+        } else {
+            user = UserCatalog.getInstance().findEmployeeById(user.getId());
+        }
+
         Context.getInstance().login(user);
     }
 

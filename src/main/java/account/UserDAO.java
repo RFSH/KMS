@@ -150,7 +150,7 @@ public class UserDAO extends BaseDAO<User> {
         String roleId = employee.getRole() == null ? null : employee.getRole().getId();
         String permissionId = employee.getPermissionLevel() == null ? null : employee.getPermissionLevel().getId();
 
-        super.insert(employee, "employees", new String[] {
+        super.insert("employees", new String[] {
                 "id", employee.getId(),
                 "role_id", roleId,
                 "permission_id", permissionId
@@ -160,7 +160,7 @@ public class UserDAO extends BaseDAO<User> {
     public void insert(Manager manager) {
         super.insert(manager);
 
-        super.insert(manager, "managers", new String[] {
+        super.insert("managers", new String[] {
                 "id", manager.getId()
         });
     }
@@ -171,7 +171,7 @@ public class UserDAO extends BaseDAO<User> {
         String roleId = employee.getRole() == null ? null : employee.getRole().getId();
         String permissionId = employee.getPermissionLevel() == null ? null : employee.getPermissionLevel().getId();
 
-        super.update(employee, "employees", getWhereClause(employee), new String[] {
+        super.update("employees", getWhereClause(employee), new String[] {
                 "id", employee.getId(),
                 "role_id", roleId,
                 "permission_id", permissionId
@@ -181,7 +181,7 @@ public class UserDAO extends BaseDAO<User> {
     public void update(Manager manager) {
         super.update(manager);
 
-        super.update(manager, "managers", getWhereClause(manager), new String[]{
+        super.update("managers", getWhereClause(manager), new String[]{
                 "id", manager.getId()
         });
     }

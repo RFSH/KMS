@@ -28,3 +28,38 @@ function permissionToObject(permission) {
         name: permission.getName()
     };
 }
+
+function knowledgeToObject(knowledge) {
+    var tags = [];
+    var usecases = [];
+
+    for (var i = 0; i < knowledge.getTags().size(); i++) {
+        tags.push(knowledge.getTags().get(i).getName());
+    }
+
+    return {
+        id: knowledge.getId(),
+        employee: knowledge.getEmployee(),
+        employeeId: knowledge.getEmployee().getId(),
+        employeeName: knowledge.getEmployee().getFullName(),
+        tags: tags
+    };
+}
+
+function wikiKnowledgeToObject(knowledge) {
+    var ret = knowledgeToObject(knowledge);
+    ret.usecases = [];
+
+    for (var i = 0; i < knowledge.getUseCaseList().size(); i++) {
+        ret.usecases.push(knowledge.getUseCaseList().get(i));
+    }
+
+    ret.title = knowledge.getTitle();
+    ret.content = knowledge.getContent();
+    ret.attachment = knowledge.getAttachment();
+    ret.isApproved = knowledge.isApproved();
+    ret.isDeprecated = knowledge.isDeprecated();
+
+    return ret;
+}
+

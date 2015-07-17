@@ -80,6 +80,10 @@ public class UserCatalog {
         new UserDAO().update(user);
     }
 
+    public Manager getManager() {
+        return new UserDAO().getManager("username", "admin");
+    }
+
     public static UserCatalog getInstance() {
         if (instance == null) {
             instance = new UserCatalog();

@@ -17,7 +17,7 @@ public abstract class BaseDAO<T> {
 
     public abstract T getObjectFromResult(ResultSet result);
 
-    public void insert(T object, String table, Object[] values) {
+    public void insert(String table, Object[] values) {
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder.append("INSERT INTO ").append(table).append("(");
         for (int i = 0; i < values.length; i += 2) {
@@ -54,10 +54,10 @@ public abstract class BaseDAO<T> {
     }
 
     public void insert(T object) {
-        insert(object, getTableName(), getColumnValues(object));
+        insert(getTableName(), getColumnValues(object));
     }
 
-    public void update(T object, String table, String whereClause, Object[] values) {
+    public void update(String table, String whereClause, Object[] values) {
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder.append("UPDATE ").append(table).append(" SET ");
         for (int i = 0; i < values.length; i += 2) {
@@ -85,7 +85,25 @@ public abstract class BaseDAO<T> {
     }
 
     public void update(T object) {
-        update(object, getTableName(), getWhereClause(object), getColumnValues(object));
+        update(getTableName(), getWhereClause(object), getColumnValues(object));
+    }
+
+    public void delete(String table, String whereClause) {
+        StringBuilder sqlBuilder = new StringBuilder();
+        sqlBuilder.append("DELETE ").append(table)
+                .append(" WHERE ").append(whereClause);
+
+        String sql = sqlBuilder.toString();
+        try {
+            Statement statement = DatabaseConnecter.getInstance().getConnection().createStatement();
+            statement.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(T object) {
+        delete(getTableName(), getWhereClause(object));
     }
 
     public ResultSet query(String table, String column, String value) {
