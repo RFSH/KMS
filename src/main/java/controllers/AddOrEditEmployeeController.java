@@ -48,6 +48,11 @@ public class AddOrEditEmployeeController extends JavaNGController {
     }
 
     @Scope
+    public Employee getEmployee(String employeeId) {
+        return UserCatalog.getInstance().findEmployeeById(employeeId);
+    }
+
+    @Scope
     public List<Role> getRoles() {
         return RoleCatalog.getInstance().getRoles();
     }

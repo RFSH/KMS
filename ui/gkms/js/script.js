@@ -36,8 +36,9 @@ kmsApp.config(function($routeProvider) {
     //user
     $routeProvider.when('/', {templateUrl: 'templates/user/login.html'}); //RF done
     $routeProvider.when('/employee/create', {templateUrl: 'templates/user/create-employee.html'}); //RF done
+    $routeProvider.when('/employee/edit/:employeeId', {templateUrl: 'templates/user/create-employee.html'}); //RF done
     $routeProvider.when('/employee/list', {templateUrl: 'templates/user/list-employee.html'}); //RF done
-    $routeProvider.when('/employee/view', {templateUrl: 'templates/user/view-employee.html'}); //RF done
+    $routeProvider.when('/employee/:employeeId', {templateUrl: 'templates/user/view-employee.html'}); //RF done
 
 
 
@@ -93,34 +94,42 @@ kmsApp.controller('AdminSettingsCtrl', function ($scope) {
     };
 });;var kmsApp = angular.module('kms');
 
-kmsApp.controller('AddEmployeeCtrl', function ($scope, $modal, $ngJava) {
+kmsApp.controller('AddEmployeeCtrl', function ($scope, $modal, $routeParams, $ngJava) {
     $scope.data = {};
     $scope.error = "";
 
     $ngJava.ready(function() {
+        $scope.employeeId = $routeParams.employeeId;
+        $scope.update = ($scope.employeeId !== undefined);
+
         var roles = $scope.getRoles();
         $scope.roles = [];
         for (var i = 0; i < roles.size(); i++) {
-            $scope.roles.push({
-                id: roles.get(i).getId(),
-                name: roles.get(i).getName()
-            });
+            $scope.roles.push(roleToObject(roles.get(i)));
         }
-        $scope.data.role = $scope.roles[0].id;
 
         var permissions = $scope.getPermissionLevels();
         $scope.permissions = [];
         for (var j = 0; j < permissions.size(); j++) {
-            $scope.permissions.push({
-                id: permissions.get(j).getId(),
-                name: permissions.get(j).getName()
-            });
+            $scope.permissions.push(permissionToObject(permissions.get(j)));
         }
-        $scope.data.permissionLevel = $scope.permissions[0].id;
+
+        if ($scope.update) {
+            var employee = $scope.getEmployee($scope.employeeId);
+            var obj = employeeToObject(employee);
+            obj.role = obj.roleId;
+            obj.permissionLevel = obj.permissionId;
+            obj.passwordConfirm = obj.password;
+            $scope.data = obj;
+        } else {
+            $scope.data.role = $scope.roles[0].id;
+            $scope.data.permissionLevel = $scope.permissions[0].id;
+        }
+
     });
 
     $scope.submit = function() {
-        $scope.error = $scope.addOrUpdateEmployee(false, $scope.data);
+        $scope.error = $scope.addOrUpdateEmployee($scope.update, $scope.data);
     };
 
 });
@@ -150,21 +159,30 @@ kmsApp.controller('EmployeeListCtrl', function ($scope, $modal, $ngJava) {
         var employees = $scope.searchEmployees($scope.data.query, $scope.data.role);
         $scope.employees = [];
         for (var i = 0; i < employees.size(); i++) {
-            console.log(i);
-            $scope.employees.push({
-                id: employees.get(i).getId(),
-                username: employees.get(i).getUsername(),
-                name: employees.get(i).getFullName(),
-                email: employees.get(i).getEmail(),
-                role: employees.get(i).getRole().getName(),
-                permission: employees.get(i).getPermissionLevel().getName()
-            });
+            $scope.employees.push(employeeToObject(employees.get(i)));
         }
     };
 
 });
 
-kmsApp.controller('EmployeeCtrl', function ($scope, $modal) {
+kmsApp.controller('EmployeeCtrl', function ($scope, $routeParams, $modal, $ngJava) {
+    var employeeId = $routeParams.employeeId;
+
+    $ngJava.ready(function() {
+        var employee = $scope.getEmployee(employeeId);
+        $scope.employee = employeeToObject(employee);
+
+        $scope.stats = $scope.getEmployeeStats(employeeId);
+    });
+
+    $scope.editEmployee = function () {
+        window.location.hash = '/employee/edit/' + employeeId;
+    };
+
+    $scope.sendMail = function() {
+        window.open('mailto:{{ employee.email }}', '_blank');
+    };
+
     $scope.openDeleteConfirm = function () {
         $modal.open({
             templateUrl: 'confirmDialog.html',
@@ -213,4 +231,33 @@ kmsApp.controller('LoginController', function ($scope) {
     $scope.submit = function () {
         $scope.error = $scope.login($scope.data.username, $scope.data.password);
     };
-});
+});;function employeeToObject(employee) {
+    return {
+        id: employee.getId(),
+        username: employee.getUsername(),
+        name: employee.getFullName(),
+        firstName: employee.getFirstName(),
+        lastName: employee.getLastName(),
+        nationalId: employee.getNationalId(),
+        password: employee.getPassword(),
+        email: employee.getEmail(),
+        roleName: employee.getRole().getName(),
+        roleId: employee.getRole().getId(),
+        permissionName: employee.getPermissionLevel().getName(),
+        permissionId: employee.getPermissionLevel().getId()
+    };
+}
+
+function roleToObject(role) {
+    return {
+        id: role.getId(),
+        name: role.getName()
+    };
+}
+
+function permissionToObject(permission) {
+    return {
+        id: permission.getId(),
+        name: permission.getName()
+    };
+}

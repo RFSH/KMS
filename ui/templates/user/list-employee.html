@@ -43,7 +43,7 @@
                     <tbody>
                     <tr ng-repeat="employee in employees track by employee.id">
                         <td>
-                            <a href="#">{{employee.username}}</a>
+                            <a href="#/employee/{{employee.id}}">{{employee.username}}</a>
                         </td>
                         <td>
                             {{employee.name}}
@@ -52,10 +52,10 @@
                             <a href="mailto:{{employee.email}}">{{employee.email}}</a>
                         </td>
                         <td>
-                            {{employee.role}}
+                            {{employee.roleName}}
                         </td>
                         <td>
-                            {{employee.permission}}
+                            {{employee.permissionName}}
                         </td>
                     </tr>
                     </tbody>

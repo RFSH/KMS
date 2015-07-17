@@ -1,135 +1,142 @@
 <div class="container" ng-controller="EmployeeCtrl">
+    <div ng-java-controller="controllers.EmployeeProfileController">
+        <div class="view-employee">
+            <div class="emp-header">
+                <img class="user-image" src="../../gkms/images/user.png"/>
 
-    <div class="view-employee">
-        <div class="emp-header">
-            <img class="user-image" src="../../gkms/images/user.png"/>
+                <div class="header-details">
+                    <h1 class="emp-name">
+                        {{ employee.name }}
+                    </h1>
 
-            <div class="header-details">
-                <h1 class="emp-name">
-                    عارف شفاعی بجستان
-                </h1>
+                    <div class="header-other">
+                        <span>
+                            {{ employee.roleName }}
+                        </span>
+                        <i class="fa fa-circle dot-divider"></i>
+                        <span>
+                            {{ employee.username }}
+                        </span>
 
-                <div class="header-other">
-                    <span>مدیر کل</span>
-                    <i class="fa fa-circle dot-divider"></i>
-                    <span>arefsh</span>
-
-                    <div class="avail">
-                        سطح دسترسی:
-                        <span>2</span>
+                        <div class="avail">
+                            سطح دسترسی:
+                            <span>
+                                {{ employee.permissionName }}
+                            </span>
+                        </div>
+                    </div>
+                    <button ng-click="sendMail()" class="btn btn-success">
+                        ارسال
+                        پست الکترونیکی
+                    </button>
+                </div>
+                <div class="emp-points">
+                    <div>
+                        <i class="fa fa-share-alt"></i>
+                        تعداد دانش‌های به اشتراک گذاشته:
+                        <span class="num badge">{{ stats.wikiKnowledgeCount }}</span>
+                    </div>
+                    <div>
+                        <i class="fa fa-question-circle"></i>
+                        تعداد سوالات پرسیده شده:
+                        <span class="num badge">{{ stats.questionKnowledgeCount }} </span>
+                    </div>
+                    <div>
+                        <i class="fa fa-arrow-circle-up"></i>
+                        مجموع امتیازهای دریافت کرده:
+                        <span class="num badge">{{ stats.voteSum }}</span>
+                    </div>
+                    <div>
+                        <i class="fa fa-plus-circle"></i>
+                        تعداد دفعات امتیازدهی:
+                        <span class="num badge">{{ stats.voteNum }}</span>
                     </div>
                 </div>
-                <button onclick="window.open('mailto:aref.shafaei@gmail.com','_blank')" class="btn btn-success">ارسال
-                    پست الکترونیکی
-                </button>
-            </div>
-            <div class="emp-points">
-                <div>
-                    <i class="fa fa-share-alt"></i>
-                    تعداد دانش‌های به اشتراک گذاشته:
-                    <span class="num badge">23</span>
-                </div>
-                <div>
-                    <i class="fa fa-question-circle"></i>
-                    تعداد سوالات پرسیده شده:
-                    <span class="num badge">23</span>
-                </div>
-                <div>
-                    <i class="fa fa-arrow-circle-up"></i>
-                    مجموع امتیازهای دریافت کرده:
-                    <span class="num badge">1000</span>
-                </div>
-                <div>
-                    <i class="fa fa-plus-circle"></i>
-                    تعداد دفعات امتیازدهی:
-                    <span class="num badge">33</span>
+                <!--<div class="vertical-divider"></div>-->
+                <div class="admin-buttons">
+                    <!--<h4>امکانات مدیریتی</h4>-->
+                    <button ng-click="editEmployee()" type="button" class="btn btn-primary">تغییر مشخصات</button>
+                    <button type="button" class="btn btn-danger" ng-click="openDeleteConfirm()">حذف کارمند</button>
                 </div>
             </div>
-            <!--<div class="vertical-divider"></div>-->
-            <div class="admin-buttons">
-                <!--<h4>امکانات مدیریتی</h4>-->
-                <button type="button" class="btn btn-primary">تغییر مشخصات</button>
-                <button type="button" class="btn btn-danger" ng-click="openDeleteConfirm()">حذف کارمند</button>
-            </div>
-        </div>
-        <div class="horizontal-divider"></div>
-        <div class="emp-details">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    فعالیت‌های اخیر
-                </div>
-                <div class="panel-body">
-                    <table class="table-responsive table table-hover">
-                        <thead>
-                        <tr>
-                            <td>تاریخ</td>
-                            <td>ساعت</td>
-                            <td>عنوان</td>
-                            <td>مشاهده</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>۱۲ اردیبهشت ۱۳۹۴</td>
-                            <td>۱۵:۳۰</td>
-                            <td>
-                                افزودن سوال
-                            </td>
-                            <td>
-                                <a href="#">مشاهده</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>۱۲ اردیبهشت ۱۳۹۴</td>
-                            <td>۱۵:۳۰</td>
-                            <td>
-                                افزودن دانش
-                            </td>
-                            <td>
-                                <a href="#">مشاهده</a>
-                            </td>
-                        </tr>
-                        <!--<tr>-->
+            <div class="horizontal-divider"></div>
+            <div class="emp-details">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        فعالیت‌های اخیر
+                    </div>
+                    <div class="panel-body">
+                        <table class="table-responsive table table-hover">
+                            <thead>
+                            <tr>
+                                <td>تاریخ</td>
+                                <td>ساعت</td>
+                                <td>عنوان</td>
+                                <td>مشاهده</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>۱۲ اردیبهشت ۱۳۹۴</td>
+                                <td>۱۵:۳۰</td>
+                                <td>
+                                    افزودن سوال
+                                </td>
+                                <td>
+                                    <a href="#">مشاهده</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>۱۲ اردیبهشت ۱۳۹۴</td>
+                                <td>۱۵:۳۰</td>
+                                <td>
+                                    افزودن دانش
+                                </td>
+                                <td>
+                                    <a href="#">مشاهده</a>
+                                </td>
+                            </tr>
+                            <!--<tr>-->
                             <!--<td>۱۲ اردیبهشت ۱۳۹۴</td>-->
                             <!--<td>۱۴:۳۰</td>-->
                             <!--<td>-->
-                                <!--منسوخ کردن دانش-->
+                            <!--منسوخ کردن دانش-->
                             <!--</td>-->
                             <!--<td>-->
-                                <!--<a href="#">مشاهده</a>-->
+                            <!--<a href="#">مشاهده</a>-->
                             <!--</td>-->
-                        <!--</tr>-->
-                        <tr>
-                            <td>۱۲ اردیبهشت ۱۳۹۴</td>
-                            <td>۱۳:۳۰</td>
-                            <td>
-                                ایجاد نسخه جدید از دانش
-                            </td>
-                            <td>
-                                <a href="#">مشاهده</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>۱۰ اردیبهشت ۱۳۹۴</td>
-                            <td>۱۰:۳۰</td>
-                            <td>
-                                پاسخ به سوال
-                            </td>
-                            <td>
-                                <a href="#">مشاهده</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <a href="#">مشاهده گزارش کامل</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            <!--</tr>-->
+                            <tr>
+                                <td>۱۲ اردیبهشت ۱۳۹۴</td>
+                                <td>۱۳:۳۰</td>
+                                <td>
+                                    ایجاد نسخه جدید از دانش
+                                </td>
+                                <td>
+                                    <a href="#">مشاهده</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>۱۰ اردیبهشت ۱۳۹۴</td>
+                                <td>۱۰:۳۰</td>
+                                <td>
+                                    پاسخ به سوال
+                                </td>
+                                <td>
+                                    <a href="#">مشاهده</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <a href="#">مشاهده گزارش کامل</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
+                </div>
             </div>
         </div>
     </div>
-
 </div>

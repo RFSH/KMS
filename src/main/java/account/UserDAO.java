@@ -30,7 +30,7 @@ public class UserDAO extends BaseDAO<User> {
 
     @Override
     public String getWhereClause(User user) {
-        return "id='" + user.getId();
+        return "id='" + user.getId() + "'";
     }
 
     private void populateUser(ResultSet result, User user) throws SQLException {

@@ -36,8 +36,9 @@ kmsApp.config(function($routeProvider) {
     //user
     $routeProvider.when('/', {templateUrl: 'templates/user/login.html'}); //RF done
     $routeProvider.when('/employee/create', {templateUrl: 'templates/user/create-employee.html'}); //RF done
+    $routeProvider.when('/employee/edit/:employeeId', {templateUrl: 'templates/user/create-employee.html'}); //RF done
     $routeProvider.when('/employee/list', {templateUrl: 'templates/user/list-employee.html'}); //RF done
-    $routeProvider.when('/employee/view', {templateUrl: 'templates/user/view-employee.html'}); //RF done
+    $routeProvider.when('/employee/:employeeId', {templateUrl: 'templates/user/view-employee.html'}); //RF done
 
 
 
