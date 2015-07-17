@@ -45,6 +45,24 @@ public class KnowledgeCatalog {
         new KnowledgeDAO().insert(knowledge);
     }
 
+    public void addQuestionKnowledge(String title, String content, List<String> tags) throws ValidationError {
+        QuestionKnowledge knowledge = new QuestionKnowledge();
+        knowledge.setTitle(title);
+        knowledge.setContent(content);
+        for (String tagName : tags) {
+            Tag tag = TagCatalog.getInstance().getTagByName(tagName);
+            if (tag == null) {
+                tag = TagCatalog.getInstance().addDefaultTag(tagName);
+            }
+            knowledge.getTags().add(tag);
+        }
+        knowledge.setId(IdGenerator.generateID());
+
+        knowledge.setOwner((Employee) Context.getInstance().getLoggedInUser());
+        knowledge.validate();
+        new KnowledgeDAO().insert(knowledge);
+    }
+
     public void updateKnowledge(Knowledge knowledge) throws ValidationError {
         knowledge.validate();
         new KnowledgeDAO().update(knowledge);
@@ -61,6 +79,14 @@ public class KnowledgeCatalog {
             return new KnowledgeDAO().getWikiKnowledges();
         }
         return new KnowledgeDAO().getWikiKnowledges("title", query.getQuery());
+    }
+
+    public List<QuestionKnowledge> findQuestionKnowledges(QuestionKnowledgeQuery query) {
+        // TODO fix question knowledge search
+        if (query.getQuery() == null || query.getQuery().isEmpty()) {
+            return new KnowledgeDAO().getQuestionKnowledges();
+        }
+        return new KnowledgeDAO().getQuestionKnowledges("title", query.getQuery());
     }
 
     public static KnowledgeCatalog getInstance() {

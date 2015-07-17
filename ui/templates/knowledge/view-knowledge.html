@@ -1,4 +1,4 @@
-<div class="container knowledge-page knowledge-view" ng-controller="KnowledgeCtrl">
+<div class="container knowledge-page knowledge-view" ng-controller="WikiKnowledgeCtrl">
     <div ng-java-controller="controllers.WikiKnowledgeController">
         <div class="view-employee">
             <div class="emp-header">
@@ -36,8 +36,7 @@
                 </div>
             </div>
             <!--<div class="horizontal-divider"></div>-->
-            <div class="content" style="margin-top: 30px; ">
-                    {{ knowledge.content }}
+            <div class="content" style="margin-top: 30px; " ng-bind-html="knowledge.content">
             </div>
             <a class="add-report" style="margin-top: 10px;margin-left:5px;cursor: pointer;" ng-click="openReportDialog()">
                 گزارش تخلف

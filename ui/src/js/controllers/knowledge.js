@@ -59,7 +59,7 @@ kmsApp.controller('WikiListCtrl', function ($scope, $ngJava) {
 });
 
 
-kmsApp.controller('KnowledgeCtrl', function ($scope, $routeParams, $modal, $ngJava) {
+kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $ngJava) {
     $scope.knowledge = {};
     $scope.usecase = "";
 

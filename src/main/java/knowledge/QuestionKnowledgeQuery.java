@@ -4,13 +4,17 @@ import java.util.Date;
 
 public class QuestionKnowledgeQuery{
     String query;
-    Date from_date; //TODO Date oke?
-    Date to_date;
+    Date fromDate;
+    Date toDate;
 
-    public QuestionKnowledgeQuery(String query, Date from_date, Date to_date) {
+    public QuestionKnowledgeQuery() {
+
+    }
+
+    public QuestionKnowledgeQuery(String query, Date fromDate, Date toDate) {
         this.query = query;
-        this.from_date = from_date;
-        this.to_date = to_date;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
     }
 
     /* Getter and Setters */
@@ -23,19 +27,19 @@ public class QuestionKnowledgeQuery{
         this.query = query;
     }
 
-    public Date getFrom_date() {
-        return from_date;
+    public Date getFromDate() {
+        return fromDate;
     }
 
-    public void setFrom_date(Date from_date) {
-        this.from_date = from_date;
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
     }
 
-    public Date getTo_date() {
-        return to_date;
+    public Date getToDate() {
+        return toDate;
     }
 
-    public void setTo_date(Date to_date) {
-        this.to_date = to_date;
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
     }
 }

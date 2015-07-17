@@ -25,8 +25,8 @@ kmsApp.config(function($routeProvider) {
 
     //question
     $routeProvider.when('/question/create', {templateUrl: 'templates/question/create-question.html'}); //HaD
-    $routeProvider.when('/question/:questionId', {templateUrl: 'templates/question/view-question.html'}); //RF done
     $routeProvider.when('/question/list', {templateUrl: 'templates/question/list-question.html'}); //RF done
+    $routeProvider.when('/question/:questionId', {templateUrl: 'templates/question/view-question.html'}); //RF done
 
     //report
     $routeProvider.when('/report/activities', {templateUrl: 'templates/report/activities-report.html'}); //RF done
@@ -256,7 +256,7 @@ kmsApp.controller('WikiListCtrl', function ($scope, $ngJava) {
 });
 
 
-kmsApp.controller('KnowledgeCtrl', function ($scope, $routeParams, $modal, $ngJava) {
+kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $ngJava) {
     $scope.knowledge = {};
     $scope.usecase = "";
 
@@ -325,45 +325,117 @@ kmsApp.controller('LoginController', function ($scope) {
     };
 });;var kmsApp = angular.module('kms');
 
-kmsApp.controller('AddEditWikiCtrl', function ($scope, $routeParams, $modal, $ngJava) {
+kmsApp.config(function ($provide) {
+    // this demonstrates how to register a new tool and add it to the default toolbar
+    $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function (taRegisterTool, taOptions) { // $delegate is the taOptions we are decorating
+        taOptions.toolbar = [
+            ['h1', 'h2', 'h3', 'h4', 'h5', 'pre', 'quote', 'bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'insertImage','insertLink']
+        ];
+        return taOptions;
+    }]);
+});
+
+kmsApp.controller('AddOrEditQuestionKnowledgeCtrl', function ($scope, $routeParams, $ngJava) {
     $scope.data = {};
-
+    $scope.tags = [];
     $ngJava.ready(function() {
+        $scope.knowledgeId = $routeParams.knowledgeId;
+        $scope.update = ($scope.knowledgeId !== undefined);
 
+        if ($scope.update) {
+            var knowledge = $scope.getQuestionKnowledge($scope.knowledgeId);
+            var obj = questionKnowledgeToObject(knowledge);
+            $scope.data = obj;
+
+            for (var i = 0; i < knowledge.getTags().size(); i++) {
+                $scope.tags.push(knowledge.getTags().get(i).getName());
+            }
+        }
     });
 
     $scope.submit = function() {
-
+        $scope.data.tags = [];
+        for (var i = 0; i < $scope.tags.length; i++) {
+            $scope.data.tags.push($scope.tags[i].text);
+        }
+        $scope.addOrUpdateQuestionKnowledge($scope.update, $scope.data);
     };
 });
 
-kmsApp.controller('QuestionCtrl', function ($scope, $routeParams, $modal, $ngJava) {
-    var questionId = $routeParams.questionId;
+kmsApp.controller('QuestionListCtrl', function ($scope, $ngJava) {
+    $scope.data = {
+        query: "",
+        fromDate: "",
+        toDate: ""
+    };
+    $scope.knowledges = [];
 
     $ngJava.ready(function() {
-        var employee = $scope.getQuestion(questionId);
-        $scope.employee = employeeToObject(employee);
-
-        $scope.stats = $scope.getEmployeeStats(employeeId);
+        $scope.search();
     });
 
-    $scope.editEmployee = function () {
-        window.location.hash = '/employee/edit/' + employeeId;
+    $scope.search = function() {
+        var knowledges = $scope.searchQuestionKnowledge($scope.data.query, $scope.data.fromDate, $scope.data.toDate);
+        $scope.knowledges = [];
+        for (var i = 0; i < knowledges.size(); i++) {
+            $scope.knowledges.push(questionKnowledgeToObject(knowledges.get(i)));
+        }
+    };
+});
+
+
+kmsApp.controller('QuestionKnowledgeCtrl', function ($scope, $routeParams, $modal, $ngJava) {
+    $scope.knowledge = {};
+    $scope.answer = {};
+    $scope.answers = [];
+    $scope.usecase = "";
+
+    var javaKnowledge = null;
+
+    $ngJava.ready(function() {
+        $scope.knowledgeId = $routeParams.questionId;
+        var knowledge = $scope.getQuestionKnowledge($scope.knowledgeId);
+        javaKnowledge = knowledge;
+        var knowledgeData = questionKnowledgeToObject(knowledge);
+        if (knowledgeData.attachment === null || knowledgeData.attachment === undefined || knowledgeData.attachment === "null") {
+            knowledgeData.attachment = "";
+        }
+
+        var answers = $scope.getAnswers($scope.knowledgeId);
+        $scope.answers = [];
+        for (var i = 0; i < answers.size(); i++) {
+            $scope.answers.push(answerKnowledgeToObject(answers.get(i)));
+        }
+
+        $scope.knowledge = knowledgeData;
+    });
+
+    $scope.voteUp = function(knowledge) {
+        knowledge.voteSum = $scope.addVote(knowledge.id, 1);
     };
 
-    $scope.sendMail = function() {
-        window.open('mailto:{{ employee.email }}', '_blank');
+    $scope.voteDown = function(knowledge) {
+        knowledge.voteSum = $scope.addVote(knowledge.id, -1);
     };
 
-    $scope.openDeleteConfirm = function () {
+    $scope.approve = function() {
+        $scope.approveOrDisapprove($scope.knowledgeId, 1);
+        $scope.knowledge.isApproved = true;
+    };
+
+    $scope.submitAnswer = function() {
+        var content = $scope.answer.content;
+        if (content === undefined || content === null || content === "") {
+            return;
+        }
+
+        var answer = $scope.addAnswer($scope.knowledgeId, $scope.answer.content);
+        $scope.answers.push(answerKnowledgeToObject(answer));
+    };
+
+    $scope.openReportDialog = function () {
         $modal.open({
-            templateUrl: 'confirmDialog.html',
-            controller: function ($scope) {
-                $scope.title = "حذف کارمند";
-                $scope.message = "آیا می خواهید کارمند را حذف کنید؟";
-                //$scope.accept
-                //$scope.reject
-            }
+            templateUrl: 'reportDialog.html'
         });
     };
 });;function employeeToObject(employee) {
@@ -410,7 +482,7 @@ function knowledgeToObject(knowledge) {
         employeeId: knowledge.getOwner().getId(),
         employeeName: knowledge.getOwner().getFullName(),
         tags: tags,
-        voteSum: knowledge.getVoteSum(),
+        voteSum: knowledge.getVoteSum()
     };
 }
 
@@ -431,3 +503,17 @@ function wikiKnowledgeToObject(knowledge) {
     return ret;
 }
 
+function questionKnowledgeToObject(knowledge) {
+    var ret = knowledgeToObject(knowledge);
+
+    ret.title = knowledge.getTitle();
+    ret.content = knowledge.getContent();
+
+    return ret;
+}
+
+function answerKnowledgeToObject(knowledge) {
+    var ret = knowledgeToObject(knowledge);
+    ret.content = knowledge.getContent();
+    return ret;
+}

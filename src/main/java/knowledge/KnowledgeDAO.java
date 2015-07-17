@@ -80,7 +80,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
     public QuestionKnowledge getQuestionKnowledgeFromResult(ResultSet resultSet) {
         QuestionKnowledge knowledge = new QuestionKnowledge();
         try {
-            knowledge.setId(resultSet.getString("id"));
+            populateKnowledge(knowledge, resultSet);
             knowledge.setTitle(resultSet.getString("title"));
             knowledge.setContent(resultSet.getString("content"));
         } catch (SQLException e) {
@@ -92,7 +92,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
     public AnswerKnowledge getAnswerKnowledgeFromResult(ResultSet resultSet) {
         AnswerKnowledge knowledge = new AnswerKnowledge();
         try {
-            knowledge.setId(resultSet.getString("id"));
+            populateKnowledge(knowledge, resultSet);
             knowledge.setContent(resultSet.getString("content"));
 
             String questionId = resultSet.getString("question_id");
@@ -144,7 +144,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
     }
 
     public QuestionKnowledge getQuestionKnowledge(String column, String value) {
-        ResultSet result = query("knowledges JOIN questionknowledges ON knowledges.id=questionknowledges.id", column, value);
+        ResultSet result = query("knowledges JOIN questions ON knowledges.id=questions.id", column, value);
         try {
             if (result.next()) {
                 return getQuestionKnowledgeFromResult(result);
@@ -157,7 +157,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
     }
 
     public List<QuestionKnowledge> getQuestionKnowledges(String column, String value) {
-        ResultSet result = query("knowledges JOIN questionknowledges ON knowledges.id=questionknowledges.id", column, value);
+        ResultSet result = query("knowledges JOIN questions ON knowledges.id=questions.id", column, value);
         List<QuestionKnowledge> knowledges = new ArrayList<>();
         try {
             while (result.next()) {
@@ -170,7 +170,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
     }
 
     public List<QuestionKnowledge> getQuestionKnowledges() {
-        ResultSet result = query("knowledges JOIN questionknowledges ON knowledges.id=questionknowledges.id", null);
+        ResultSet result = query("knowledges JOIN questions ON knowledges.id=questions.id", null);
         List<QuestionKnowledge> knowledges = new ArrayList<>();
         try {
             while (result.next()) {
@@ -183,7 +183,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
     }
 
     public AnswerKnowledge getAnswerKnowledge(String column, String value) {
-        ResultSet result = query("knowledges JOIN answerknowledges ON knowledges.id=answerknowledges.id", column, value);
+        ResultSet result = query("knowledges JOIN answers ON knowledges.id=answers.id", column, value);
         try {
             if (result.next()) {
                 return getAnswerKnowledgeFromResult(result);
@@ -196,7 +196,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
     }
 
     public List<AnswerKnowledge> getAnswerKnowledges(String column, String value) {
-        ResultSet result = query("knowledges JOIN answerknowledges ON knowledges.id=answerknowledges.id", column, value);
+        ResultSet result = query("knowledges JOIN answers ON knowledges.id=answers.id", column, value);
         List<AnswerKnowledge> knowledges = new ArrayList<>();
         try {
             while (result.next()) {

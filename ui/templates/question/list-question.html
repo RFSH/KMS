@@ -1,103 +1,82 @@
-<div class="container">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            فهرست سوالات
+<div class="container" ng-controller="QuestionListCtrl">
+    <div ng-java-controller="controllers.QuestionKnowledgeListController">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                فهرست سوالات
+            </div>
+            <div class="panel-body">
+                <form method="post" class="form-inline search-form" role="search">
+                    <div class="form-group">
+                        <input class="form-control" name="content" placeholder="متن...">
+                    </div>
+                    <div class="form-group dateinput">
+                        <input class="form-control" name="fromdate" placeholder="از تاریخ">
+                    </div>
+                    <div class="form-group dateinput">
+                        <input class="form-control" name="todate" placeholder="تا تاریخ">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option value="0">وضعیت</option>
+                            <option value="1">تایید شده</option>
+                            <option value="2">تایید نشده</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">جستجو</button>
+                    </div>
+                </form>
+                <table class="table-responsive table table-hover rf-table">
+                    <thead>
+                    <tr>
+                        <td>
+                            عنوان
+                        </td>
+                        <td>
+                            نویسنده
+                        </td>
+                        <td>
+                            برچسب‌ها
+                        </td>
+                        <td>
+                            امتیاز
+                        </td>
+                        <td>
+                            تعداد جواب
+                        </td>
+                        <td>
+                            زمان ایجاد
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="question in knowledges track by question.id">
+                        <td>
+                            <a ng-href="#/question/{{question.id}}">
+                                {{ question.title }}
+                            </a>
+                        </td>
+                        <td>
+                                {{ question.employeeName }}
+                        </td>
+                        <td>
+                            <span class="rf-tag" ng-repeat="tag in question.tags track by $index">
+                                {{ tag }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="label label-success">{{ question.voteSum }}</span>
+                        </td>
+                        <td>
+                            {{ question.voteNum }}
+                        </td>
+                        <td>
+                            ۵ مهر ۱۳۹۵
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="panel-body">
-            <form method="post" class="form-inline search-form" role="search">
-                <div class="form-group">
-                    <input class="form-control" name="content" placeholder="متن...">
-                </div>
-                <div class="form-group dateinput">
-                    <input class="form-control" name="fromdate" placeholder="از تاریخ">
-                </div>
-                <div class="form-group dateinput">
-                    <input class="form-control" name="todate" placeholder="تا تاریخ">
-                </div>
-                <div class="form-group">
-                    <select class="form-control">
-                        <option value="0" >وضعیت</option>
-                        <option value="1">تایید شده</option>
-                        <option value="2">تایید نشده</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">جستجو</button>
-                </div>
-            </form>
-            <table class="table-responsive table table-hover rf-table">
-                <thead>
-                <tr>
-                    <td>
-                        عنوان
-                    </td>
-                    <td>
-                        نویسنده
-                    </td>
-                    <td>
-                        برچسب‌ها
-                    </td>
-                    <td>
-                        امتیاز
-                    </td>
-                    <td>
-                        تعداد جواب
-                    </td>
-                    <td>
-                        زمان ایجاد
-                    </td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <a href="#">
-                            سوال شماره یک
-                        </a>
-                    </td>
-                    <td>
-                        عارف شفاعی
-                    </td>
-                    <td>
-                        <span class="rf-tag">یک</span><span class="rf-tag">عارف شفاعی بجستان</span>
-                        <span class="rf-tag">یک</span><span class="rf-tag">یک</span>
-                    </td>
-                    <td>
-                        <span class="label label-success">12</span>
-                    </td>
-                    <td>
-                        5
-                    </td>
-                    <td>
-                        ۵ مهر ۱۳۹۵
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#">
-                            سوال شماره دو
-                        </a>
-                    </td>
-                    <td>
-                        هادی ذوالفقاری
-                    </td>
-                    <td>
-                        <span class="rf-tag">یک</span><span class="rf-tag">هادی</span>
-                        <span class="rf-tag">یک</span><span class="rf-tag">بد</span>
-                    </td>
-                    <td>
-                        <span class="label label-danger">12</span>
-                    </td>
-                    <td>
-                        5
-                    </td>
-                    <td>
-                        ۲ شهریور ۱۳۹۳
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
     </div>
 </div>

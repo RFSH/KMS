@@ -25,8 +25,8 @@ kmsApp.config(function($routeProvider) {
 
     //question
     $routeProvider.when('/question/create', {templateUrl: 'templates/question/create-question.html'}); //HaD
-    $routeProvider.when('/question/:questionId', {templateUrl: 'templates/question/view-question.html'}); //RF done
     $routeProvider.when('/question/list', {templateUrl: 'templates/question/list-question.html'}); //RF done
+    $routeProvider.when('/question/:questionId', {templateUrl: 'templates/question/view-question.html'}); //RF done
 
     //report
     $routeProvider.when('/report/activities', {templateUrl: 'templates/report/activities-report.html'}); //RF done

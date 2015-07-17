@@ -42,7 +42,7 @@ function knowledgeToObject(knowledge) {
         employeeId: knowledge.getOwner().getId(),
         employeeName: knowledge.getOwner().getFullName(),
         tags: tags,
-        voteSum: knowledge.getVoteSum(),
+        voteSum: knowledge.getVoteSum()
     };
 }
 
@@ -63,3 +63,17 @@ function wikiKnowledgeToObject(knowledge) {
     return ret;
 }
 
+function questionKnowledgeToObject(knowledge) {
+    var ret = knowledgeToObject(knowledge);
+
+    ret.title = knowledge.getTitle();
+    ret.content = knowledge.getContent();
+
+    return ret;
+}
+
+function answerKnowledgeToObject(knowledge) {
+    var ret = knowledgeToObject(knowledge);
+    ret.content = knowledge.getContent();
+    return ret;
+}

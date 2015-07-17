@@ -23,7 +23,11 @@ public class Knowledge {
             vote.setUpOrDown(upOrDown);
             dao.insert(vote);
         } else if (vote.getUpOrDown() != upOrDown) {
-            vote.setUpOrDown(upOrDown);
+            if (vote.getUpOrDown() == 0) {
+                vote.setUpOrDown(upOrDown);
+            } else {
+                vote.setUpOrDown(0);
+            }
             dao.update(vote);
         }
         return vote;
