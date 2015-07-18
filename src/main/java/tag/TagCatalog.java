@@ -18,6 +18,18 @@ public class TagCatalog {
         return tag;
     }
 
+    public void setTags(List<Tag> tags) {
+        TagDAO dao = new TagDAO();
+        for(Tag tag: tags){
+            if(tag.getId() == null){
+                tag.setId(IdGenerator.generateID());
+                dao.insert(tag);
+            }else{
+                dao.update(tag);
+            }
+        }
+    }
+
     public void removeDefaultTag(Tag tag) {
         new TagDAO().delete(tag);
     }

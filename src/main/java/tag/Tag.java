@@ -6,6 +6,14 @@ public class Tag {
     private String id;
     private String name;
 
+    public Tag(String name, String id) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Tag() {
+    }
+
     public String getId() {
         return id;
     }

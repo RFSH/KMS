@@ -1,63 +1,90 @@
 <div class="settings-page" ng-controller="AdminSettingsCtrl">
-    <div class="settings-sidebar">
-        <ul class="nav nav-pills nav-stacked">
-            <li role="presentation" class="{{activeTab=='permissions' ? 'active' :''}}">
-                <a ng-click="selectTab('permissions')">
-  سطح دسترسی
-                </a>
-            </li>
-            <li role="presentation" class="{{activeTab=='roles' ? 'active' :''}}">
-                <a ng-click="selectTab('roles')">
-پست‌های شغلی
-                </a>
-            </li>
-            <li role="presentation" class="{{activeTab=='tags' ? 'active' :''}}">
-                <a ng-click="selectTab('tags')">
-برچسب
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="settings-content container-fluid">
-        <div ng-if="activeTab == 'permissions'">
-            <button class="btn btn-success btn-add" ng-click="addPermissionGroup()">
-                <i class="glyphicon glyphicon-plus"></i>
-            </button>
-            <h1>
-                سطح دسترسی
-            </h1>
-            <div ng-sortable class="settings-item-container">
-                <div class="settings-item" ng-repeat="item in permissionGroups">
-                    <input type="text" ng-model="item">
-                </div>
-            </div>
-        </div>
-        <div ng-if="activeTab == 'roles'">
-            <button class="btn btn-success btn-add" ng-click="addRole()">
-                <i class="glyphicon glyphicon-plus"></i>
-            </button>
-            <h1>
-                پست شغلی
-            </h1>
-            <div ng-sortable class="settings-item-container">
-                <div class="settings-item" ng-repeat="item in roles">
-                    <input type="text" ng-model="item">
-                </div>
-            </div>
+    <div ng-java-controller="controllers.SettingsController">
+        <div class="settings-sidebar">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="{{activeTab=='permissions' ? 'active' :''}}">
+                    <a ng-click="selectTab('permissions')">
+                        سطح دسترسی
+                    </a>
+                </li>
+                <li role="presentation" class="{{activeTab=='roles' ? 'active' :''}}">
+                    <a ng-click="selectTab('roles')">
+                        پست‌های شغلی
+                    </a>
+                </li>
+                <li role="presentation" class="{{activeTab=='tags' ? 'active' :''}}">
+                    <a ng-click="selectTab('tags')">
+                        برچسب
+                    </a>
+                </li>
+            </ul>
         </div>
 
-        <div ng-if="activeTab == 'tags'">
-            <button class="btn btn-success btn-add" ng-click="addTag()">
-                <i class="glyphicon glyphicon-plus"></i>
-            </button>
-            <h1>
-                برچسب های پبش فرض
-            </h1>
-            <div ng-sortable class="settings-item-container">
-                <div class="settings-item" ng-repeat="item in tags">
-                    <input type="text" ng-model="item">
+        <div class="settings-content container-fluid">
+            <div ng-if="activeTab == 'permissions'">
+                <button class="btn btn-success btn-add" ng-click="addPermissionGroup()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>
+                <h1>
+                    سطح دسترسی
+                </h1>
+                <ul class="rf-help">
+                    <li>هر موردی که بالاتر باشد، سطح دسترسی بیشتری دارد.</li>
+                    <li>برای تغییر مکان سطوح دسترسی، آن‌ها را drag کنید.</li>
+                    <li>پس از افزودن سطح دسترسی جدید و نام‌گذاری آن، برروی دکمه ذخیره کلیک کنید.</li>
+                </ul>
+                <div ng-sortable class="settings-item-container">
+                    <div class="settings-item" ng-repeat="item in permissionGroups | orderBy:order">
+                        <button class="remove-btn" ng-click="removePermissionGroup($index, item.id)"><i class="fa fa-close"></i></button>
+                        <input type="text" ng-model="item.name">
+                    </div>
                 </div>
+                <button class="btn btn-primary" ng-click="savePermissions()">
+                    ذخیره
+                </button>
+            </div>
+            <div ng-if="activeTab == 'roles'">
+                <button class="btn btn-success btn-add" ng-click="addRole()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>
+                <h1>
+                    پست شغلی
+                </h1>
+                <ul class="rf-help">
+                    <li>پس از افزودن پست شغلی جدید و نام‌گذاری آن، برروی دکمه ذخیره کلیک کنید.</li>
+                </ul>
+
+                <div ng-sortable class="settings-item-container">
+                    <div class="settings-item" ng-repeat="role in roles">
+                        <button class="remove-btn" ng-click="removeRole($index, role.id)"><i class="fa fa-close"></i></button>
+                        <input type="text" ng-model="role.name">
+                    </div>
+                </div>
+                <button class="btn btn-primary" ng-click="saveRoles()">
+                    ذخیره
+                </button>
+            </div>
+
+            <div ng-if="activeTab == 'tags'">
+                <button class="btn btn-success btn-add" ng-click="addTag()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>
+                <h1>
+                    برچسب های پبش فرض
+                </h1>
+                <ul class="rf-help">
+                    <li>پس از افزودن برچسب جدید و نام‌گذاری آن، برروی دکمه ذخیره کلیک کنید.</li>
+                </ul>
+
+                <div ng-sortable class="settings-item-container">
+                    <div class="settings-item" ng-repeat="tag in tags">
+                        <button class="remove-btn" ng-click="removeTag($index, tag.id)"><i class="fa fa-close"></i></button>
+                        <input type="text" ng-model="tag.name">
+                    </div>
+                </div>
+                <button class="btn btn-primary" ng-click="saveTags()">
+                    ذخیره
+                </button>
             </div>
         </div>
     </div>

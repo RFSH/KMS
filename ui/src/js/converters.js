@@ -104,3 +104,10 @@ function projectToObject(project){
         nodes: activites
     };
 }
+
+function tagToObject(tag) {
+    return {
+        id: tag.getId(),
+        name: tag.getName()
+    };
+}
