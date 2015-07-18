@@ -314,34 +314,47 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
 
 kmsApp.controller('LetterListCtrl', function ($scope, $routeParams, $ngJava) {
     $scope.data = {title: ""};
+    $scope.modalLetterPaths = [];
+    $scope.modalLetter = "";
+
     $ngJava.ready(function () {
         $scope.search();
     });
 
     $scope.search = function () {
         var projects = $scope.searchLetters($scope.data.title);
-        $scope.projects = [];
+        $scope.letters = [];
         for (var i = 0; i < projects.size(); i++) {
-            $scope.projects.push(letterToObject(projects.get(i)));
+            $scope.letters.push(letterToObject(projects.get(i)));
         }
+    };
+
+    $scope.openLetterPaths = function (letter) {
+        $scope.modalLetterPaths = letter.nodes;
+        $scope.modalLetter = letter.title;
     };
 });
 
 kmsApp.controller('ProjectListCtrl', function ($scope, $routeParams, $ngJava) {
     $scope.data = {title: ""};
-    $ngJava.ready(function () {
-        console.log('haaaaaa!!');
+    $scope.modalActivities = [];
+    $scope.modalProject = "";
 
+    $ngJava.ready(function () {
         $scope.search();
     });
 
     $scope.search = function () {
-        console.log('searching!!!!! :))');
         var projects = $scope.searchProjects($scope.data.title);
         $scope.projects = [];
         for (var i = 0; i < projects.size(); i++) {
             $scope.projects.push(projectToObject(projects.get(i)));
         }
+    };
+
+    $scope.openProjectActivities = function (project) {
+        $scope.modalActivities = project.nodes;
+        $scope.modalProject = project.title;
     };
 });;var kmsApp = angular.module('kms');
 
@@ -570,13 +583,13 @@ function letterToObject(letter){
 
 function projectToObject(project){
     var activites = [];
-    for (var i = 0; i < project.getProjectActivites().size(); i++) {
-        var activity = project.getProjectActivites().get(i);
-        activites.push({'title':activity.getTitle(), 'description':activity.getDescription});
+    for (var i = 0; i < project.getProjectActivities().size(); i++) {
+        var activity = project.getProjectActivities().get(i);
+        activites.push({'title':activity.getTitle(), 'description':activity.getDescription()});
     }
     return {
         id: project.getId(),
-        description: project.getContent(),
+        description: project.getDescription(),
         title: project.getTitle(),
         nodes: activites
     };

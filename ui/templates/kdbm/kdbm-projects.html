@@ -42,15 +42,52 @@
                         {{ project.description }}
                     </td>
                     <td>
-                        <a href="#">
+                        <button ng-show="project.nodes.length" ng-click="openProjectActivities(project)" type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#project-activity">
                             مشاهده
-                        </a>
+                        </button>
+                        <span ng-hide="project.nodes.length">-</span>
+                    </td>
+                </tr>
+                <tr ng-hide="projects.length">
+                    <td colspan="4">
+                        <div class="alert alert-warning">
+                            پروژه‌ای با مشخصات خواسته شده وجود ندارد.
+                        </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
 
+        <div class="modal fade" role="dialog" id="project-activity">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">فعالیت‌های پروژه
+                            {{ modalProject }}
+                        </h3>
+                    </div>
+                    <div class="modal-body">
+                        <ul ng-show="modalActivities.length">
+                            <li ng-repeat="activity in modalActivities">
+                                <h4 ng-bind="activity.title"></h4>
+                                <p ng-bind="activity.description"></p>
+                            </li>
+                        </ul>
+                        <div ng-hide="modalActivities.length" class="alert alert-warning">
+                            پروژه موردنظر هیچ فعالیتی ندارد.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
     </div>
 </div>

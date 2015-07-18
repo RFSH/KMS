@@ -2,17 +2,15 @@ package knowledgebase;
 
 import tag.Tag;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
     private String title;
     private String description;
     private String id;
+    private List<ProjectActivity> projectActivities;
 
-
-    public List<ProjectActivity> getProjectActivites(){
-        return new ProjectActivityDAO().getProjectActivities("id", getId());
-    }
 
     /* Getter and Setters */
 
@@ -39,4 +37,17 @@ public class Project {
     public void setId(String id) {
         this.id = id;
     }
+
+    public List<ProjectActivity> getProjectActivities() {
+        if(this.projectActivities == null){
+            this.projectActivities = new ProjectActivityDAO().getProjectActivities(getId());
+        }
+        return this.projectActivities;
+    }
+
+    public void setProjectActivities(List<ProjectActivity> projectActivities) {
+        this.projectActivities = projectActivities;
+    }
+
+
 }

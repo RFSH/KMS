@@ -40,9 +40,9 @@ public class LetterPathNodeDAO extends BaseDAO<LetterPathNode> {
         return letterPathNode;
     }
 
-    public List<LetterPathNode> getLetterPathNodes(String column, String value){
-        ResultSet result = query("letters JOIN letter_path_nodes ON letters.id=letter_path_nodes.letter_id", column, value);
-        List<LetterPathNode> letterPathNodes = new ArrayList<LetterPathNode>();
+    public List<LetterPathNode> getLetterPathNodes(String letterId){
+        ResultSet result = query("letter_path_nodes", "letter_id", letterId);
+        List<LetterPathNode> letterPathNodes = new ArrayList<>();
         try{
             while(result.next()){
                 letterPathNodes.add(getObjectFromResult(result));

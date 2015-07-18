@@ -93,13 +93,13 @@ function letterToObject(letter){
 
 function projectToObject(project){
     var activites = [];
-    for (var i = 0; i < project.getProjectActivites().size(); i++) {
-        var activity = project.getProjectActivites().get(i);
-        activites.push({'title':activity.getTitle(), 'description':activity.getDescription});
+    for (var i = 0; i < project.getProjectActivities().size(); i++) {
+        var activity = project.getProjectActivities().get(i);
+        activites.push({'title':activity.getTitle(), 'description':activity.getDescription()});
     }
     return {
         id: project.getId(),
-        description: project.getContent(),
+        description: project.getDescription(),
         title: project.getTitle(),
         nodes: activites
     };

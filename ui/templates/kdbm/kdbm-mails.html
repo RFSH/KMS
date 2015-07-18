@@ -1,15 +1,16 @@
-<div class="container">
-    <div class="panel panel-primary">
+<div class="container" ng-controller="LetterListCtrl">
+    <div ng-java-controller="controllers.LetterListController">
+        <div class="panel panel-primary">
         <div class="panel-heading">
             دانش نهفته بدست آمده از نامه ها
         </div>
         <div class="panel-body">
             <form method="post" class="form-inline search-form" role="search">
                 <div class="form-group">
-                    <input class="form-control" name="content" placeholder="جستجو...">
+                    <input ng-model="data.title" class="form-control" name="content" placeholder="جستجو...">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">جستجو</button>
+                    <button ng-click="search()" type="submit" class="btn btn-primary">جستجو</button>
                 </div>
             </form>
             <table class="table-responsive table table-hover">
@@ -22,59 +23,70 @@
                         عنوان
                     </td>
                     <td>
-                        عملیات
+                        محتوا
                     </td>
                     <td>
-مشاهده
+                        مشاهده روند
                     </td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr ng-repeat="letter in letters track by letter.id">
                     <td>
-                        ۱۲ اردیبهشت ۱۳۹۴ ۱۲:۳۰
+                        ۲ شهریور
                     </td>
                     <td>
-                        نامه شماره یک
+                        {{ letter.title }}
                     </td>
                     <td>
-                        آقای شفاعی مهر زد.
+                        {{ letter.content }}
                     </td>
                     <td>
-                        <a href="#">مشاهده</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        ۲ اردیبهشت ۱۳۹۴ ۱۲:۳۰
-                    </td>
-                    <td>
-                        نامه بسیار مهم
-                    </td>
-                    <td>
-                        به پیوست نامه شماره ۱۲۳۱ قرار گرفت.
-                    </td>
-                    <td>
-                        -
+                        <button ng-show="letter.nodes.length" ng-click="openLetterPaths(letter)" type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#letter-nodes">
+                            مشاهده
+                        </button>
+                        <span ng-hide="letter.nodes.length">-</span>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        ۱۵ فروردین ۱۳۹۴ ۰۱:۳۰
-                    </td>
-                    <td>
-                        نامه شماره ۱۲۳۱۳
-                    </td>
-                    <td>
-                        توسط هادی‌لو امضا شد.
-                    </td>
-                    <td>
-                        <a href="#">مشاهده</a>
+                <tr ng-hide="letters.length">
+                    <td colspan="4">
+                        <div class="alert alert-warning">
+                            نامه‌ای با مشخصات خواسته شده وجود ندارد.
+                        </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
+            <div class="modal fade" role="dialog" id="letter-nodes">
+                <div class="modal-dialog">
 
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3 class="modal-title">
+                                اطلاعات نامه:
+                                {{ modalLetter }}
+                            </h3>
+                        </div>
+                        <div class="modal-body">
+                            <ol ng-show="modalLetterPaths.length">
+                                <li ng-repeat="node in modalLetterPaths">
+                                    {{ node }}
+                                </li>
+                            </ol>
+                            <div ng-hide="modalLetterPaths.length" class="alert alert-warning">
+                                موردی وجود ندارد.
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
     </div>
 </div>

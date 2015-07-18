@@ -1,17 +1,13 @@
 package knowledgebase;
 
-import tag.Tag;
-
 import java.util.List;
 
 public class Letter {
     private String title;
     private String content;
     private String id;
+    private List<LetterPathNode> letterPathNodes;
 
-    public List<LetterPathNode> getLetterPathNodes(){
-        return new LetterPathNodeDAO().getLetterPathNodes("id", getId());
-    }
 
     /* Getter and Setters */
 
@@ -39,4 +35,14 @@ public class Letter {
         this.id = id;
     }
 
+    public List<LetterPathNode> getLetterPathNodes() {
+        if (this.letterPathNodes == null) {
+            this.letterPathNodes = new LetterPathNodeDAO().getLetterPathNodes(getId());
+        }
+        return letterPathNodes;
+    }
+
+    public void setLetterPathNodes(List<LetterPathNode> letterPathNodes) {
+        this.letterPathNodes = letterPathNodes;
+    }
 }

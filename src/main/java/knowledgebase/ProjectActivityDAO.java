@@ -42,9 +42,9 @@ public class ProjectActivityDAO extends BaseDAO<ProjectActivity>{
         return projectActivity;
     }
 
-    public List<ProjectActivity> getProjectActivities(String column, String value){
-        ResultSet result = query("projects JOIN project_activities ON projects.id=project_activities.project_id", column, value);
-        List<ProjectActivity> projectActivities = new ArrayList<ProjectActivity>();
+    public List<ProjectActivity> getProjectActivities(String projectId){
+        ResultSet result = query("project_activities", "project_id", projectId);
+        List<ProjectActivity> projectActivities = new ArrayList<>();
         try{
             while(result.next()){
                 projectActivities.add(getObjectFromResult(result));
