@@ -1,5 +1,7 @@
 package account;
 
+import util.IdGenerator;
+
 import java.util.List;
 
 public class RoleCatalog {
@@ -9,12 +11,20 @@ public class RoleCatalog {
 
     }
 
-    public Role addRole(String name) {
-        return null;
+    public void removeRole(Role role) {
+        new RoleDAO().delete(role);
     }
 
-    public void removeRole(Role role) {
-
+    public void setRoles(List<Role> roles) {
+        RoleDAO dao = new RoleDAO();
+        for(Role role: roles){
+            if(role.getId() == null){
+                role.setId(IdGenerator.generateID());
+                dao.insert(role);
+            }else{
+                dao.update(role);
+            }
+        }
     }
 
     public List<Role> getRoles() {

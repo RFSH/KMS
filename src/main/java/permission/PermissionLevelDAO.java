@@ -16,7 +16,7 @@ public class PermissionLevelDAO extends BaseDAO<PermissionLevel> {
         return new Object[]{
                 "id", permissionLevel.getId(),
                 "name", permissionLevel.getName(),
-                "order", permissionLevel.getOrder()
+                "order_num", permissionLevel.getOrder()
         };
     }
 
@@ -31,7 +31,7 @@ public class PermissionLevelDAO extends BaseDAO<PermissionLevel> {
         try {
             permissionLevel.setId(result.getString("id"));
             permissionLevel.setName(result.getString("name"));
-            permissionLevel.setOrder(result.getInt("order"));
+            permissionLevel.setOrder(result.getInt("order_num"));
             return permissionLevel;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,5 +1,8 @@
 package permission;
 
+import util.IdGenerator;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class PermissionLevelCatalog {
@@ -9,12 +12,14 @@ public class PermissionLevelCatalog {
 
     }
 
-    public PermissionLevel addPermissionLevel(String name) {
-        return null;
+    public PermissionLevel addPermissionLevel(String name, int order) {
+        PermissionLevel permissionLevel = new PermissionLevel(name, order);
+        new PermissionLevelDAO().insert(permissionLevel);
+        return permissionLevel;
     }
 
-    public void removePermissionLevel(PermissionLevel permissionLevel) {
-
+    public void removePermissionLevel(PermissionLevel permission) {
+        new PermissionLevelDAO().delete(permission);
     }
 
     public List<PermissionLevel> getOrderedPermissionLevels() {
@@ -26,6 +31,15 @@ public class PermissionLevelCatalog {
     }
 
     public void setOrderedPermissionLevels(List<PermissionLevel> permissionLevels) {
+        PermissionLevelDAO dao = new PermissionLevelDAO();
+        for(PermissionLevel permission: permissionLevels){
+            if(permission.getId() == null){
+                permission.setId(IdGenerator.generateID());
+                dao.insert(permission);
+            }else{
+                dao.update(permission);
+            }
+        }
     }
 
     public static PermissionLevelCatalog getInstance() {

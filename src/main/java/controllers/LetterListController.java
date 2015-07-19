@@ -3,7 +3,6 @@ package controllers;
 import javang.Scope;
 import knowledgebase.Letter;
 import knowledgebase.LetterCatalog;
-import knowledgebase.LetterPathNode;
 
 import java.util.List;
 

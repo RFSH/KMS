@@ -8,6 +8,9 @@ var kmsApp = angular.module("kms", [
 ]);
 
 kmsApp.config(function($routeProvider) {
+    //restricted
+    $routeProvider.when('/restricted', {templateUrl:'templates/restricted.html'});
+
     //admin
     $routeProvider.when('/admin/index', {templateUrl: 'templates/admin/index-admin.html'}); //RF done
     $routeProvider.when('/admin/settings', {templateUrl: 'templates/admin/settings.html'}); //HaD

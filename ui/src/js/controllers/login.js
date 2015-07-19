@@ -6,7 +6,7 @@ kmsApp.controller('LoginController', function ($scope, $ngJava) {
     });
 
     $scope.data = {
-        username: "hadi",
+        username: "",
         password: ""
     };
 

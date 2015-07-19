@@ -57,6 +57,12 @@ public abstract class BaseDAO<T> {
         insert(getTableName(), getColumnValues(object));
     }
 
+    public void insertAll(List<T> objects){
+        for(T object: objects){
+            insert(getTableName(), getColumnValues(object));
+        }
+    }
+
     public void update(String table, String whereClause, Object[] values) {
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder.append("UPDATE ").append(table).append(" SET ");
@@ -90,7 +96,7 @@ public abstract class BaseDAO<T> {
 
     public void delete(String table, String whereClause) {
         StringBuilder sqlBuilder = new StringBuilder();
-        sqlBuilder.append("DELETE ").append(table)
+        sqlBuilder.append("DELETE FROM ").append(table)
                 .append(" WHERE ").append(whereClause);
 
         String sql = sqlBuilder.toString();
