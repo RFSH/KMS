@@ -4,7 +4,8 @@ var kmsApp = angular.module("kms", [
     'textAngular',
     'ngTagsInput',
     'ui.bootstrap',
-    'ng-java'
+    'ng-java',
+    'chart.js'
 ]);
 
 kmsApp.config(function($routeProvider) {
@@ -35,7 +36,7 @@ kmsApp.config(function($routeProvider) {
     $routeProvider.when('/report/activities', {templateUrl: 'templates/report/activities-report.html'}); //RF done
     $routeProvider.when('/report/activities/employee', {templateUrl: 'templates/report/activities-employee-report.html'}); //RF done
     $routeProvider.when('/report/knowledge/:knowledgeId', {templateUrl: 'templates/report/knowledge-report.html'}); //RF done
-    $routeProvider.when('/report/tag', {templateUrl: 'templates/report/tag-report.html'}); //HaD
+    $routeProvider.when('/report/chart', {templateUrl: 'templates/report/chart-report.html'}); //HaD
 
     //user
     $routeProvider.when('/', {templateUrl: 'templates/user/login.html'}); //RF done

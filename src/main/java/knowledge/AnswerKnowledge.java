@@ -1,5 +1,7 @@
 package knowledge;
 
+import report.KnowledgeReportGenerator;
+
 public class AnswerKnowledge extends Knowledge {
     private QuestionKnowledge question;
     private String content;
@@ -18,6 +20,11 @@ public class AnswerKnowledge extends Knowledge {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public void acceptReporter(KnowledgeReportGenerator knowledgeReportGenerator) {
+        knowledgeReportGenerator.visitAnswerKnowldege(this);
     }
 
     @Override

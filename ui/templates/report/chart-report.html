@@ -1,0 +1,26 @@
+<div class="report-page report-tags" ng-controller="ChartReportCtrl">
+    <div class="report-tags-sidebar" ng-java-controller="controllers.ReportController">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="{{ activeTab=='tag' ? 'active': '' }}">
+                <a ng-click="selectTab('tag')">
+                    گزارش برچسب
+                </a>
+            </li>
+            <li role="presentation" class="{{ activeTab=='time' ? 'active': '' ">
+                <a ng-click="selectTab('time')">
+                    گزارش زمانی
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="report-tags-content container-fluid">
+        <div ng-if="activeTab == 'tag'">
+            <canvas class="chart chart-pie" data="tagData" labels="tagLabels"></canvas>
+        </div>
+        <div ng-if="activeTab == 'time'">
+            <canvas class="chart chart-line" data="timeData" labels="timeLabels" series="timeSeries" options="lineChartOptions"></canvas>
+        </div>
+
+    </div>
+</div>

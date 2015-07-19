@@ -1,5 +1,6 @@
 package knowledge;
 
+import report.KnowledgeReportGenerator;
 import util.Strings;
 import util.ValidationError;
 
@@ -16,6 +17,11 @@ public class WikiKnowledge extends Knowledge {
 
     public void addUseCase(String useCase) {
 
+    }
+
+    @Override
+    public void acceptReporter(KnowledgeReportGenerator knowledgeReportGenerator) {
+        knowledgeReportGenerator.visitWikiKnowldege(this);
     }
 
     public void deprecate() {
