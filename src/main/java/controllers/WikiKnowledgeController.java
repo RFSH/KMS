@@ -9,6 +9,8 @@ import javang.Scope;
 import knowledge.Knowledge;
 import knowledge.KnowledgeCatalog;
 import knowledge.WikiKnowledge;
+import permission.Authorizer;
+import permission.ItemPermissions;
 import util.ValidationError;
 
 public class WikiKnowledgeController extends JavaNGController {
@@ -60,9 +62,9 @@ public class WikiKnowledgeController extends JavaNGController {
     }
 
     @Scope
-    public boolean hasChangePermission(String knowledgeId) {
+    public ItemPermissions getPermissions(String knowledgeId) {
         WikiKnowledge knowledge = KnowledgeCatalog.getInstance().getWikiKnowledge(knowledgeId);
         User user = Context.getInstance().getLoggedInUser();
-        return user.equals(knowledge.getOwner()) || user instanceof Manager;
+        return new Authorizer().getPermissions(user, knowledge);
     }
 }

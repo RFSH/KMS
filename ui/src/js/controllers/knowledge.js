@@ -77,7 +77,7 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
         $scope.knowledge = knowledgeData;
 
         $scope.showApprove = $scope.isUserManager() && !knowledgeData.isApproved;
-        $scope.hasChangePermission = $scope.hasChangePermission($scope.knowledgeId);
+        $scope.perms = itemPermissionsToObject($scope.getPermissions($scope.knowledgeId));
     });
 
     $scope.voteUp = function() {
@@ -88,6 +88,11 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
     $scope.voteDown = function() {
         $scope.addVote($scope.knowledgeId, -1);
         $scope.knowledge.voteSum = javaKnowledge.getVoteSum();
+    };
+
+    $scope.deprecate = function() {
+        $scope.deprecateWikiKnowledge($scope.knowledgeId);
+        $scope.knowledge.isDeprecated = true;
     };
 
     $scope.approve = function() {

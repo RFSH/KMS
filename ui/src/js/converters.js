@@ -123,3 +123,15 @@ function abuseToObject(abuse) {
         content: abuse.getContent()
     };
 }
+
+function itemPermissionsToObject(perms) {
+    return {
+        change: perms.canChange(),
+        add: perms.canAdd(),
+        delete: perms.canDelete(),
+        deprecate: perms.canDeprecate(),
+        clone: perms.canClone(),
+        report: perms.canReport(),
+        vote: perms.canVote()
+    };
+}

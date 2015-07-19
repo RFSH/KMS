@@ -3,9 +3,11 @@
         <div class="view-employee">
             <div class="emp-header">
                 <div class="add-point">
-                    <div><i ng-click="voteUp()" class="fa fa-2x fa-arrow-circle-up up-point"></i></div>
+                    <div ng-if="perms.vote"><i ng-click="voteUp()" class="fa fa-2x fa-arrow-circle-up up-point"></i>
+                    </div>
                     <div><span class="point">{{ knowledge.voteSum }}</span></div>
-                    <div><i ng-click="voteDown()" class="fa fa-2x fa-arrow-circle-down down-point"></i></div>
+                    <div ng-if="perms.vote"><i ng-click="voteDown()"
+                                               class="fa fa-2x fa-arrow-circle-down down-point"></i></div>
                 </div>
                 <div class="header-details">
                     <h1 class="emp-name">
@@ -19,26 +21,36 @@
                         <span>
                         ۱۲ شهریور ۱۳۹۴
                         </span>
+                        <i class="fa fa-circle dot-divider"></i>
+                        <span ng-if="knowledge.isDeprecated" class="label label-danger">
+                            منسوخ شده
+                        </span>
                     </span>
                     </div>
                     <a href="#">مشاهده گزارش فعالیت</a>
                 </div>
                 <div class="admin-buttons" style="margin-top: -20px">
                     <div class="btn-group">
-                        <button ng-if="showApprove" ng-click="approve()" class="btn btn-sm btn-success" >تایید دانش</button>
-                        <button ng-if="showApprove" ng-click="disapprove()" class="btn btn-sm btn-danger" >
+                        <button ng-if="showApprove" ng-click="approve()" class="btn btn-sm btn-success">تایید دانش
+                        </button>
+                        <button ng-if="showApprove" ng-click="disapprove()" class="btn btn-sm btn-danger">
                             رد دانش
                         </button>
-                        <a ng-if="hasChangePermission" ng-href="#/knowledge/edit/{{knowledgeId}}" class="btn btn-sm btn-primary">تغییر دانش</a>
-                        <button ng-if="!showApprove" type="button" class="btn btn-sm btn-success">ایجاد نسخه جدید</button>
-                        <button ng-if="!showApprove && hasChangePermission" type="button" class="btn btn-sm btn-danger">منسوخ کردن دانش</button>
+                        <a ng-if="perms.change" ng-href="#/knowledge/edit/{{knowledgeId}}"
+                           class="btn btn-sm btn-primary">تغییر دانش</a>
+                        <button ng-if="perms.clone" type="button" class="btn btn-sm btn-success">ایجاد نسخه جدید
+                        </button>
+                        <button ng-if="perms.deprecate && !knowledge.isDeprecated" ng-click="deprecate()" type="button"
+                                class="btn btn-sm btn-danger">منسوخ کردن دانش
+                        </button>
                     </div>
                 </div>
             </div>
             <!--<div class="horizontal-divider"></div>-->
             <div class="content" style="margin-top: 30px; " ng-bind-html="knowledge.content">
             </div>
-            <a class="add-report" style="margin-top: 10px;margin-left:5px;cursor: pointer;" ng-click="openReportDialog()">
+            <a ng-if="perms.report" class="add-report" style="margin-top: 10px;margin-left:5px;cursor: pointer;"
+               ng-click="openReportDialog()">
                 گزارش تخلف
             </a>
 
@@ -56,22 +68,23 @@
 
                 <div class="">
                 <span ng-repeat="tag in knowledge.tags track by $index"
-                        style="background-color: crimson;border-radius: 3px; color: white; padding: 5px 10px;margin-left: 10px">
+                      style="background-color: crimson;border-radius: 3px; color: white; padding: 5px 10px;margin-left: 10px">
                     {{ tag }}
                 </span>
                 </div>
             </div>
-            <div class="add-use" style="margin-top:25px">
+            <div ng-if="perms.change && !knowledge.isDeprecated" class="add-use" style="margin-top:25px">
                 <h4>موارد استفاده</h4>
 
                 <div class="use-cases">
                     <span class="" ng-repeat="usecase in knowledge.usecases track by $index"
-                            style="background-color: #a1dbff; padding: 5px; border-radius: 2px; margin-left: 10px">
+                          style="background-color: #a1dbff; padding: 5px; border-radius: 2px; margin-left: 10px">
                         {{ usecase }}
                     </span>
                 </div>
 
-                <form method="post" ng-submit="submitUseCase()" class="form-inline form" role="form" style="float: right">
+                <form method="post" ng-submit="submitUseCase()" class="form-inline form" role="form"
+                      style="float: right">
                     <div class="form-group">
                         <input type="text" ng-model="usecase" class="form-control" placeholder="مورد استفاده">
                     </div>
