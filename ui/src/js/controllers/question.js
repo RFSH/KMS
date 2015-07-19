@@ -50,7 +50,17 @@ kmsApp.controller('QuestionListCtrl', function ($scope, $ngJava) {
     });
 
     $scope.search = function() {
-        var knowledges = $scope.searchQuestionKnowledge($scope.data.query, $scope.data.fromDate, $scope.data.toDate);
+        var fromDate = '', toDate='';
+        if ($scope.data.fromDate) {
+            fromDate = moment($scope.data.fromDate);
+            fromDate = fromDate.format("x");
+        }
+        if ($scope.data.toDate) {
+            toDate = moment($scope.data.toDate);
+            toDate = toDate.format("x");
+        }
+
+        var knowledges = $scope.searchQuestionKnowledge($scope.data.query, fromDate, toDate);
         $scope.knowledges = [];
         for (var i = 0; i < knowledges.size(); i++) {
             $scope.knowledges.push(questionKnowledgeToObject(knowledges.get(i)));

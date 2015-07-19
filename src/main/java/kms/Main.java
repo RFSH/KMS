@@ -14,7 +14,7 @@ public class Main {
 
         String indexUrl = Main.class.getClassLoader().getResource("index.html").toExternalForm();
 //		indexUrl = "http://localhost:9000/";
-        new JavaNGWindow(indexUrl, 800, 600, new JavaNGWindow.StateListener() {
+        new JavaNGWindow(indexUrl, 900, 600, new JavaNGWindow.StateListener() {
             @Override
             public void onStageInit(JavaNGWindow window) {
                 window.getWebEngine().onAlertProperty().set(new EventHandler<WebEvent<String>>() {

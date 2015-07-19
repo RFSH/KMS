@@ -7,6 +7,7 @@ import tag.TagCatalog;
 import util.IdGenerator;
 import util.ValidationError;
 
+import java.util.Date;
 import java.util.List;
 
 public class KnowledgeCatalog {
@@ -51,7 +52,7 @@ public class KnowledgeCatalog {
         knowledge.setApproved(false);
         knowledge.setAttachment(null);
         knowledge.setDeprecated(false);
-
+        knowledge.setCreationDate(new Date());
         knowledge.setOwner((Employee) Context.getInstance().getLoggedInUser());
         knowledge.validate();
         new KnowledgeDAO().insert(knowledge);
@@ -71,6 +72,7 @@ public class KnowledgeCatalog {
         knowledge.setId(IdGenerator.generateID());
 
         knowledge.setOwner((Employee) Context.getInstance().getLoggedInUser());
+        knowledge.setCreationDate(new Date());
         knowledge.validate();
         new KnowledgeDAO().insert(knowledge);
     }
@@ -86,19 +88,45 @@ public class KnowledgeCatalog {
     }
 
     public List<WikiKnowledge> findWikiKnowledges(WikiKnowledgeQuery query) {
-        // TODO fix wiki knowledge search
-        if (query == null || query.getQuery() == null || query.getQuery().isEmpty()) {
-            return new KnowledgeDAO().getWikiKnowledges();
+        StringBuilder queryBuilder = new StringBuilder();
+        if (query != null && query.getQuery() != null && !query.getQuery().isEmpty()) {
+            queryBuilder.append("(title LIKE '%").append(query.getQuery()).append("%' OR ")
+            .append("content LIKE '%").append(query.getQuery()).append("%')");
         }
-        return new KnowledgeDAO().getWikiKnowledges("title", query.getQuery());
+        if (query.getFromDate() != null) {
+            if (queryBuilder.length() > 0) {
+                queryBuilder.append(" AND ");
+            }
+            queryBuilder.append("creation_date >= ").append(query.getFromDate().getTime());
+        }
+        if (query.getToDate() != null) {
+            if (queryBuilder.length() > 0) {
+                queryBuilder.append(" AND ");
+            }
+            queryBuilder.append("creation_date <= ").append(query.getToDate().getTime());
+        }
+        return new KnowledgeDAO().getWikiKnowledges(queryBuilder.toString());
     }
 
     public List<QuestionKnowledge> findQuestionKnowledges(QuestionKnowledgeQuery query) {
-        // TODO fix question knowledge search
-        if (query == null || query.getQuery() == null || query.getQuery().isEmpty()) {
-            return new KnowledgeDAO().getQuestionKnowledges();
+        StringBuilder queryBuilder = new StringBuilder();
+        if (query != null && query.getQuery() != null && !query.getQuery().isEmpty()) {
+            queryBuilder.append("(title LIKE '%").append(query.getQuery()).append("%' OR ")
+                    .append("content LIKE '%").append(query.getQuery()).append("%')");
         }
-        return new KnowledgeDAO().getQuestionKnowledges("title", query.getQuery());
+        if (query != null && query.getFromDate() != null) {
+            if (queryBuilder.length() > 0) {
+                queryBuilder.append(" AND ");
+            }
+            queryBuilder.append("creation_date >= ").append(query.getFromDate().getTime());
+        }
+        if (query != null && query.getToDate() != null) {
+            if (queryBuilder.length() > 0) {
+                queryBuilder.append(" AND ");
+            }
+            queryBuilder.append("creation_date <= ").append(query.getToDate().getTime());
+        }
+        return new KnowledgeDAO().getQuestionKnowledges(queryBuilder.toString());
     }
 
     public void deleteKnowledge(String knowledgeId) {
