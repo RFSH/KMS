@@ -30,12 +30,13 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
 
     @Override
     public Knowledge getObjectFromResult(ResultSet result) {
-        Knowledge knowledge = new Knowledge();
-        try {
-            knowledge.setId(result.getString("id"));
-        } catch (SQLException e) {
-        }
-        return knowledge;
+//        Knowledge knowledge = new Knowledge();
+//
+//        try {
+//            knowledge.setId(result.getString("id"));
+//        } catch (SQLException e) {
+//        }
+        return null;
     }
 
     public void populateKnowledge(Knowledge knowledge, ResultSet resultSet) {

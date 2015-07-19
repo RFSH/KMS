@@ -136,8 +136,43 @@ kmsApp.controller('AdminSettingsCtrl', function ($scope, $routeParams, $ngJava) 
             show_message('اطلاعات را درست وارد کنید.', 'error');
         }
     };
+});
 
+kmsApp.controller('AbuseReportListCtrl', function ($scope, $ngJava) {
+    $scope.reports = [];
+    $scope.search = {
+        content: "",
+        type: "-1"
+    };
 
+    $ngJava.ready(function() {
+        var results = $scope.searchAbuseReport($scope.search.content, $scope.search.type);
+        for (var i = 0; i < results.size(); i++) {
+            var obj = abuseToObject(results.get(i));
+            if (obj.knowledgeType === 0) {
+                obj.knowledgeContent = obj.knowledge.getTitle();
+                obj.knowledgeUrl = "knowledge/" + obj.id;
+            } else if (obj.knowledgeType === 1) {
+                obj.knowledgeContent = obj.knowledge.getTitle();
+                obj.knowledgeUrl = "question/" + obj.id;
+            } else if (obj.knowledgeType === 2) {
+                obj.knowledgeContent = obj.knowledge.getContent();
+                obj.knowledgeUrl = "question/" + obj.knowledge.getQuestion().getId();
+            }
+            $scope.reports.push(obj);
+            console.log(obj.knowledgeUrl);
+        }
+    });
+
+    $scope.acceptReport = function (report, index) {
+        $scope.responseToReport(report.id, true);
+        $scope.reports.splice(index, 1);
+    };
+
+    $scope.declineReport = function (report, index) {
+        $scope.responseToReport(report.id, false);
+        $scope.reports.splice(index, 1);
+    };
 });;var kmsApp = angular.module('kms');
 
 kmsApp.controller('AddEmployeeCtrl', function ($scope, $modal, $routeParams, $ngJava) {
@@ -350,9 +385,23 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
         }
     };
 
+
+
     $scope.openReportDialog = function () {
         $modal.open({
-            templateUrl: 'reportDialog.html'
+            templateUrl: 'reportDialog.html',
+            resolve: {
+                pScope: function () {
+                    return $scope;
+                }
+            },
+            controller: function ($scope, pScope) {
+                $scope.submitAbuseReport = function() {
+                    pScope.addAbuseReport(pScope.knowledgeId, $scope.reportContent);
+                    $scope.$close();
+                    show_message("گزارش تخلف با موفقیت ثبت شد", "success");
+                };
+            }
         });
     };
 });;var kmsApp = angular.module('kms');
@@ -528,9 +577,24 @@ kmsApp.controller('QuestionKnowledgeCtrl', function ($scope, $routeParams, $moda
         $scope.answers.push(answerKnowledgeToObject(answer));
     };
 
-    $scope.openReportDialog = function () {
+    $scope.openReportDialog = function (knowledge) {
         $modal.open({
-            templateUrl: 'reportDialog.html'
+            templateUrl: 'reportDialog.html',
+            resolve: {
+                pScope: function () {
+                    return $scope;
+                },
+                knowledge: function() {
+                    return knowledge;
+                }
+            },
+            controller: function ($scope, pScope, knowledge) {
+                $scope.submitAbuseReport = function() {
+                    pScope.addAbuseReport(knowledge.id, $scope.reportContent);
+                    $scope.$close();
+                    show_message("گزارش تخلف با موفقیت ثبت شد", "success");
+                };
+            }
         });
     };
 });;function employeeToObject(employee) {
@@ -644,6 +708,18 @@ function tagToObject(tag) {
     return {
         id: tag.getId(),
         name: tag.getName()
+    };
+}
+
+function abuseToObject(abuse) {
+    return {
+        id: abuse.getId(),
+        knowledge: abuse.getKnowledge(),
+        knowledgeType: abuse.getKnowledge().getKnowledgeType().ordinal(),
+        knowledgeId: abuse.getKnowledge().getId(),
+        employeeName: abuse.getReporter().getFullName(),
+        employeeId: abuse.getReporter().getId(),
+        content: abuse.getContent()
     };
 };/*
  msg = message to be shown

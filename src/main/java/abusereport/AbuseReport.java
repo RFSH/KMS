@@ -1,11 +1,13 @@
-package report;
+package abusereport;
 
 import account.Employee;
+import knowledge.Knowledge;
 
 public class AbuseReport {
     private String id;
     private String content;
     private Employee reporter;
+    private Knowledge knowledge;
 
 
     public void respondToReport(boolean isAccepted){
@@ -37,5 +39,13 @@ public class AbuseReport {
 
     public void setReporter(Employee reporter) {
         this.reporter = reporter;
+    }
+
+    public Knowledge getKnowledge() {
+        return knowledge;
+    }
+
+    public void setKnowledge(Knowledge knowledge) {
+        this.knowledge = knowledge;
     }
 }

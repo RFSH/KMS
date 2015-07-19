@@ -111,3 +111,15 @@ function tagToObject(tag) {
         name: tag.getName()
     };
 }
+
+function abuseToObject(abuse) {
+    return {
+        id: abuse.getId(),
+        knowledge: abuse.getKnowledge(),
+        knowledgeType: abuse.getKnowledge().getKnowledgeType().ordinal(),
+        knowledgeId: abuse.getKnowledge().getId(),
+        employeeName: abuse.getReporter().getFullName(),
+        employeeId: abuse.getReporter().getId(),
+        content: abuse.getContent()
+    };
+}

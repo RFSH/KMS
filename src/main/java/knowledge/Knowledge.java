@@ -8,7 +8,7 @@ import util.ValidationError;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Knowledge {
+public abstract class Knowledge {
     private String id;
     private Employee owner;
     private List<Tag> tags;
@@ -89,4 +89,5 @@ public class Knowledge {
         this.owner = owner;
     }
 
+    public abstract KnowledgeType getKnowledgeType();
 }

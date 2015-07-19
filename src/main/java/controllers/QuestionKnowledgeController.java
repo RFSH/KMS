@@ -1,5 +1,6 @@
 package controllers;
 
+import abusereport.AbuseReportCatalog;
 import javang.JavaNGController;
 import javang.Scope;
 import knowledge.*;
@@ -34,5 +35,11 @@ public class QuestionKnowledgeController extends JavaNGController {
         } catch (ValidationError validationError) {
         }
         return null;
+    }
+
+    @Scope
+    public void addAbuseReport(String knowledgeId, String content) {
+        Knowledge knowledge = KnowledgeCatalog.getInstance().getKnowledge(knowledgeId);
+        AbuseReportCatalog.getInstance().addAbuseReport(content, knowledge);
     }
 }

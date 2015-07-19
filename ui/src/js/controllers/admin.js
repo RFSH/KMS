@@ -82,6 +82,41 @@ kmsApp.controller('AdminSettingsCtrl', function ($scope, $routeParams, $ngJava) 
             show_message('اطلاعات را درست وارد کنید.', 'error');
         }
     };
+});
 
+kmsApp.controller('AbuseReportListCtrl', function ($scope, $ngJava) {
+    $scope.reports = [];
+    $scope.search = {
+        content: "",
+        type: "-1"
+    };
 
+    $ngJava.ready(function() {
+        var results = $scope.searchAbuseReport($scope.search.content, $scope.search.type);
+        for (var i = 0; i < results.size(); i++) {
+            var obj = abuseToObject(results.get(i));
+            if (obj.knowledgeType === 0) {
+                obj.knowledgeContent = obj.knowledge.getTitle();
+                obj.knowledgeUrl = "knowledge/" + obj.id;
+            } else if (obj.knowledgeType === 1) {
+                obj.knowledgeContent = obj.knowledge.getTitle();
+                obj.knowledgeUrl = "question/" + obj.id;
+            } else if (obj.knowledgeType === 2) {
+                obj.knowledgeContent = obj.knowledge.getContent();
+                obj.knowledgeUrl = "question/" + obj.knowledge.getQuestion().getId();
+            }
+            $scope.reports.push(obj);
+            console.log(obj.knowledgeUrl);
+        }
+    });
+
+    $scope.acceptReport = function (report, index) {
+        $scope.responseToReport(report.id, true);
+        $scope.reports.splice(index, 1);
+    };
+
+    $scope.declineReport = function (report, index) {
+        $scope.responseToReport(report.id, false);
+        $scope.reports.splice(index, 1);
+    };
 });

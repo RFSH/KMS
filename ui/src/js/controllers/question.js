@@ -108,9 +108,24 @@ kmsApp.controller('QuestionKnowledgeCtrl', function ($scope, $routeParams, $moda
         $scope.answers.push(answerKnowledgeToObject(answer));
     };
 
-    $scope.openReportDialog = function () {
+    $scope.openReportDialog = function (knowledge) {
         $modal.open({
-            templateUrl: 'reportDialog.html'
+            templateUrl: 'reportDialog.html',
+            resolve: {
+                pScope: function () {
+                    return $scope;
+                },
+                knowledge: function() {
+                    return knowledge;
+                }
+            },
+            controller: function ($scope, pScope, knowledge) {
+                $scope.submitAbuseReport = function() {
+                    pScope.addAbuseReport(knowledge.id, $scope.reportContent);
+                    $scope.$close();
+                    show_message("گزارش تخلف با موفقیت ثبت شد", "success");
+                };
+            }
         });
     };
 });

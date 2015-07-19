@@ -43,4 +43,9 @@ public class QuestionKnowledge extends Knowledge {
     public void setContent(String content) {
         this.content = content;
     }
+
+    @Override
+    public KnowledgeType getKnowledgeType() {
+        return KnowledgeType.QUESTION;
+    }
 }

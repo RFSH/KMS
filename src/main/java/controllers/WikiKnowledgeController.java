@@ -1,5 +1,6 @@
 package controllers;
 
+import abusereport.AbuseReportCatalog;
 import account.Context;
 import account.Manager;
 import account.User;
@@ -45,6 +46,12 @@ public class WikiKnowledgeController extends JavaNGController {
         } else {
             knowledge.approveOrDisapprove(false);
         }
+    }
+
+    @Scope
+    public void addAbuseReport(String knowledgeId, String content) {
+        Knowledge knowledge = KnowledgeCatalog.getInstance().getWikiKnowledge(knowledgeId);
+        AbuseReportCatalog.getInstance().addAbuseReport(content, knowledge);
     }
 
     @Scope

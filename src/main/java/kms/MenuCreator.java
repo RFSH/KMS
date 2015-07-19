@@ -41,8 +41,8 @@ public class MenuCreator {
         menuAdmin.addItem(adminEmployees);
         JavaNGMenu adminReport = new JavaNGMenu("گزارشات");
         adminReport.addItem(new JavaNGMenuItem("گزارش تخلفات", new MenuActionHandler("/admin/abuse-list")));
-        adminReport.addItem(new JavaNGMenuItem("گزارش رخداد‌های اخیر", new MenuActionHandler("/report/activities")));
-        adminReport.addItem(new JavaNGMenuItem("گزارش فرآورده‌های دانشی", new MenuActionHandler("/report/tag")));
+        adminReport.addItem(new JavaNGMenuItem("گزارش رخداد‌های اخیر", new MenuActionHandler("/abusereport/activities")));
+        adminReport.addItem(new JavaNGMenuItem("گزارش فرآورده‌های دانشی", new MenuActionHandler("/abusereport/tag")));
         menuAdmin.addItem(adminReport);
         menuAdmin.getItems().add(new JavaNGMenuItem("تنظیمات", new MenuActionHandler("/admin/settings")));
 

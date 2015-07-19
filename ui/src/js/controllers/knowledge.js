@@ -108,9 +108,23 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
         }
     };
 
+
+
     $scope.openReportDialog = function () {
         $modal.open({
-            templateUrl: 'reportDialog.html'
+            templateUrl: 'reportDialog.html',
+            resolve: {
+                pScope: function () {
+                    return $scope;
+                }
+            },
+            controller: function ($scope, pScope) {
+                $scope.submitAbuseReport = function() {
+                    pScope.addAbuseReport(pScope.knowledgeId, $scope.reportContent);
+                    $scope.$close();
+                    show_message("گزارش تخلف با موفقیت ثبت شد", "success");
+                };
+            }
         });
     };
 });

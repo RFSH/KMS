@@ -95,15 +95,15 @@
         <h6>
             علت تخلف را ذکر کنید
         </h6>
-        <textarea rows="5" style="width: 100%">
+        <textarea ng-model="reportContent" rows="5" style="width: 100%">
 
         </textarea>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-yes btn-sm" ng-click="accept()">
+        <button type="button" class="btn btn-primary btn-yes btn-sm" ng-click="submitAbuseReport()">
             ارسال گزارش
         </button>
-        <button type="button" class="btn btn-danger btn-sm" ng-click="reject()">
+        <button type="button" class="btn btn-danger btn-sm" ng-click="$dismiss()">
             انصراف
         </button>
     </div>

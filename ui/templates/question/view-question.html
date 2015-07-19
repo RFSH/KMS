@@ -27,7 +27,8 @@
             <div class="content" style="margin-top:20px;padding:20px;" ng-bind-html="knowledge.content">
             </div>
 
-            <a style="margin-top: 10px; margin-left: 5px; float: left;">
+            <a style="margin-top: 10px; margin-left: 5px; float: left; cursor: pointer;"
+                    ng-click="openReportDialog(knowledge)">
                 گزارش تخلف
             </a>
 
@@ -59,7 +60,8 @@
                         </span>
 
                         </div>
-                        <a style="font-size: 8px‍;margin-right: 8px">
+                        <a style="font-size: 8px‍;margin-right: 8px;cursor:pointer;"
+                                ng-click="openReportDialog(answer)">
                             گزارش تخلف
                         </a>
 
@@ -86,3 +88,28 @@
         </div>
     </div>
 </div>
+<script type="text/ng-template" id="reportDialog.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="$dismiss()"><span
+                aria-hidden="true">&times;</span><span class="sr-only">بستن</span></button>
+        <h4 class="modal-title">
+            گزارش تخلف
+        </h4>
+    </div>
+    <div class="modal-body">
+        <h6>
+            علت تخلف را ذکر کنید
+        </h6>
+        <textarea ng-model="reportContent" rows="5" style="width: 100%">
+
+        </textarea>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-yes btn-sm" ng-click="submitAbuseReport()">
+            ارسال گزارش
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" ng-click="$dismiss()">
+            انصراف
+        </button>
+    </div>
+</script>

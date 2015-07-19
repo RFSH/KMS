@@ -13,7 +13,15 @@ public class KnowledgeCatalog {
     private static KnowledgeCatalog instance;
 
     public Knowledge getKnowledge(String id) {
-        return new KnowledgeDAO().getObject("id", id);
+        KnowledgeDAO dao = new KnowledgeDAO();
+        Knowledge knowledge = dao.getWikiKnowledge("knowledges.id", id);
+        if (knowledge == null) {
+            knowledge = dao.getQuestionKnowledge("knowledges.id", id);
+        }
+        if (knowledge == null) {
+            knowledge = dao.getAnswerKnowledge("knowledges.id", id);
+        }
+        return knowledge;
     }
 
     public WikiKnowledge getWikiKnowledge(String id) {
@@ -22,6 +30,10 @@ public class KnowledgeCatalog {
 
     public QuestionKnowledge getQuestionKnowledge(String id) {
         return new KnowledgeDAO().getQuestionKnowledge("knowledges.id", id);
+    }
+
+    public AnswerKnowledge getAnswerKnowledge(String id) {
+        return new KnowledgeDAO().getAnswerKnowledge("knowledges.id", id);
     }
 
     public void addWikiKnowledge(String title, String content, List<String> tags) throws ValidationError {
@@ -87,6 +99,14 @@ public class KnowledgeCatalog {
             return new KnowledgeDAO().getQuestionKnowledges();
         }
         return new KnowledgeDAO().getQuestionKnowledges("title", query.getQuery());
+    }
+
+    public void deleteKnowledge(String knowledgeId) {
+        deleteKnowledge(getKnowledge(knowledgeId));
+    }
+
+    public void deleteKnowledge(Knowledge knowledge) {
+        new KnowledgeDAO().delete(knowledge);
     }
 
     public static KnowledgeCatalog getInstance() {

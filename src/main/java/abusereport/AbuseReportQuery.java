@@ -1,4 +1,4 @@
-package report;
+package abusereport;
 
 import knowledge.KnowledgeType;
 
@@ -8,7 +8,7 @@ public class AbuseReportQuery {
 
     /* Getter and Setters */
 
-    public String getContnet() {
+    public String getContent() {
         return contnet;
     }
 

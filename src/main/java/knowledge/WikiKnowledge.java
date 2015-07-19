@@ -55,6 +55,11 @@ public class WikiKnowledge extends Knowledge {
         }
     }
 
+    @Override
+    public KnowledgeType getKnowledgeType() {
+        return KnowledgeType.WIKI;
+    }
+
     public String getTitle() {
         return title;
     }
