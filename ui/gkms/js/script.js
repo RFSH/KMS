@@ -383,7 +383,17 @@ kmsApp.controller('WikiListCtrl', function ($scope, $ngJava) {
     });
 
     $scope.search = function() {
-        var knowledges = $scope.searchWikiKnowledge($scope.data.query, $scope.data.fromDate, $scope.data.toDate);
+        var fromDate = '', toDate='';
+        if ($scope.data.fromDate) {
+            fromDate = moment($scope.data.fromDate);
+            fromDate = fromDate.format("x");
+        }
+        if ($scope.data.toDate) {
+            toDate = moment($scope.data.toDate);
+            toDate = toDate.format("x");
+        }
+
+        var knowledges = $scope.searchWikiKnowledge($scope.data.query, fromDate, toDate);
         $scope.knowledges = [];
         for (var i = 0; i < knowledges.size(); i++) {
             $scope.knowledges.push(wikiKnowledgeToObject(knowledges.get(i)));
@@ -461,6 +471,7 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
                     knowledge.isApproved = true;
                     pScope.showApproved = false;
                     $scope.$close();
+                    window.location.hash = "/knowledge/list";
                     show_message("دانش تایید شد", "success");
                 };
             }
@@ -479,8 +490,6 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
             $scope.usecase = "";
         }
     };
-
-
 
     $scope.openReportDialog = function () {
         $modal.open({
@@ -614,7 +623,17 @@ kmsApp.controller('QuestionListCtrl', function ($scope, $ngJava) {
     });
 
     $scope.search = function() {
-        var knowledges = $scope.searchQuestionKnowledge($scope.data.query, $scope.data.fromDate, $scope.data.toDate);
+        var fromDate = '', toDate='';
+        if ($scope.data.fromDate) {
+            fromDate = moment($scope.data.fromDate);
+            fromDate = fromDate.format("x");
+        }
+        if ($scope.data.toDate) {
+            toDate = moment($scope.data.toDate);
+            toDate = toDate.format("x");
+        }
+
+        var knowledges = $scope.searchQuestionKnowledge($scope.data.query, fromDate, toDate);
         $scope.knowledges = [];
         for (var i = 0; i < knowledges.size(); i++) {
             $scope.knowledges.push(questionKnowledgeToObject(knowledges.get(i)));
@@ -692,7 +711,12 @@ kmsApp.controller('QuestionKnowledgeCtrl', function ($scope, $routeParams, $moda
             }
         });
     };
-});;function employeeToObject(employee) {
+});;function formatDate(date) {
+    var mdate = moment.unix(date/1000);
+    return mdate.format('jD jMMMM jYYYY  HH:mm');
+}
+
+function employeeToObject(employee) {
     return {
         id: employee.getId(),
         username: employee.getUsername(),
@@ -736,7 +760,8 @@ function knowledgeToObject(knowledge) {
         employeeId: knowledge.getOwner().getId(),
         employeeName: knowledge.getOwner().getFullName(),
         tags: tags,
-        voteSum: knowledge.getVoteSum()
+        voteSum: knowledge.getVoteSum(),
+        creationDate: formatDate(knowledge.getCreationDate().getTime())
     };
 }
 

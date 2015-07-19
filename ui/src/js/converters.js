@@ -1,3 +1,8 @@
+function formatDate(date) {
+    var mdate = moment.unix(date/1000);
+    return mdate.format('jD jMMMM jYYYY  HH:mm');
+}
+
 function employeeToObject(employee) {
     return {
         id: employee.getId(),
@@ -42,7 +47,8 @@ function knowledgeToObject(knowledge) {
         employeeId: knowledge.getOwner().getId(),
         employeeName: knowledge.getOwner().getFullName(),
         tags: tags,
-        voteSum: knowledge.getVoteSum()
+        voteSum: knowledge.getVoteSum(),
+        creationDate: formatDate(knowledge.getCreationDate().getTime())
     };
 }
 

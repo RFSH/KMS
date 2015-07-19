@@ -140,7 +140,7 @@ public abstract class BaseDAO<T> {
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder.append("SELECT * FROM ")
                 .append(table);
-        if (queryStr != null) {
+        if (queryStr != null && !queryStr.isEmpty()) {
             sqlBuilder.append(" WHERE ")
                     .append(queryStr);
         }

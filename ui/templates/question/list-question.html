@@ -5,15 +5,15 @@
                 فهرست سوالات
             </div>
             <div class="panel-body">
-                <form method="post" class="form-inline search-form" role="search">
+                <form method="post" ng-submit="search()" class="form-inline search-form" role="search">
                     <div class="form-group">
-                        <input class="form-control" name="content" placeholder="متن...">
+                        <input ng-model="data.query" class="form-control" name="content" placeholder="متن...">
                     </div>
                     <div class="form-group dateinput">
-                        <input class="form-control" name="fromdate" placeholder="از تاریخ">
+                        <input ng-model="data.from_date" class="form-control" name="fromdate" placeholder="از تاریخ">
                     </div>
                     <div class="form-group dateinput">
-                        <input class="form-control" name="todate" placeholder="تا تاریخ">
+                        <input ng-model="data.to_date" class="form-control" name="todate" placeholder="تا تاریخ">
                     </div>
                     <div class="form-group">
                         <select class="form-control">
@@ -71,7 +71,7 @@
                             {{ question.voteNum }}
                         </td>
                         <td>
-                            ۵ مهر ۱۳۹۵
+
                         </td>
                     </tr>
                     </tbody>

@@ -6,14 +6,16 @@ import report.KnowledgeReportGenerator;
 import tag.Tag;
 import util.ValidationError;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class Knowledge {
     private String id;
     private Employee owner;
     private List<Tag> tags;
-
+    private Date creationDate;
 
     public abstract void acceptReporter(KnowledgeReportGenerator knowledgeReportGenerator);
 
@@ -94,4 +96,12 @@ public abstract class Knowledge {
     }
 
     public abstract KnowledgeType getKnowledgeType();
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date date) {
+        this.creationDate = date;
+    }
 }

@@ -6,6 +6,7 @@ import report.KnowledgeReportGenerator;
 import util.IdGenerator;
 import util.ValidationError;
 
+import java.util.Date;
 import java.util.List;
 
 public class QuestionKnowledge extends Knowledge {
@@ -19,6 +20,7 @@ public class QuestionKnowledge extends Knowledge {
         answer.setId(IdGenerator.generateID());
         answer.setQuestion(this);
         answer.setOwner((Employee) Context.getInstance().getLoggedInUser());
+        answer.setCreationDate(new Date());
         answer.validate();
         dao.insert(answer);
         return answer;

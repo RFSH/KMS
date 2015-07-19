@@ -9,6 +9,7 @@ import tag.TagDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class KnowledgeDAO extends BaseDAO<Knowledge> {
@@ -19,9 +20,10 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
 
     @Override
     public Object[] getColumnValues(Knowledge knowledge) {
-        return new String[]{
+        return new Object[]{
                 "id", knowledge.getId(),
-                "employee_id", knowledge.getOwner().getId()
+                "employee_id", knowledge.getOwner().getId(),
+                "creation_date", knowledge.getCreationDate().getTime()
         };
     }
 
@@ -32,12 +34,6 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
 
     @Override
     public Knowledge getObjectFromResult(ResultSet result) {
-//        Knowledge knowledge = new Knowledge();
-//
-//        try {
-//            knowledge.setId(result.getString("id"));
-//        } catch (SQLException e) {
-//        }
         return null;
     }
 
@@ -48,6 +44,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
             String employeeId = resultSet.getString("employee_id");
             knowledge.setOwner(UserCatalog.getInstance().findEmployeeById(employeeId));
 
+            knowledge.setCreationDate(new Date(resultSet.getLong("creation_date")));
             knowledge.setTags(TagCatalog.getInstance().findTagsByKnowledge(knowledge));
         } catch (SQLException e) {
             e.printStackTrace();
@@ -136,8 +133,8 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
         return knowledges;
     }
 
-    public List<WikiKnowledge> getWikiKnowledges() {
-        ResultSet result = query("knowledges JOIN wikiknowledges ON knowledges.id=wikiknowledges.id", null);
+    public List<WikiKnowledge> getWikiKnowledges(String queryStr) {
+        ResultSet result = query("knowledges JOIN wikiknowledges ON knowledges.id=wikiknowledges.id", queryStr);
         List<WikiKnowledge> knowledges = new ArrayList<>();
         try {
             while (result.next()) {
@@ -147,6 +144,10 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
             e.printStackTrace();
         }
         return knowledges;
+    }
+
+    public List<WikiKnowledge> getWikiKnowledges() {
+        return getWikiKnowledges(null);
     }
 
     public QuestionKnowledge getQuestionKnowledge(String column, String value) {
@@ -175,8 +176,8 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
         return knowledges;
     }
 
-    public List<QuestionKnowledge> getQuestionKnowledges() {
-        ResultSet result = query("knowledges JOIN questions ON knowledges.id=questions.id", null);
+    public List<QuestionKnowledge> getQuestionKnowledges(String queryStr) {
+        ResultSet result = query("knowledges JOIN questions ON knowledges.id=questions.id", queryStr);
         List<QuestionKnowledge> knowledges = new ArrayList<>();
         try {
             while (result.next()) {
@@ -186,6 +187,10 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
             e.printStackTrace();
         }
         return knowledges;
+    }
+
+    public List<QuestionKnowledge> getQuestionKnowledges() {
+        return getQuestionKnowledges(null);
     }
 
     public AnswerKnowledge getAnswerKnowledge(String column, String value) {
