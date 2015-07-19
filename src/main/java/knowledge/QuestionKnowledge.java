@@ -2,6 +2,7 @@ package knowledge;
 
 import account.Context;
 import account.Employee;
+import report.KnowledgeReportGenerator;
 import util.IdGenerator;
 import util.ValidationError;
 
@@ -42,6 +43,11 @@ public class QuestionKnowledge extends Knowledge {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public void acceptReporter(KnowledgeReportGenerator knowledgeReportGenerator) {
+        knowledgeReportGenerator.visitQuestionKnowldege(this);
     }
 
     @Override

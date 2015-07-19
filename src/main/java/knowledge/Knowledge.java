@@ -2,6 +2,7 @@ package knowledge;
 
 import account.Context;
 import account.Employee;
+import report.KnowledgeReportGenerator;
 import tag.Tag;
 import util.ValidationError;
 
@@ -12,6 +13,9 @@ public abstract class Knowledge {
     private String id;
     private Employee owner;
     private List<Tag> tags;
+
+
+    public abstract void acceptReporter(KnowledgeReportGenerator knowledgeReportGenerator);
 
     public Vote addVoteUpOrDown(int upOrDown) {
         VoteDAO dao = new VoteDAO();

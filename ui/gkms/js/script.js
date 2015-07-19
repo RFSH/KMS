@@ -4,7 +4,8 @@ var kmsApp = angular.module("kms", [
     'textAngular',
     'ngTagsInput',
     'ui.bootstrap',
-    'ng-java'
+    'ng-java',
+    'chart.js'
 ]);
 
 kmsApp.config(function($routeProvider) {
@@ -35,7 +36,7 @@ kmsApp.config(function($routeProvider) {
     $routeProvider.when('/report/activities', {templateUrl: 'templates/report/activities-report.html'}); //RF done
     $routeProvider.when('/report/activities/employee', {templateUrl: 'templates/report/activities-employee-report.html'}); //RF done
     $routeProvider.when('/report/knowledge/:knowledgeId', {templateUrl: 'templates/report/knowledge-report.html'}); //RF done
-    $routeProvider.when('/report/tag', {templateUrl: 'templates/report/tag-report.html'}); //HaD
+    $routeProvider.when('/report/chart', {templateUrl: 'templates/report/chart-report.html'}); //HaD
 
     //user
     $routeProvider.when('/', {templateUrl: 'templates/user/login.html'}); //RF done
@@ -173,6 +174,61 @@ kmsApp.controller('AbuseReportListCtrl', function ($scope, $ngJava) {
         $scope.responseToReport(report.id, false);
         $scope.reports.splice(index, 1);
     };
+});;var kmsApp = angular.module('kms');
+
+kmsApp.controller('ChartReportCtrl', function ($scope, $routeParams, $ngJava) {
+    $scope.activeTab = "tag";
+    $scope.tagData = [];
+    $scope.tagLabels = [];
+    $scope.timeSeries = [
+        "دانش",
+        "سوال"
+    ];
+
+    $scope.timeData = [
+        [1,2,3],
+        [3,4,5]
+    ];
+    $scope.timeLabels = [
+        '۱۲ شهریور',
+        '۱۳ شهریور',
+        '۱۵ شهریور'
+    ];
+
+    $scope.colors = [
+        '#F7464A', '#46BFBD', '#FDB45C', 'darkgreen', 'darkblue', 'darkred', '108edc'
+    ];
+
+    $scope.pieChartOptions = {
+        animateRotate: true,
+        animateScale: false
+    };
+
+    $scope.lineChartOptions = {
+        bezierCurve: false,
+        datasetFill: false
+    };
+
+    $ngJava.ready(function () {
+        $scope.getTags();
+
+    });
+
+    $scope.getTags = function(){
+        var tags = $scope.getTagsReport();
+        var keys = tags.keyList();
+        for(var i=0;i<keys.size();i++){
+            $scope.tagLabels.push(keys.get(i));
+            $scope.tagData.push(tags.getTags().get(keys.get(i)));
+        }
+    };
+
+
+
+    $scope.selectTab = function(tab){
+        $scope.activeTab = tab;
+    };
+
 });;var kmsApp = angular.module('kms');
 
 kmsApp.controller('AddEmployeeCtrl', function ($scope, $modal, $routeParams, $ngJava) {
