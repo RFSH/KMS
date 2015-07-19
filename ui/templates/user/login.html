@@ -12,7 +12,7 @@
             <div class="form-group">
                 <div class="input-icon">
                     <i class="fa fa-user"></i>
-                    <input class="form-control" ng-model="data.username" type="text" name="username"
+                    <input id="username-inp" class="form-control" ng-model="data.username" type="text" name="username"
                            placeholder="نام کاربری"/>
                 </div>
             </div>
@@ -28,8 +28,6 @@
         </form>
     </div>
 </div>
-<style>
-    .btn-back {
-        display: none !important;
-    }
-</style>
+<script>
+    document.getElementById("username-inp").focus();
+</script>
