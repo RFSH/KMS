@@ -178,25 +178,16 @@ kmsApp.controller('AbuseReportListCtrl', function ($scope, $ngJava) {
 
 kmsApp.controller('ChartReportCtrl', function ($scope, $routeParams, $ngJava) {
     $scope.activeTab = "tag";
-    $scope.tagData = [
-        1 ,2 ,3 ,4
-    ];
-    $scope.tagLabels = [
-        "یک",
-        "دو",
-        "سه",
-        "چهار"
-    ];
+    $scope.tagData = [];
+    $scope.tagLabels = [];
     $scope.timeSeries = [
         "دانش",
-        "سوال",
-        "جواب"
+        "سوال"
     ];
 
     $scope.timeData = [
         [1,2,3],
-        [3,4,5],
-        [2,1,4]
+        [3,4,5]
     ];
     $scope.timeLabels = [
         '۱۲ شهریور',
@@ -204,15 +195,35 @@ kmsApp.controller('ChartReportCtrl', function ($scope, $routeParams, $ngJava) {
         '۱۵ شهریور'
     ];
 
+    $scope.colors = [
+        '#F7464A', '#46BFBD', '#FDB45C', 'darkgreen', 'darkblue', 'darkred', '108edc'
+    ];
+
+    $scope.pieChartOptions = {
+        animateRotate: true,
+        animateScale: false
+    };
+
     $scope.lineChartOptions = {
         bezierCurve: false,
         datasetFill: false
     };
 
     $ngJava.ready(function () {
-        console.log('here!!!');
-        //var data = $scope.getTagsReport();
+        $scope.getTags();
+
     });
+
+    $scope.getTags = function(){
+        var tags = $scope.getTagsReport();
+        var keys = tags.keyList();
+        for(var i=0;i<keys.size();i++){
+            $scope.tagLabels.push(keys.get(i));
+            $scope.tagData.push(tags.getTags().get(keys.get(i)));
+        }
+    };
+
+
 
     $scope.selectTab = function(tab){
         $scope.activeTab = tab;

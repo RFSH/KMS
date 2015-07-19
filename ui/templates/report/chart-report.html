@@ -16,10 +16,10 @@
 
     <div class="report-tags-content container-fluid">
         <div ng-if="activeTab == 'tag'">
-            <canvas class="chart chart-pie" data="tagData" labels="tagLabels"></canvas>
+            <canvas class="chart chart-pie" data="tagData" labels="tagLabels" options="pieChartOptions" colours="colors" legend="true"></canvas>
         </div>
         <div ng-if="activeTab == 'time'">
-            <canvas class="chart chart-line" data="timeData" labels="timeLabels" series="timeSeries" options="lineChartOptions"></canvas>
+            <canvas class="chart chart-line" data="timeData" labels="timeLabels" series="timeSeries" colours="colors" options="lineChartOptions" legend="true"></canvas>
         </div>
 
     </div>

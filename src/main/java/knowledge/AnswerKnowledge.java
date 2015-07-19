@@ -22,9 +22,10 @@ public class AnswerKnowledge extends Knowledge {
         this.content = content;
     }
 
+
     @Override
     public void acceptReporter(KnowledgeReportGenerator knowledgeReportGenerator) {
-        knowledgeReportGenerator.visitAnswerKnowldege(this);
+        // Doesn't accept report.
     }
 
     @Override

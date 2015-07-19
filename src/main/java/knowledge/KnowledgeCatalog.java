@@ -87,7 +87,7 @@ public class KnowledgeCatalog {
 
     public List<WikiKnowledge> findWikiKnowledges(WikiKnowledgeQuery query) {
         // TODO fix wiki knowledge search
-        if (query.getQuery() == null || query.getQuery().isEmpty()) {
+        if (query == null || query.getQuery() == null || query.getQuery().isEmpty()) {
             return new KnowledgeDAO().getWikiKnowledges();
         }
         return new KnowledgeDAO().getWikiKnowledges("title", query.getQuery());
@@ -95,7 +95,7 @@ public class KnowledgeCatalog {
 
     public List<QuestionKnowledge> findQuestionKnowledges(QuestionKnowledgeQuery query) {
         // TODO fix question knowledge search
-        if (query.getQuery() == null || query.getQuery().isEmpty()) {
+        if (query == null || query.getQuery() == null || query.getQuery().isEmpty()) {
             return new KnowledgeDAO().getQuestionKnowledges();
         }
         return new KnowledgeDAO().getQuestionKnowledges("title", query.getQuery());
@@ -115,5 +115,6 @@ public class KnowledgeCatalog {
         }
         return instance;
     }
+
 
 }
