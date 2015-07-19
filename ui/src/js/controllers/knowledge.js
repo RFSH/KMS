@@ -77,7 +77,7 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
         $scope.knowledge = knowledgeData;
 
         $scope.showApprove = $scope.isUserManager() && !knowledgeData.isApproved;
-        $scope.perms = itemPermissionsToObject($scope.getPermissions($scope.knowledgeId));
+        $scope.perms = itemPermissionsToObject($scope.getUserPermissions($scope.knowledgeId));
     });
 
     $scope.voteUp = function() {
@@ -95,13 +95,47 @@ kmsApp.controller('WikiKnowledgeCtrl', function ($scope, $routeParams, $modal, $
         $scope.knowledge.isDeprecated = true;
     };
 
-    $scope.approve = function() {
-        $scope.approveOrDisapprove($scope.knowledgeId, 1);
-        $scope.knowledge.isApproved = true;
+    $scope.openApproveDialog = function() {
+        $modal.open({
+            templateUrl: 'approveDialog.html',
+            resolve: {
+                pScope: function () {
+                    return $scope;
+                },
+                knowledge: function() {
+                    return $scope.knowledge;
+                }
+            },
+            controller: function ($scope, pScope, knowledge) {
+                $scope.permissions = [];
+                $scope.perms = {
+                    view: -1,
+                    change: -1
+                };
+                $scope.error = "";
+                var permissions = pScope.getPermissionLevels();
+                for (var i = 0; i < permissions.size(); i++) {
+                    $scope.permissions.push(permissionToObject(permissions.get(i)));
+                }
+
+                $scope.submitApproval = function() {
+                    if ($scope.perms.view === -1 || $scope.perms.change === -1) {
+                        $scope.error = "لطفا سطوح دسترسی را انتخاب کنید";
+                        return;
+                    }
+
+                    pScope.approve(knowledge.id, 1);
+                    knowledge.isApproved = true;
+                    pScope.showApproved = false;
+                    $scope.$close();
+                    show_message("دانش تایید شد", "success");
+                };
+            }
+        });
     };
 
     $scope.disapprove = function() {
-        $scope.approveOrDisapprove($scope.knowledgeId, -1);
+        $scope.approve($scope.knowledgeId, -1);
         window.location.hash = "/knowledge/list";
     };
 

@@ -3,6 +3,7 @@ package tag;
 import db.BaseDAO;
 import knowledge.Knowledge;
 import knowledge.WikiKnowledge;
+import org.postgresql.util.PSQLException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,7 +41,7 @@ public class TagDAO extends BaseDAO<Tag> {
     }
 
     public List<Tag> getKnowledgeTags(String knowledgeId) {
-        ResultSet result = query("knowledge_tag JOIN tags ON knowledge_tag.tag_id=tags.id", null);
+        ResultSet result = query("knowledge_tag JOIN tags ON knowledge_tag.tag_id=tags.id", "knowledge_id", knowledgeId);
         List<Tag> tags = new ArrayList<>();
         try {
             while (result.next()) {
@@ -50,5 +51,21 @@ public class TagDAO extends BaseDAO<Tag> {
             e.printStackTrace();
         }
         return tags;
+    }
+
+    public void insertKnowledgeTags(String knowledgeId, List<Tag> tags) {
+        for (Tag tag : tags) {
+            ResultSet resultSet = query("knowledge_tag", "knowledge_id='" + knowledgeId + "' AND tag_id='" + tag.getId() + "'" );
+            try {
+                if (! resultSet.next()) {
+                    insert("knowledge_tag", new Object[]{
+                            "knowledge_id", knowledgeId,
+                            "tag_id", tag.getId()
+                    });
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

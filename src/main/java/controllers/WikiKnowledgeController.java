@@ -11,7 +11,11 @@ import knowledge.KnowledgeCatalog;
 import knowledge.WikiKnowledge;
 import permission.Authorizer;
 import permission.ItemPermissions;
+import permission.PermissionLevel;
+import permission.PermissionLevelCatalog;
 import util.ValidationError;
+
+import java.util.List;
 
 public class WikiKnowledgeController extends JavaNGController {
     @Scope
@@ -47,6 +51,7 @@ public class WikiKnowledgeController extends JavaNGController {
             knowledge.save();
         } else {
             knowledge.approveOrDisapprove(false);
+            KnowledgeCatalog.getInstance().deleteKnowledge(knowledgeId);
         }
     }
 
@@ -62,7 +67,12 @@ public class WikiKnowledgeController extends JavaNGController {
     }
 
     @Scope
-    public ItemPermissions getPermissions(String knowledgeId) {
+    public List<PermissionLevel> getPermissionLevels() {
+        return PermissionLevelCatalog.getInstance().getOrderedPermissionLevels();
+    }
+
+    @Scope
+    public ItemPermissions getUserPermissions(String knowledgeId) {
         WikiKnowledge knowledge = KnowledgeCatalog.getInstance().getWikiKnowledge(knowledgeId);
         User user = Context.getInstance().getLoggedInUser();
         return new Authorizer().getPermissions(user, knowledge);

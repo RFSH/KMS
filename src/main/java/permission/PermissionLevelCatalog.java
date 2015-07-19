@@ -27,6 +27,9 @@ public class PermissionLevelCatalog {
     }
 
     public PermissionLevel findById(String id) {
+        if (id == null || id.isEmpty()) {
+            return null;
+        }
         return new PermissionLevelDAO().getObject("id", id);
     }
 

@@ -31,17 +31,17 @@
                 </div>
                 <div class="admin-buttons" style="margin-top: -20px">
                     <div class="btn-group">
-                        <button ng-if="showApprove" ng-click="approve()" class="btn btn-sm btn-success">تایید دانش
+                        <button ng-if="showApprove" ng-click="openApproveDialog()" class="btn btn-sm btn-success">تایید دانش
                         </button>
                         <button ng-if="showApprove" ng-click="disapprove()" class="btn btn-sm btn-danger">
                             رد دانش
                         </button>
                         <a ng-if="perms.change" ng-href="#/knowledge/edit/{{knowledgeId}}"
                            class="btn btn-sm btn-primary">تغییر دانش</a>
-                        <button ng-if="perms.clone" type="button" class="btn btn-sm btn-success">ایجاد نسخه جدید
+                        <button ng-if="perms.clone && knowledge.isApproved" type="button" class="btn btn-sm btn-success">ایجاد نسخه جدید
                         </button>
-                        <button ng-if="perms.deprecate && !knowledge.isDeprecated" ng-click="deprecate()" type="button"
-                                class="btn btn-sm btn-danger">منسوخ کردن دانش
+                        <button ng-if="perms.deprecate && !knowledge.isDeprecated && knowledge.isApproved" ng-click="deprecate()" type="button"
+                                class="btn btn-sm btn-warning">منسوخ کردن دانش
                         </button>
                     </div>
                 </div>
@@ -115,6 +115,51 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-primary btn-yes btn-sm" ng-click="submitAbuseReport()">
             ارسال گزارش
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" ng-click="$dismiss()">
+            انصراف
+        </button>
+    </div>
+</script>
+<script type="text/ng-template" id="approveDialog.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="$dismiss()"><span
+                aria-hidden="true">&times;</span><span class="sr-only">بستن</span></button>
+        <h4 class="modal-title">
+            تایید دانش
+        </h4>
+    </div>
+    <div class="modal-body">
+        <p>
+            سطوح دسترسی این دانش را مشخص کنید
+        </p>
+        <form class="">
+            <div class="form-group">
+                <label>
+                    سطح دسترسی مشاهده
+                </label>
+                <div>
+                    <select ng-model="perms.view">
+                        <option ng-repeat="permission in permissions" value="{{permission.id}}">{{ permission.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>
+                    سطح دسترسی تغییر
+                </label>
+                <div>
+                    <select ng-model="perms.change">
+                        <option ng-repeat="permission in permissions" value="{{permission.id}}">{{ permission.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div style="color:red">{{error}}</div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-yes btn-sm" ng-click="submitApproval()">
+            ثبت
         </button>
         <button type="button" class="btn btn-danger btn-sm" ng-click="$dismiss()">
             انصراف

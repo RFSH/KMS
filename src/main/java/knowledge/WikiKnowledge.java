@@ -1,5 +1,6 @@
 package knowledge;
 
+import permission.PermissionLevel;
 import util.Strings;
 import util.ValidationError;
 
@@ -12,7 +13,9 @@ public class WikiKnowledge extends Knowledge {
     private String attachment;
     private boolean isDeprecated;
     private boolean isApproved;
-    List<String> useCaseList;
+    private List<String> useCaseList;
+    private PermissionLevel viewPermissionLevel;
+    private PermissionLevel changePermissionLevel;
 
     public void addUseCase(String useCase) {
 
@@ -23,8 +26,7 @@ public class WikiKnowledge extends Knowledge {
     }
 
     public void approveOrDisapprove(boolean approve) {
-
-
+        setApproved(approve);
     }
 
     public WikiKnowledge cloneWikiKnowledge() {
@@ -109,5 +111,21 @@ public class WikiKnowledge extends Knowledge {
 
     public void setUseCaseList(List<String> useCaseList) {
         this.useCaseList = useCaseList;
+    }
+
+    public PermissionLevel getViewPermissionLevel() {
+        return viewPermissionLevel;
+    }
+
+    public void setViewPermissionLevel(PermissionLevel permissionLevel) {
+        this.viewPermissionLevel =  permissionLevel;
+    }
+
+    public PermissionLevel getChangePermissionLevel() {
+        return changePermissionLevel;
+    }
+
+    public void setChangePermissionLevel(PermissionLevel permissionLevel) {
+        this.changePermissionLevel = permissionLevel;
     }
 }

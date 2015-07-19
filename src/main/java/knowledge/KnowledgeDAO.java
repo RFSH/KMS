@@ -2,7 +2,9 @@ package knowledge;
 
 import account.UserCatalog;
 import db.BaseDAO;
+import permission.PermissionLevelCatalog;
 import tag.TagCatalog;
+import tag.TagDAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -71,6 +73,9 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
                 }
             }
             wikiKnowledge.setUseCaseList(usecaseList);
+
+            wikiKnowledge.setViewPermissionLevel(PermissionLevelCatalog.getInstance().findById(resultSet.getString("view_permission_level_id")));
+            wikiKnowledge.setChangePermissionLevel(PermissionLevelCatalog.getInstance().findById(resultSet.getString("change_permission_level_id")));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -220,15 +225,32 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
             usecases.append(knowledge.getUseCaseList().get(i));
         }
 
-        super.insert("wikiknowledges", new Object[]{
-                "id", knowledge.getId(),
-                "title", knowledge.getTitle(),
-                "content", knowledge.getContent(),
-                "attachment", knowledge.getAttachment(),
-                "is_deprecated", knowledge.isDeprecated(),
-                "is_approved", knowledge.isApproved(),
-                "usecases", usecases.toString()
-        });
+        if (knowledge.getViewPermissionLevel() == null) {
+            super.insert("wikiknowledges", new Object[]{
+                    "id", knowledge.getId(),
+                    "title", knowledge.getTitle(),
+                    "content", knowledge.getContent(),
+                    "attachment", knowledge.getAttachment(),
+                    "is_deprecated", knowledge.isDeprecated(),
+                    "is_approved", knowledge.isApproved(),
+                    "usecases", usecases.toString()
+            });
+        } else {
+            super.insert("wikiknowledges", new Object[]{
+                    "id", knowledge.getId(),
+                    "title", knowledge.getTitle(),
+                    "content", knowledge.getContent(),
+                    "attachment", knowledge.getAttachment(),
+                    "is_deprecated", knowledge.isDeprecated(),
+                    "is_approved", knowledge.isApproved(),
+                    "view_permission_level_id", knowledge.getViewPermissionLevel().getId(),
+                    "change_permission_level_id", knowledge.getChangePermissionLevel().getId(),
+                    "usecases", usecases.toString()
+            });
+        }
+
+
+        new TagDAO().insertKnowledgeTags(knowledge.getId(), knowledge.getTags());
     }
 
     public void insert(QuestionKnowledge knowledge) {
@@ -239,6 +261,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
                 "title", knowledge.getTitle(),
                 "content", knowledge.getContent()
         });
+        new TagDAO().insertKnowledgeTags(knowledge.getId(), knowledge.getTags());
     }
 
     public void insert(AnswerKnowledge knowledge) {
@@ -262,15 +285,30 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
             usecases.append(knowledge.getUseCaseList().get(i));
         }
 
-        super.update("wikiknowledges", getWhereClause(knowledge), new Object[]{
-                "id", knowledge.getId(),
-                "title", knowledge.getTitle(),
-                "content", knowledge.getContent(),
-                "attachment", knowledge.getAttachment(),
-                "is_deprecated", knowledge.isDeprecated(),
-                "is_approved", knowledge.isApproved(),
-                "usecases", usecases.toString()
-        });
+        if (knowledge.getViewPermissionLevel() != null) {
+            super.update("wikiknowledges", getWhereClause(knowledge), new Object[]{
+                    "id", knowledge.getId(),
+                    "title", knowledge.getTitle(),
+                    "content", knowledge.getContent(),
+                    "attachment", knowledge.getAttachment(),
+                    "is_deprecated", knowledge.isDeprecated(),
+                    "is_approved", knowledge.isApproved(),
+                    "view_permission_level_id", knowledge.getViewPermissionLevel().getId(),
+                    "change_permission_level_id", knowledge.getChangePermissionLevel().getId(),
+                    "usecases", usecases.toString()
+            });
+        } else {
+            super.update("wikiknowledges", getWhereClause(knowledge), new Object[]{
+                    "id", knowledge.getId(),
+                    "title", knowledge.getTitle(),
+                    "content", knowledge.getContent(),
+                    "attachment", knowledge.getAttachment(),
+                    "is_deprecated", knowledge.isDeprecated(),
+                    "is_approved", knowledge.isApproved(),
+                    "usecases", usecases.toString()
+            });
+        }
+        new TagDAO().insertKnowledgeTags(knowledge.getId(), knowledge.getTags());
     }
 
     public void update(QuestionKnowledge knowledge) {
@@ -281,6 +319,7 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
                 "title", knowledge.getTitle(),
                 "content", knowledge.getContent()
         });
+        new TagDAO().insertKnowledgeTags(knowledge.getId(), knowledge.getTags());
     }
 
     public void update(AnswerKnowledge knowledge) {
@@ -291,5 +330,6 @@ public class KnowledgeDAO extends BaseDAO<Knowledge> {
                 "question_id", knowledge.getQuestion().getId(),
                 "content", knowledge.getContent()
         });
+        new TagDAO().insertKnowledgeTags(knowledge.getId(), knowledge.getTags());
     }
 }

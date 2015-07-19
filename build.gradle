@@ -19,6 +19,7 @@ sourceSets {
 
 dependencies {
     compile 'org.postgresql:postgresql:9.3-1100-jdbc4'
+    compile 'mysql:mysql-connector-java:5.1.16'
     compile project(':javang')
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

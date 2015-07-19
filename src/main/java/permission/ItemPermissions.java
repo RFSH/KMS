@@ -1,6 +1,7 @@
 package permission;
 
 public class ItemPermissions {
+    private boolean view;
     private boolean change;
     private boolean add;
     private boolean delete;
@@ -8,6 +9,14 @@ public class ItemPermissions {
     private boolean clone;
     private boolean report;
     private boolean vote;
+
+    public boolean canView() {
+        return view;
+    }
+
+    public void setView(boolean view) {
+        this.view = view;
+    }
 
     public boolean canChange() {
         return change;

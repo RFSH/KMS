@@ -41,7 +41,7 @@ public class PermissionLevel {
         return order;
     }
 
-    public void setOrder(Integer getOrder) {
+    public void setOrder(Integer order) {
         this.order = order;
     }
 }

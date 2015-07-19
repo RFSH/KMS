@@ -126,6 +126,7 @@ function abuseToObject(abuse) {
 
 function itemPermissionsToObject(perms) {
     return {
+        view: perms.canView(),
         change: perms.canChange(),
         add: perms.canAdd(),
         delete: perms.canDelete(),
