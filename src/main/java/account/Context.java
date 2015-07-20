@@ -23,4 +23,8 @@ public class Context {
         }
         return instance;
     }
+
+    public void logout() {
+        loggedInUser = null;
+    }
 }

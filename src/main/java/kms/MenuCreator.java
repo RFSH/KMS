@@ -1,5 +1,6 @@
 package kms;
 
+import account.Context;
 import javang.JavaNGMenu;
 import javang.JavaNGMenuHandler;
 import javang.JavaNGMenuItem;
@@ -10,7 +11,7 @@ public class MenuCreator {
 
         JavaNGMenu menuProfile = new JavaNGMenu("حساب کاربری");
         menuProfile.addItem(new JavaNGMenuItem("پروفایل شخصی", new MenuActionHandler("/employee/profile")));
-        menuProfile.addItem(new JavaNGMenuItem("خروج", new MenuActionHandler("/")));
+        menuProfile.addItem(new JavaNGMenuItem("خروج", new LogoutActionHandler()));
 
         JavaNGMenu menuKnowledge = new JavaNGMenu("دانش‌");
 
@@ -32,7 +33,7 @@ public class MenuCreator {
         JavaNGMenu root = new JavaNGMenu("");
 
         JavaNGMenu menuProfile = new JavaNGMenu("حساب کاربری");
-        menuProfile.addItem(new JavaNGMenuItem("خروج", new MenuActionHandler("/")));
+        menuProfile.addItem(new JavaNGMenuItem("خروج", new LogoutActionHandler()));
 
         JavaNGMenu menuAdmin = new JavaNGMenu("مدیریت");
         JavaNGMenu adminEmployees = new JavaNGMenu("کارمندان");
@@ -76,6 +77,14 @@ public class MenuCreator {
         @Override
         public void onMenuClick() {
             changePage(mPage);
+        }
+    }
+
+    private static class LogoutActionHandler extends JavaNGMenuHandler {
+        @Override
+        public void onMenuClick() {
+            Context.getInstance().logout();
+            changePage("/");
         }
     }
 }
