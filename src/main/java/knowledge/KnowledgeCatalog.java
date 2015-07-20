@@ -93,13 +93,13 @@ public class KnowledgeCatalog {
             queryBuilder.append("(title LIKE '%").append(query.getQuery()).append("%' OR ")
             .append("content LIKE '%").append(query.getQuery()).append("%')");
         }
-        if (query.getFromDate() != null) {
+        if (query != null && query.getFromDate() != null) {
             if (queryBuilder.length() > 0) {
                 queryBuilder.append(" AND ");
             }
             queryBuilder.append("creation_date >= ").append(query.getFromDate().getTime());
         }
-        if (query.getToDate() != null) {
+        if (query != null && query.getToDate() != null) {
             if (queryBuilder.length() > 0) {
                 queryBuilder.append(" AND ");
             }

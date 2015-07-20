@@ -185,15 +185,8 @@ kmsApp.controller('ChartReportCtrl', function ($scope, $routeParams, $ngJava) {
         "سوال"
     ];
 
-    $scope.timeData = [
-        [1,2,3],
-        [3,4,5]
-    ];
-    $scope.timeLabels = [
-        '۱۲ شهریور',
-        '۱۳ شهریور',
-        '۱۵ شهریور'
-    ];
+    $scope.timeData = [];
+    $scope.timeLabels = [];
 
     $scope.colors = [
         '#F7464A', '#46BFBD', '#FDB45C', 'darkgreen', 'darkblue', 'darkred', '108edc'
@@ -211,21 +204,51 @@ kmsApp.controller('ChartReportCtrl', function ($scope, $routeParams, $ngJava) {
 
     $ngJava.ready(function () {
         $scope.getTags();
+        $scope.getKnowledges();
 
     });
 
-    $scope.getTags = function(){
+    $scope.getTags = function () {
         var tags = $scope.getTagsReport();
         var keys = tags.keyList();
-        for(var i=0;i<keys.size();i++){
+        for (var i = 0; i < keys.size(); i++) {
             $scope.tagLabels.push(keys.get(i));
             $scope.tagData.push(tags.getTags().get(keys.get(i)));
         }
     };
 
+    $scope.getKnowledges = function () {
+        var timeReport = $scope.getTimeReport();
+        var days = timeReport.getAllDays();
+        var items = [];
+
+        var wikiTimes = [];
+        var questionTimes = [];
+        var labels = [];
+        for (var i = 0; i < days.size(); i++) {
+            var day = days.get(i);
+            wikiTimes.push(timeReport.getWikiCount(day));
+            questionTimes.push(timeReport.getQuestionCount(day));
+
+            var mdate = moment();
+            mdate.dayOfYear(day);
+            labels.push(mdate.format('jD jMMMM jYYYY'));
+            //items.push({
+            //   day: day,
+            //    wiki: timeReport.getWikiCount(day),
+            //    question: timeReport.getQuestionCount(day)
+            //});
+        }
+
+        $scope.timeData = [
+            wikiTimes,
+            questionTimes
+        ];
+        $scope.timeLabels = labels;
+    };
 
 
-    $scope.selectTab = function(tab){
+    $scope.selectTab = function (tab) {
         $scope.activeTab = tab;
     };
 

@@ -52,6 +52,7 @@
     "commit": "5323915b5f2573a180042a5f47bebfa6e795cd8d"
   },
   "_source": "git://github.com/behrang/moment-jalaali.git",
-  "_target": "*",
-  "_originalSource": "moment-jalaali"
+  "_target": "~0.3.8",
+  "_originalSource": "moment-jalaali",
+  "_direct": true
 }
