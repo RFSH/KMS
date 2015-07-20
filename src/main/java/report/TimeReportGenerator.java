@@ -1,19 +1,14 @@
 package report;
 
-import knowledge.AnswerKnowledge;
 import knowledge.QuestionKnowledge;
 import knowledge.WikiKnowledge;
 
 import java.util.*;
 
 public class TimeReportGenerator implements KnowledgeReportGenerator {
-    private int[] wikis;
-    private int[] questions;
     private Map<Integer, Integer> wikiCount;
     private Map<Integer, Integer> questionCount;
     public TimeReportGenerator() {
-        this.wikis = new int[7];
-        this.questions = new int[7];
         wikiCount = new HashMap<>();
         questionCount = new HashMap<>();
     }
@@ -42,14 +37,6 @@ public class TimeReportGenerator implements KnowledgeReportGenerator {
         questionCount.put(day, count);
     }
 
-    public Map<Integer, Integer> getWikis() {
-        return wikiCount;
-    }
-
-    public Map<Integer, Integer> getQuestions() {
-        return questionCount;
-    }
-
     public List<Integer> getAllDays() {
         Set<Integer> days = new HashSet<>();
         days.addAll(wikiCount.keySet());
@@ -74,38 +61,5 @@ public class TimeReportGenerator implements KnowledgeReportGenerator {
         }
         return count;
     }
-//    public List<ReportItem> getWikis(){
-//        List<ReportItem> items = new ArrayList<>();
-//        for (Integer day : wikiCount.keySet()) {
-//            Calendar date = Calendar.getInstance();
-//            date.set(Calendar.DAY_OF_YEAR, day);
-//
-//            ReportItem item = new ReportItem();
-//            item.date = date.getTime();
-//            item.count = wikiCount.get(day);
-//
-//            items.add(item);
-//        }
-//        return items;
-//    }
-//
-//    public List<ReportItem> getQuestions(){
-//        List<ReportItem> items = new ArrayList<>();
-//        for (Integer day : questionCount.keySet()) {
-//            Calendar date = Calendar.getInstance();
-//            date.set(Calendar.DAY_OF_YEAR, day);
-//
-//            ReportItem item = new ReportItem();
-//            item.date = date.getTime();
-//            item.count = questionCount.get(day);
-//
-//            items.add(item);
-//        }
-//        return items;
-//    }
 
-    public static class ReportItem {
-        public Date date;
-        public int count;
-    }
 }

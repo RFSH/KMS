@@ -233,11 +233,6 @@ kmsApp.controller('ChartReportCtrl', function ($scope, $routeParams, $ngJava) {
             var mdate = moment();
             mdate.dayOfYear(day);
             labels.push(mdate.format('jD jMMMM jYYYY'));
-            //items.push({
-            //   day: day,
-            //    wiki: timeReport.getWikiCount(day),
-            //    question: timeReport.getQuestionCount(day)
-            //});
         }
 
         $scope.timeData = [
@@ -292,6 +287,9 @@ kmsApp.controller('AddEmployeeCtrl', function ($scope, $modal, $routeParams, $ng
         $scope.error = $scope.addOrUpdateEmployee($scope.update, $scope.data);
     };
 
+    $scope.getBack = function(){
+        window.location.hash = "/knowledge/list";
+    };
 });
 
 kmsApp.controller('EmployeeListCtrl', function ($scope, $modal, $ngJava) {
@@ -389,7 +387,14 @@ kmsApp.controller('AddOrEditWikiKnowledgeCtrl', function ($scope, $routeParams, 
         for (var i = 0; i < $scope.tags.length; i++) {
             $scope.data.tags.push($scope.tags[i].text);
         }
-        $scope.addOrUpdateWikiKnowledge($scope.update, $scope.data);
+        var msg = $scope.addOrUpdateWikiKnowledge($scope.update, $scope.data);
+        if(msg != 'success'){
+            show_message(msg, 'error');
+        }
+    };
+
+    $scope.getBack = function(){
+        window.location.hash = "/knowledge/list";
     };
 });
 

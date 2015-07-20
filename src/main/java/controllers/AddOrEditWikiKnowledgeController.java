@@ -10,6 +10,7 @@ import knowledge.WikiKnowledge;
 import netscape.javascript.JSObject;
 import tag.Tag;
 import tag.TagCatalog;
+import util.Strings;
 import util.ValidationError;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class AddOrEditWikiKnowledgeController extends JavaNGController {
         }
 
         changePage("/knowledge/list");
-        return "";
+        return "succes";
     }
 
     private void updateKnowledge() throws ValidationError {

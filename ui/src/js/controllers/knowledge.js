@@ -33,7 +33,14 @@ kmsApp.controller('AddOrEditWikiKnowledgeCtrl', function ($scope, $routeParams, 
         for (var i = 0; i < $scope.tags.length; i++) {
             $scope.data.tags.push($scope.tags[i].text);
         }
-        $scope.addOrUpdateWikiKnowledge($scope.update, $scope.data);
+        var msg = $scope.addOrUpdateWikiKnowledge($scope.update, $scope.data);
+        if(msg != 'success'){
+            show_message(msg, 'error');
+        }
+    };
+
+    $scope.getBack = function(){
+        window.location.hash = "/knowledge/list";
     };
 });
 

@@ -12,9 +12,7 @@
 
         <div style="margin-top: 30px; margin-bottom:30px">
             <label> محتوای دانش</label>
-            <text-angular ng-model="data.content">
-
-            </text-angular>
+            <text-angular ng-model="data.content"></text-angular>
         </div>
 
         <tags-input ng-model="tags" placeholder="'برچسب های دانش'">
@@ -23,9 +21,9 @@
             <button ng-click="submit()" type="submit" class="btn btn-success" style="width: 150px;">
                 ثبت
             </button>
-            <a ng-href="/knowledge/list" type="submit" class="btn btn-danger" style="width: 150px;">
+            <button ng-click="getBack()" type="submit" class="btn btn-danger" style="width: 150px;">
                 انصراف
-            </a>
+            </button>
         </div>
     </div>
 </div>

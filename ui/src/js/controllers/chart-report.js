@@ -57,11 +57,6 @@ kmsApp.controller('ChartReportCtrl', function ($scope, $routeParams, $ngJava) {
             var mdate = moment();
             mdate.dayOfYear(day);
             labels.push(mdate.format('jD jMMMM jYYYY'));
-            //items.push({
-            //   day: day,
-            //    wiki: timeReport.getWikiCount(day),
-            //    question: timeReport.getQuestionCount(day)
-            //});
         }
 
         $scope.timeData = [

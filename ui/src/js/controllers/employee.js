@@ -38,6 +38,9 @@ kmsApp.controller('AddEmployeeCtrl', function ($scope, $modal, $routeParams, $ng
         $scope.error = $scope.addOrUpdateEmployee($scope.update, $scope.data);
     };
 
+    $scope.getBack = function(){
+        window.location.hash = "/knowledge/list";
+    };
 });
 
 kmsApp.controller('EmployeeListCtrl', function ($scope, $modal, $ngJava) {

@@ -1,9 +1,6 @@
 package tag;
 
 import db.BaseDAO;
-import knowledge.Knowledge;
-import knowledge.WikiKnowledge;
-import org.postgresql.util.PSQLException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

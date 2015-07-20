@@ -18,9 +18,6 @@ public class WikiKnowledge extends Knowledge {
     private PermissionLevel viewPermissionLevel;
     private PermissionLevel changePermissionLevel;
 
-    public void addUseCase(String useCase) {
-
-    }
 
     @Override
     public void acceptReporter(KnowledgeReportGenerator knowledgeReportGenerator) {
@@ -55,7 +52,8 @@ public class WikiKnowledge extends Knowledge {
         if (title == null || title.isEmpty()) {
             errors.add(Strings.KNOWLEDGE_NO_TITLE);
         }
-        if (title == null || content.isEmpty()) {
+        if (content == null || content.isEmpty()) {
+            System.out.println("--------------\nHERE----------\n");
             errors.add(Strings.KNOWLEDGE_NO_CONTENT);
         }
         if (!errors.isEmpty()) {

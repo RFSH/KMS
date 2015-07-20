@@ -50,10 +50,6 @@ public abstract class Knowledge {
         return sum;
     }
 
-    public void deprecate() {
-
-    }
-
     public void save() throws ValidationError {
         try {
             KnowledgeCatalog.getInstance().updateKnowledge(this);
