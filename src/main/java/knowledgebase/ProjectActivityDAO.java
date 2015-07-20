@@ -19,7 +19,7 @@ public class ProjectActivityDAO extends BaseDAO<ProjectActivity>{
                 "id", projectActivity.getId(),
                 "project_id", projectActivity.getProject().getId(),
                 "title", projectActivity.getTitle(),
-                "description", projectActivity.getDescription(),
+                "description", projectActivity.getDescription()
         };
     }
 

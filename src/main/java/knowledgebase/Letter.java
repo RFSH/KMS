@@ -1,5 +1,6 @@
 package knowledgebase;
 
+import java.util.Date;
 import java.util.List;
 
 public class Letter {
@@ -7,6 +8,7 @@ public class Letter {
     private String content;
     private String id;
     private List<LetterPathNode> letterPathNodes;
+    private Date creationDate;
 
 
     /* Getter and Setters */
@@ -44,5 +46,13 @@ public class Letter {
 
     public void setLetterPathNodes(List<LetterPathNode> letterPathNodes) {
         this.letterPathNodes = letterPathNodes;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date date) {
+        this.creationDate = date;
     }
 }

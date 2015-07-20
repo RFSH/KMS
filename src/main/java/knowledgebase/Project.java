@@ -3,6 +3,7 @@ package knowledgebase;
 import tag.Tag;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Project {
@@ -10,6 +11,7 @@ public class Project {
     private String description;
     private String id;
     private List<ProjectActivity> projectActivities;
+    private Date creationDate;
 
 
     /* Getter and Setters */
@@ -49,5 +51,11 @@ public class Project {
         this.projectActivities = projectActivities;
     }
 
+    public Date getCreationDate() {
+        return creationDate;
+    }
 
+    public void setCreationDate(Date date) {
+        this.creationDate = date;
+    }
 }

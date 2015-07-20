@@ -4,6 +4,7 @@ import db.BaseDAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 public class LetterDAO extends BaseDAO<Letter>{
     @Override
@@ -13,10 +14,11 @@ public class LetterDAO extends BaseDAO<Letter>{
 
     @Override
     public Object[] getColumnValues(Letter letter) {
-        return new String[]{
+        return new Object[]{
                 "id", letter.getId(),
                 "title", letter.getTitle(),
-                "content", letter.getContent()
+                "content", letter.getContent(),
+                "creation_date", letter.getCreationDate().getTime()
         };
     }
 
@@ -32,6 +34,7 @@ public class LetterDAO extends BaseDAO<Letter>{
             letter.setId(result.getString("id"));
             letter.setTitle(result.getString("title"));
             letter.setContent(result.getString("content"));
+            letter.setCreationDate(new Date(result.getLong("creation_date")));
         }catch( SQLException e){
             e.printStackTrace();
         }

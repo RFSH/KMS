@@ -806,7 +806,8 @@ function letterToObject(letter){
         id: letter.getId(),
         content: letter.getContent(),
         title: letter.getTitle(),
-        nodes: nodes
+        nodes: nodes,
+        creationDate: formatDate(letter.getCreationDate().getTime())
     };
 }
 
@@ -820,7 +821,8 @@ function projectToObject(project){
         id: project.getId(),
         description: project.getDescription(),
         title: project.getTitle(),
-        nodes: activites
+        nodes: activites,
+        creationDate: formatDate(project.getCreationDate().getTime())
     };
 }
 
