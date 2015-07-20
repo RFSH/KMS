@@ -413,7 +413,7 @@ CREATE UNIQUE INDEX  "tags_id_key" ON "public"."tags" USING btree("id" COLLATE "
 -- ----------------------------
 --  Primary key structure for table knowledge_tag
 -- ----------------------------
-ALTER TABLE "public"."knowledge_tag" ADD PRIMARY KEY ("knowledege_id", "tag_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."knowledge_tag" ADD PRIMARY KEY (knowledge_id, "tag_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
 
 -- ----------------------------
 --  Primary key structure for table managers
@@ -477,7 +477,7 @@ ALTER TABLE "public"."letter_path_nodes" ADD CONSTRAINT "letter" FOREIGN KEY ("l
 -- ----------------------------
 --  Foreign keys structure for table knowledge_tag
 -- ----------------------------
-ALTER TABLE "public"."knowledge_tag" ADD CONSTRAINT "knowledge" FOREIGN KEY ("knowledege_id") REFERENCES "public"."knowledges" ("id") ON UPDATE CASCADE ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."knowledge_tag" ADD CONSTRAINT "knowledge" FOREIGN KEY (knowledge_id) REFERENCES "public"."knowledges" ("id") ON UPDATE CASCADE ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE;
 ALTER TABLE "public"."knowledge_tag" ADD CONSTRAINT "tag" FOREIGN KEY ("tag_id") REFERENCES "public"."tags" ("id") ON UPDATE CASCADE ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE;
 
 -- ----------------------------
